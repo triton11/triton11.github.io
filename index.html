@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<!--
+TEMPLATE
+Name: Zoo Planet
+Version: 1.0
+Created: 23 January 2014
+
+AUTHOR
+Design and code by: http://www.bootshape.com
+Free stock photos by: http://www.bootshape.com
+
+Read full license: http://www.bootshape.com/license.php
+
+CREDITS
+Background: http://subtlepatterns.com/ (extra_clean_paper)
+Fonts: http://www.google.com/fonts (Actor, Duru_Sans)
+
+SUPPORT
+E-mail: bootshape.com@gmail.com
+Contact: http://www.bootshape.com/contact.php
+-->
+<html>
+  <head>
+    <title>Tristrum Tuttle</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    
+    <!--Google Fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Duru+Sans|Actor' rel='stylesheet' type='text/css'>
+    
+    <!--Bootshape-->
+    <link href="css/bootshape.css" rel="stylesheet">
+
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <script type="text/javascript">
+<!--
+    function toggle_visibility(id) {
+       var e = document.getElementById(id);
+       if(e.style.display == 'block')
+          e.style.display = 'none';
+       else
+          e.style.display = 'block';
+    }
+    //-->
+    </script>
+    <style type="text/css">
+
+      #popupBoxOnePosition{
+        top: 0; left: 0; position: fixed; width: 100%; height: 120%;
+        background-color: rgba(0,0,0,0.7); display: none;
+      }
+      #popupBoxTwoPosition{
+        top: 0; left: 0; position: fixed; width: 100%; height: 120%;
+        background-color: rgba(0,0,0,0.7); display: none;
+      }#popupBoxThreePosition{
+        top: 0; left: 0; position: fixed; width: 100%; height: 120%;
+        background-color: rgba(0,0,0,0.7); display: none;
+      }
+      .popupBoxWrapper{
+        width: 550px; margin: 50px auto; text-align: center;
+      }
+      .popupBox2Wrapper{
+        width: 550px; margin: 50px auto; text-align: left;
+      }
+      .popupBoxContent{
+        background-color: #FFF; padding: 15px;
+      }
+
+    </style>
+
+    <!-- Navigation bar -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"><span class="green">Tristrum</span> Tuttle</a>
+        </div>
+        <nav role="navigation" class="collapse navbar-collapse navbar-right">
+          <ul class="navbar-nav nav">
+            <li><a href="#">Top</a></li>
+            <li><a href="javascript:void(0)" onclick="toggle_visibility('popupBoxOnePosition');"> Contact Me</a>
+            </li>
+          </ul>
+          <div id="popupBoxOnePosition">
+            <div class="popupBoxWrapper">
+              <div class="popupBoxContent">
+                <h3>Gmail:</h3>
+                <p><address></address><a href="mailto:tut@seas.upenn.edu">tut@seas.upenn.edu</a></address></p>
+                <h3>Linkedin:</h3>
+                <p><address></address><a href="https://github.com/triton11">linkedin profile</a></address></p>
+                <h3>GitHub:</h3>
+                <p><address></address><a href="">GitHub Profile</a></address></p>
+
+                <p><a href="javascript:void(0)" onclick="toggle_visibility('popupBoxOnePosition');">close</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div><!-- End Navigation bar -->
+
+    <!-- Slide gallery -->
+    <div class="jumbotron">
+      <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+          <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+          <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+        </ol>
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner">
+          <div class="item active">
+            <img src="img/carousel1.jpg" alt="">
+            <div class="carousel-caption">
+            </div>
+          </div>
+          <div class="item">
+            <img src="img/carousel2.jpg" alt="">
+            <div class="carousel-caption">
+            </div>
+          </div>
+          <div class="item">
+            <img src="img/carousel3.jpg" alt="">
+            <div class="carousel-caption">
+            </div>
+          </div>
+        </div>
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+      </div>
+    </div><!-- End Slide gallery -->
+    <div class="transition">
+      <h3 class="text-center">About Me</h3>
+      <h4 class="text-center">Hello! My name is Tristrum Tuttle. I am a student at the University of Pennsylvania majoring in Computer Engineering.<br> 
+      </h4>
+    </div>
+    <!-- Thumbnails -->
+    <div class="container thumbs">
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <img src="img/pic1.jpg" alt="" class="img-circle">
+          <div class="caption">
+            <h3 class="text-center">Projects</h3>
+            <p>Over the past five years I have worked on everything from physics research to medical devices. Check it out!</p>
+            <div class="btn-toolbar text-center">
+              <a href="javascript:void(0)" onclick="toggle_visibility('popupBoxTwoPosition');" role="button" class="btn btn-success">Details</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <img src="img/pic2.jpg" alt="" class="img-circle">
+          <div class="caption">
+            <h3 class="text-center">Resume</h3>
+            <p>  
+            </p>
+            <div class="btn-toolbar text-center">
+              <a href="resume.pdf" target="_blank" role="button" class="btn btn-success">Open</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <img src="img/pic3.jpg" alt="" class="img-circle">
+          <div class="caption">
+            <h3 class="text-center">Interests</h3>
+            <p> When I'm not coding, I love to play soccer with friends, read Malcolm Gladwell, and even yo-yo! Here are some links to a few of my favorite hobbies:
+            </p>
+            <div class="btn-toolbar text-center">
+              <a href="javascript:void(0)" onclick="toggle_visibility('popupBoxThreePosition');" role="button" class="btn btn-success">Details</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Thumbnails -->
+    
+    <div id="popupBoxTwoPosition">
+        <div class="popupBox2Wrapper">
+          <div class="popupBoxContent">
+                <h2>Projects </h2>
+                  <p>
+                    <ul>
+                      <li> <font size= "+1">
+                        Free Med:  Affordable Medical Sterilization Equipment </font> <br>
+                        <div class="containerr">
+                          <div> <a href="#">Our Mission </a> </div>
+                          <div> <a href="#">News Expo </a> </div>
+                          <div> <a href="#">Design Video </a> </div>
+                        </div>
+                      </li>
+                      <br>
+                      <li> <font size= "+1"> Physics research conducted at PSU Behrend: </font> <br>
+                        <div class="containerr">
+                          <div> <a href="#">Atomic download</a> </div>
+                          <div> <a href="#">Resistivity download </a> 
+                          </div>
+                        </div>
+                      </li>
+                      <br>
+                      <li> <font size= "+1">  Python: </font>
+                      <div class="containerrr">
+                        <div> <a href="#"> TS Problem </a> </div>
+                        <div> <a href="#"> Game of Life </a> </div>
+                        <div> <a href="#"> Siepinski Triangle </a> </div>
+                        <div> <a href="#"> Twitter Bots </a> </div>
+                      </div>
+                      </li>
+                      <br>
+                      <li> <font size= "+1"> Java: </font>
+                      <div class="containerr">
+                        <div> <a href="#"> RPS </a> </div>
+                        <div> <a href="#"> Elemental Arena </a> </div>
+                      </li>
+                      <br>
+                      <li> <font size= "+1">  Arduino: </font>
+                      <div class="containerr">
+                        <div> <a href="#"> Lego Robotic Arm </a> </div>
+                      </li>
+                    </ul>
+
+                  </p>
+
+                  <p><a href="javascript:void(0)" onclick="toggle_visibility('popupBoxTwoPosition');">close</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+  <div id="popupBoxThreePosition">
+      <div class="popupBoxWrapper">
+        <div class="popupBoxContent">
+          <h2>Interests</h2>
+          <p> <font size = "+1"> I am a member of Penn's Ping-Pong and Running clubs, so most of my athletic ventures are with one of those two groups. My favorite sports are <a href="https://www.youtube.com/watch?v=G9ehLWW12Vw">tennis</a> and <a href="#">soccer
+          </a>, and I try to play as much as my college schedule allows. I am also a fan of wilderness survival. Over the summer I love to practice my <a href="https://www.youtube.com/watch?v=ibaMy_WvhE0">bow-drill fire making</a> and shelter building with my younger sister, Siegrid. In college, I stick to more "tame" hobbies like <a href="https://www.youtube.com/watch?v=KoLaHKfVRkQ">yo-yoing</a>, reading, and <a href="https://www.youtube.com/watch?v=jVDI12O71OQ">meditating</a>. Finally, teaching others is a true passion of mine. Leading survival classes at Camp Fitch, helping students with <a href="www.scratch.mit.edu">Scratch.mit</a> through Moelis Access Science, and guiding my old <a href="http://fairviewunitednations.weebly.com/-the-tristrum-tuttle-page.html">Model UN</a> and debate teams to victory are a some of my happiest experiences in life, and for that I am truly blessed.
+          </font> </p>
+          <p><a href="javascript:void(0)" onclick="toggle_visibility('popupBoxThreePosition');">close</a> </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer text-center">
+        <p>&copy; 2016 Tristrum Tuttle. All Rights Reserved. </p>
+    </div><!-- End Footer -->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!-- // <script src="https://code.jquery.com/jquery.js"></script> -->
+    <script src="js/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootshape.js"></script>
+  </body>
+</html>
