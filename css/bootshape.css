@@ -1,9 +1,9 @@
 body {
-    background-image:url('../img/bg2.jpg');
+    background-image:url('../img/bg1.png');
     background-repeat:repeat;
 }
 .navbar {
-    background-image:url('../img/bg2.jpg');
+    background-image:url('../img/bg1.png');
     background-repeat:repeat;
 }
 .jumbotron {
@@ -24,6 +24,6 @@ body {
     padding: 40px 0;
 }
 .transition {
-    background-image: url('../img/bg2.jpg');
+    background-image: url('../img/bg1.png');
     padding: 5px 0;
 }
