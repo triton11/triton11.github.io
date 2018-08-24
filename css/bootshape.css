@@ -1,14 +1,10 @@
-body {
-    background-image:url('../img/bg1.png');
-    background-repeat:repeat;
-}
 .navbar {
     background-image:url('../img/bg1.png');
     background-repeat:repeat;
 }
 .jumbotron {
     background-color: transparent;
-    padding: 10px 0 0 0;
+    padding: 0 0 0 0;
 }
 .green {
     color: #FF0000;
@@ -24,6 +20,5 @@ body {
     padding: 40px 0;
 }
 .transition {
-    background-image: url('../img/bg1.png');
     padding: 5px 0;
 }

@@ -1,4 +1,25 @@
 <!DOCTYPE html>
+<!--
+TEMPLATE
+
+Name: Zoo Planet
+Version: 1.0
+Created: 23 January 2014
+
+AUTHOR
+Design and code by: http://www.bootshape.com
+Free stock photos by: http://www.bootshape.com
+
+Read full license: http://www.bootshape.com/license.php
+
+CREDITS
+Background: http://subtlepatterns.com/ (extra_clean_paper)
+Fonts: http://www.google.com/fonts (Actor, Duru_Sans)
+
+SUPPORT
+E-mail: bootshape.com@gmail.com
+Contact: http://www.bootshape.com/contact.php
+-->
 <html>
   <head>
     <title>Tristrum Tuttle</title>
@@ -36,15 +57,14 @@
 
       #popupBoxOnePosition{
         top: 0; left: 0; position: fixed; width: 100%; height: 120%;
-        background-color: rgba(0,0,0,0.7); display: none; z-index: 11;
+        background-color: rgba(0,0,0,0.7); display: none;
       }
       #popupBoxTwoPosition{
         top: 0; left: 0; position: fixed; width: 100%; height: 120%;
-        background-color: rgba(0,0,0,0.7); display: none; z-index: 11;
-
+        background-color: rgba(0,0,0,0.7); display: none;
       }#popupBoxThreePosition{
         top: 0; left: 0; position: fixed; width: 100%; height: 120%;
-        background-color: rgba(0,0,0,0.7); display: none; z-index: 11;
+        background-color: rgba(0,0,0,0.7); display: none;
       }
       .popupBoxWrapper{
         width: 550px; margin: 50px auto; text-align: center;
@@ -55,124 +75,71 @@
       .popupBoxContent{
         background-color: #FFF; padding: 15px;
       }
-      .parallax { 
-        /* The image used */
-        background-image: url("img/bg3.jpg");
-
-        /* Set a specific height */
-        height: 300px; 
-
-        /* Create the parallax scrolling effect */
-        background-attachment: fixed;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-      }
-      .carousel-control.right {
-        background-image: none;
-      }
-      .carousel-control.left {
-        background-image: none;
-      }
-      .section {
-        text-align: center;
-        padding-top: 40px;  
-        padding-bottom: 40px;  
-      }
-      h2 {
-          font: 40px "Lato", sans-serif;
-          letter-spacing: 5px;
-          text-transform: uppercase;
-          color: #000;
-      }
-      h3 {
-        font: 30px "Lato", sans-serif;
-        color: #000;
-        text-shadow: none;
-      }
-      h4 {
-        font: 20px "Lato", sans-serif;
-        color: #000;
-        text-shadow: none;
-      }
-      a {
-        text-shadow: none;
-      }
-      hr {
-        border:none;
-        border-top:2px solid #000;
-        height:1px;
-        width:50%;
-      }
 
     </style>
-    <!-- Container element -->
-    <div class="parallax">
-    </div>
-      
-    <div class="section">
-      <h2>Tristrum Tuttle</h2>
-      <h4>Hello! My name is Tristrum Tuttle. <br> I am a student at the University of Pennsylvania majoring in Computer Engineering.<br> 
-      </h4>
-    </div>
-    <div class="section" style="background-color: #EEEEEE;">
-      <h2>Showcase</h2>
-      <hr></hr>
-    </div>
+
+    <!-- Navigation bar -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"><span class="green">Tristrum</span> Tuttle</a>
+        </div>
+        <nav role="navigation" class="collapse navbar-collapse navbar-right">
+          <ul class="navbar-nav nav">
+            <li><a href="javascript:void(0)" onclick="toggle_visibility('popupBoxOnePosition');"> Contact Me</a>
+            </li>
+          </ul>
+          <div id="popupBoxOnePosition">
+            <div class="popupBoxWrapper">
+              <div class="popupBoxContent">
+                <h3>Gmail:</h3>
+                <p><address></address><a href="mailto:tut@seas.upenn.edu">tut@seas.upenn.edu</a></address></p>
+                <h3>Linkedin:</h3>
+                <p><address></address><a href="https://www.linkedin.com/in/tristrum">linkedin Profile</a></address></p>
+                <h3>GitHub:</h3>
+                <p><address></address><a href="https://github.com/triton11">GitHub Profile</a></address></p>
+                <h3>DevPost:</h3>
+                <p><address></address><a href="http://devpost.com/triton11">Devpost Profile</a></address></p>
+
+                <p><a href="javascript:void(0)" onclick="toggle_visibility('popupBoxOnePosition');">close</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div><!-- End Navigation bar -->
+
     <!-- Slide gallery -->
     <div class="jumbotron">
       <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
         <!-- Indicators -->
-        <!-- <ol class="carousel-indicators">
+        <ol class="carousel-indicators">
           <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
           <li data-target="#carousel-example-generic" data-slide-to="1"></li>
           <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-        </ol> -->
+        </ol>
         <!-- Wrapper for slides -->
         <div class="carousel-inner">
           <div class="item active">
-            <img src="img/ProjEvil.png" alt="">
-            <div class="carousel-caption d-none d-md-block">
-              <h3>Read my blog on EvilPlot/Scalastan <a href="https://medium.com/@CiboEng/scalastan-and-evilplot-bayesian-statistics-meets-combinator-based-visualization-dce3631b5096">here!</a></h3>
-            </div>
-          </div>
-          <div class="item" align="center">
-            <img src="img/ProjFreeMed.png" alt="" class="d-block w-100" data-holder-rendered="true">
-            <div class="carousel-caption d-none d-md-block">
-              <div class="containerr">
-                <div> <a href="https://www.youtube.com/watch?v=2hYbP9SPvYk">Our Mission </a> </div>
-                <div> <a href="https://www.youtube.com/watch?v=M8o3wH4ucZ0">News Expo </a> </div>
-                <div> <a href="https://www.youtube.com/watch?v=6UXhoFzH8No">Design Video </a> </div>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <img src="img/ProjMaza.png" alt="">
+            <img src="img/carousel1.jpg" alt="">
             <div class="carousel-caption">
             </div>
-            <div class="carousel-caption d-none d-md-block">
-              <br>
-              <a href="https://www.youtube.com/watch?v=nIjq4OZl6Qo">
-                Watch our Pitch
-              </a>
-              <h4> "Fun, Portable and Engaging exercise platform for less than $30!" </h4>
+          </div>
+          <div class="item">
+            <img src="img/carousel4.jpg" alt="">
+            <div class="carousel-caption">
             </div>
           </div>
           <div class="item">
-            <img src="img/ProjHackathon3.png" alt="">
-            <div class="carousel-caption d-none d-md-block">
-              <div class="containerrr">
-                <div> <a href="https://www.youtube.com/watch?v=2hYbP9SPvYk">@FullFlipFlop </a> </div>
-                <div> <a href="https://www.youtube.com/watch?v=M8o3wH4ucZ0">BT Doorbell </a> </div>
-                <div> <a href="https://www.youtube.com/watch?v=6UXhoFzH8No">EmergAlert </a> </div>
-                <div> <a href="https://www.youtube.com/watch?v=6UXhoFzH8No">Counsel Code</a> </div>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <img src="img/ProjTuttlemonGO.png" alt="">
-            <div class="carousel-caption d-none d-md-block">
-              <h3>Pokemon Go, but better! <a href="https://github.com/triton11/TuttlemonGo">Demo</a> / <a href="https://github.com/triton11/TuttlemonGo">Code</a> </h3>
+            <img src="img/carousel3.jpg" alt="">
+            <div class="carousel-caption">
             </div>
           </div>
         </div>
@@ -185,13 +152,18 @@
         </a>
       </div>
     </div><!-- End Slide gallery -->
+    <div class="transition">
+      <h3 class="text-center">About Me</h3>
+      <h4 class="text-center">Hello! My name is Tristrum Tuttle. I am a student at the University of Pennsylvania majoring in Computer Engineering.<br> 
+      </h4>
+    </div>
     <!-- Thumbnails -->
     <div class="container thumbs">
       <div class="col-sm-6 col-md-4">
         <div class="thumbnail">
           <img src="img/pic1.jpg" alt="" class="img-circle">
           <div class="caption">
-            <h2 class="text-center">Projects</h2>
+            <h3 class="text-center">Projects</h3>
             <p>Over the past five years I have worked on everything from physics research to medical devices. Check it out!</p>
             <div class="btn-toolbar text-center">
               <a href="javascript:void(0)" onclick="toggle_visibility('popupBoxTwoPosition');" role="button" class="btn btn-success">Details</a>
@@ -203,11 +175,11 @@
         <div class="thumbnail">
           <img src="img/pic4.jpg" alt="" class="img-circle">
           <div class="caption">
-            <h2 class="text-center">Resume</h2>
+            <h3 class="text-center">Resume</h3>
             <p>  
             </p>
             <div class="btn-toolbar text-center">
-              <a href="resumeLatex2018.pdf" target="_blank" role="button" class="btn btn-success">Open</a>
+              <a href="resumeLatex2017.pdf" target="_blank" role="button" class="btn btn-success">Open</a>
             </div>
           </div>
         </div>
@@ -216,8 +188,8 @@
         <div class="thumbnail">
           <img src="img/pic3.jpg" alt="" class="img-circle">
           <div class="caption">
-            <h2 class="text-center">Interests</h2>
-            <p> When I'm not coding, I love to play soccer with friends, read Malcolm Gladwell, and even yo-yo!
+            <h3 class="text-center">Interests</h3>
+            <p> When I'm not coding, I love to play soccer with friends, read Malcolm Gladwell, and even yo-yo! Here are some links to a few of my favorite hobbies:
             </p>
             <div class="btn-toolbar text-center">
               <a href="javascript:void(0)" onclick="toggle_visibility('popupBoxThreePosition');" role="button" class="btn btn-success">Details</a>
@@ -228,10 +200,10 @@
     </div>
     <!-- End Thumbnails -->
     
-    <div id="popupBoxTwoPosition" class="popupBoxJS">
+    <div id="popupBoxTwoPosition">
         <div class="popupBox2Wrapper">
           <div class="popupBoxContent">
-                <h3>Projects (GitHub/Devpost links)</h3>
+                <h2>Projects (GitHub/Devpost links)</h2>
                   <p>
                     <ul>
                       <li> <font size= "+1">  Hackathon Projects: </font>
@@ -307,18 +279,15 @@
         </div>
       </div>
     </div>
-    <div class="parallax">
-    </div>
 
     <!-- Footer -->
     <div class="footer text-center">
-        <p>&copy; 2018 Tristrum Tuttle. All Rights Reserved. </p>
+        <p>&copy; 2015 Tristrum Tuttle. All Rights Reserved. </p>
     </div><!-- End Footer -->
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <!-- // <script src="https://code.jquery.com/jquery.js"></script> -->
-    <script src="js/jquery.js">
-    </script>
+    <script src="js/jquery.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
     <script src="js/bootshape.js"></script>
