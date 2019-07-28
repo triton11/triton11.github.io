@@ -107,6 +107,7 @@ q {
 
 small {
   font-size: 80%;
+  font-family: "Lato", sans-serif;
 }
 
 sub,
@@ -2347,13 +2348,18 @@ fieldset[disabled] .btn-default.active {
   background-color: #fff;
 }
 
-.btn-primary {
+/*.btn-primary {
   color: #ffffff;
   background-color: #428bca;
   border-color: #357ebd;
+}*/
+.btn-primary {
+  color: #000;
+  background-color: #eee;
+  border-color: #eee;
 }
 
-.btn-primary:hover,
+/*.btn-primary:hover,
 .btn-primary:focus,
 .btn-primary:active,
 .btn-primary.active,
@@ -2361,6 +2367,16 @@ fieldset[disabled] .btn-default.active {
   color: #ffffff;
   background-color: #3276b1;
   border-color: #285e8e;
+}*/
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.open .dropdown-toggle.btn-primary {
+  color: #000;
+  background-color: #fff;
+  border-color: #eee;
 }
 
 .btn-primary:active,

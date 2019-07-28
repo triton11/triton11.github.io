@@ -86,11 +86,33 @@
         height: 350px;
         padding: 15px;
         margin: 15px 0px 15px 0px;
-        border: 1px solid #eee;
-        box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
+        background-color: #eee;
+        border-radius: 0.8rem;
+        color: #000!important;
+        box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2) !important;
+      }
+
+
+      .card:hover {
+        height: 350px;
+        padding: 15px;
+        margin: 15px 0px 15px 0px;
+        background-color: #eee;
+        border-radius: 0.8rem;
+        color: #000!important;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2) !important;
       }
       .card-body {
+        margin: 0px 20px 50px 20px;
         text-align: center;
+        font-family: "Lato", sans-serif;
+        font-size: 16px;
+      }
+      .card-body a .btn {
+        position: absolute;
+        bottom: 0;
+
+        margin: 0px 0px 20px 0px;
       }
       .card-img-top {
         margin: 0 auto;
@@ -99,8 +121,12 @@
         display: block;
       }
       .card-title {
+        font-family: "Lato", sans-serif;
+        letter-spacing: 1px;
+        text-align: center;
+        margin: 30px 0 25px 0;
         font-weight: bold;
-        font-size: 16px;
+        font-size: 36px;
       }
       .section {
         text-align: center;
@@ -130,6 +156,8 @@
       }
       a {
         text-shadow: none;
+        font-style: italic;
+        font-weight: bold;
       }
       hr {
         border:none;
@@ -139,16 +167,17 @@
       }
 
     </style>
+    <link href="css/customcard.css" rel="stylesheet">
     <!-- Container element -->
     <div class="parallax">
       <div align="center">
-        <img style="max-width: 250px; margin: 100px 0 0 0; border:1px solid white;" src="img/pic4.jpg" alt="" class="img-circle">
+        <img style="max-width: 250px; margin: 100px 0 0 0; border:1px solid white;" src="img/graduated.JPG" alt="" class="img-circle">
       </div>
     </div>
 
     <div class="section">
       <h2>Tristrum Tuttle</h2>
-      <h4>Hello! My name is Tristrum Tuttle. <br> I am a student at the University of Pennsylvania pursuing a BSE and MSE in Computer Science.<br> 
+      <h4>Hello! My name is Tristrum Tuttle. <br>I recently graduated UPenn with a BSE and MSE in Computer Science.<br>
       </h4>
     </div>
     <div class="section" style="background-color: #EEEEEE;">
@@ -164,10 +193,15 @@
             </a>
           </div>
           <div class="item" align="center">
-            <a href="https://www.youtube.com/watch?v=6UXhoFzH8No"><div class="fill" style="background-image:url('img/ProjFreeMed.png');">
+            <a href="Senior_Design_Final_Paper.pdf"><div class="fill" style="background-image:url('img/ProjPlatoonDynamics.png');">
             </div>
             </a>
           </div>
+          <!-- <div class="item" align="center">
+            <a href="https://www.youtube.com/watch?v=6UXhoFzH8No"><div class="fill" style="background-image:url('img/ProjFreeMed.png');">
+            </div>
+            </a>
+          </div> -->
           <div class="item">
             <a href="https://www.youtube.com/watch?v=nIjq4OZl6Qo">
               <div class="fill" style="background-image:url('img/ProjMazaFin.png');"></div>
@@ -192,7 +226,7 @@
     <div class="container">
         <div class="col-sm-6 col-md-3">
           <div class="thumbnail">
-            <a href="resumeLatex2018.pdf" target="_blank" role="button" alt="">   <img style="max-width: 60%" src="img/pennlogo.png" alt="" class="img-circle">
+            <a href="Tuttle_Tristrum_resume.pdf" target="_blank" role="button" alt="">   <img style="max-width: 60%" src="img/pennlogo.png" alt="" class="img-circle">
                 <h3 align="center"> Resume </h3>
             </a>
           </div>
@@ -222,81 +256,185 @@
     <div class="container thumbs">
       <h1 align="center">Projects</h1>
       <hr></hr>
-        <div class="col-sm-6 col-md-3">
-          <div class="card">
+        <div class="col-sm-6 col-md-4">
+          <div class="card" id="teach">
+            <small class="text-muted">2019</small>
+
             <div class="card-body">
-              <img class="card-img-top" src="img/ProjClass.png" alt="Card image cap">
+<!--               <img class="card-img-top" src="img/ProjScala.png" alt="Card image cap">
+ -->              <h5 class="card-title">Curriculum Dev</h5>
+              <p class="card-text">I am a passionate educator and love teaching at all levels.I have worked extensively to design and rework curriculum for teaching <b>Android app dev</b>, <b>Python</b>, and <b>Scratch by MIT</b>. Check it out! </p>
+              <a href="https://www.seas.upenn.edu/~cis195/android/index.html" class="btn btn-primary">Android</a> <a href="https://repl.it/@mascs" class="btn btn-primary">Python</a><a href="scratch_curriculum.docx" class="btn btn-primary">Scratch</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-md-4">
+          <div class="card" id="truck">
+            <small class="text-muted">2019</small>
+
+            <div class="card-body">
+<!--               <img class="card-img-top" src="img/ProjScala.png" alt="Card image cap">
+ -->              <h5 class="card-title">Platoon Dynamics</h5>
+              <p class="card-text">My teammates and I built a platform for platooning autonomous vehicles to generate fuel savings and reduce harmful emmisions. Built with <b>Node JS</b>, <b>Java Redis</b>, and <b>PyGame</b>. </p>
+              <a href="Senior_Design_Final_Paper.pdf" class="btn btn-primary">Read our report!</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-md-4">
+          <div class="card" id="char">
+            <small class="text-muted">2019</small>
+
+            <div class="card-body">
+<!--               <img class="card-img-top" src="img/ProjScala.png" alt="Card image cap">
+ -->              <h5 class="card-title">CharacterizeIt</h5>
+              <p class="card-text">We used Mechanical Turk crowdsourcing to examine gender bias in comic book characters. Built with <b>Sci-kit learn</b> and <b>Python</b>.</p>
+              <a href="https://vimeo.com/334834145" class="btn btn-primary">Watch our video!</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-md-4">
+          <div class="card" id="welp">
+            <small class="text-muted">2019</small>
+
+            <div class="card-body">
+<!--               <img class="card-img-top" src="img/ProjScala.png" alt="Card image cap">
+ -->              <h5 class="card-title">¯\_(Welp)_/¯</h5>
+              <p class="card-text">This web application helps you make an itinerary for your next vacation! Built using <b>Node JS</b>, <b>Angular JS</b>, and <b>MySQL</b>.</p>
+              <a href="https://github.com/triton11/Welp" class="btn btn-primary">Github</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-md-4">
+          <div class="card" id="mbti">
+            <small class="text-muted">2019</small>
+
+            <div class="card-body">
+<!--               <img class="card-img-top" src="img/ProjScala.png" alt="Card image cap">
+ -->              <h5 class="card-title">ItsPersonal</h5>
+              <p class="card-text">We analyze writing samples to predict and analyze Meyers-Briggs Types. Our final model is able to predict MBTI types based on writing samples with about 50% accuracy. Built using <b>Sci-kit learn</b>, <b>nltk toolkit</b>, <b>gensim LDA</b>, and <b>PyTorch</b>.</p>
+              <a href="itspersonal.pdf" class="btn btn-primary">Read our report!</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-md-4">
+          <div class="card" id="tamagome">
+            <small class="text-muted">2019</small>
+
+            <div class="card-body">
+<!--               <img class="card-img-top" src="img/ProjScala.png" alt="Card image cap">
+ -->              <h5 class="card-title">TamagoMe</h5>
+              <p class="card-text"><b>iOS app</b> written in <b>Swift</b> that uses HealthKit API data to keep a virtual avatar happy. You can even play with your avatar in an Augemented Reality environment!</p>
+              <a href="https://github.com/triton11/Tamagome" class="btn btn-primary">Github</a>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="col-sm-6 col-md-4">
+          <div class="card" id="scala">
+            <small class="text-muted">2018</small>
+
+            <div class="card-body">
+<!--               <img class="card-img-top" src="img/ProjScala.png" alt="Card image cap">
+ -->              <h5 class="card-title">ScalaRank</h5>
+              <p class="card-text">Check out my blog post on ScalaStan and EvilPlot, two of my favorite libraries for data science in <b>Scala</b>.</p>
+              <a href="https://medium.com/@CiboEng/scalastan-and-evilplot-bayesian-statistics-meets-combinator-based-visualization-dce3631b5096" class="btn btn-primary">Read the blog!</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-md-4">
+          <div class="card" id="maza">
+            <small class="text-muted">2018</small>
+
+            <div class="card-body">
+<!--               <img class="card-img-top" src="img/Logo.png" alt="Card image cap">
+ -->              <h5 class="card-title">Maza</h5>
+              <p class="card-text">Use our motion-sensing bracelet to play mobile games while you exercise! Built using <b>Android</b> libraries.</p>
+              <a href="https://www.youtube.com/watch?v=nIjq4OZl6Qo" class="btn btn-primary">Watch our pitch!</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <div class="card" id="tuttle">
+            <small class="text-muted">2017</small>
+            <div class="card-body">
+              <!-- <img class="card-img-top" src="img/ProjClass.png" alt="Card image cap"> -->
+              <h5 class="card-title">TuttlemonGo</h5>
+              <p class="card-text">This <b>Android</b> parody of PokemonGo improves on the original by adding trading, millions of unique Tuttlemon, and can be played anywhere!</p>
+              <a href="https://classifyed.herokuapp.com/" class="btn btn-primary">Github</a>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-4">
+          <div class="card" id="classifyed">
+            <small class="text-muted">2017</small>
+            <div class="card-body">
+              <!-- <img class="card-img-top" src="img/ProjClass.png" alt="Card image cap"> -->
               <h5 class="card-title">Classifyed</h5>
-              <p class="card-text">Let this Machine Learning model predict the difficulty of future Penn Courses</p>
+              <p class="card-text">Let this Machine Learning model predict the difficulty of hypothetical Penn Courses! </p><p> Built using <b>Ruby on Rails</b>, and <b>Octave</b>.</p>
               <a href="https://classifyed.herokuapp.com/" class="btn btn-primary">Try it!</a>
+
             </div>
           </div>
         </div>
-        <div class="col-sm-6 col-md-3">
-          <div class="card">
+        <div class="col-sm-6 col-md-4">
+          <div class="card" id="mun">
+            <small class="text-muted">2017</small>
+
             <div class="card-body">
-              <img class="card-img-top" src="img/ProjScala.png" alt="Card image cap">
-              <h5 class="card-title">ScalaRank</h5>
-              <p class="card-text">Check out my blog post on ScalaStan and EvilPlot, two of my favorite libraries for data science in Scala</p>
-              <a href="https://medium.com/@CiboEng/scalastan-and-evilplot-bayesian-statistics-meets-combinator-based-visualization-dce3631b5096" class="btn btn-primary">Blog</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-3">
-          <div class="card">
-            <div class="card-body">
-              <img class="card-img-top" src="img/Logo.png" alt="Card image cap">
-              <h5 class="card-title">Maza</h5>
-              <p class="card-text">Use our motion-sensing bracelet to play mobile games while you exercise!</p>
-              <a href="https://www.youtube.com/watch?v=nIjq4OZl6Qo" class="btn btn-primary">Pitch</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-3">
-          <div class="card">
-            <div class="card-body">
-              <img class="card-img-top" src="img/ProjMUN.jpg" alt="Card image cap">
-              <h5 class="card-title">MUNtopia</h5>
-              <p class="card-text">This model UN app lets you select a country, draft resolutions, send notes and more!</p>
+<!--               <img class="card-img-top" src="img/ProjMUN.jpg" alt="Card image cap">
+ -->              <h5 class="card-title">MUNtopia</h5>
+              <p class="card-text">This model UN app lets you select a country, draft resolutions, send notes and more! Built using <b>Ruby on Rails</b>, and features Slack webhooks, OAuth account verification, and other libraries.</p>
               <a href="https://muntopia.herokuapp.com/" class="btn btn-primary">Try it!</a>
             </div>
           </div>
         </div>
-        <div class="col-sm-6 col-md-3">
-          <div class="card">
-            <img class="card-img-top" src="img/ProjEmerge.jpg" alt="Card image cap">
-            <div class="card-body">
+        <div class="col-sm-6 col-md-4">
+          <div class="card" id="emerge">
+            <small class="text-muted">2017</small>
+<!--             <img class="card-img-top" src="img/ProjEmerge.jpg" alt="Card image cap">
+ -->            <div class="card-body">
               <h5 class="card-title">EmergeAlert</h5>
-              <p class="card-text">Automating disaster response with NLU</p>
-              <a href="https://devpost.com/software/emergalert" class="btn btn-primary">Project</a>
+              <p class="card-text">Automating disaster response with NLU. Built using <b>Smooch API</b>, <b>Mix.NLU</b> and <b>FHIR database</b>.</p>
+              <a href="https://devpost.com/software/emergalert" class="btn btn-primary">Check it out!</a>
             </div>
           </div>
         </div>
-        <div class="col-sm-6 col-md-3">
-          <div class="card">
+        <div class="col-sm-6 col-md-4">
+          <div class="card" id="flip">
+            <small class="text-muted">2017</small>
             <div class="card-body">
-              <img class="card-img-top" src="img/ProjFlip.jpg" alt="Card image cap">
-              <h5 class="card-title">@FullFlipFlop</h5>
-              <p class="card-text">Find when politicians flip opinions on Twitter</p>
-              <a href="https://devpost.com/software/twitter-flipflop" class="btn btn-primary">Project</a>
+<!--               <img class="card-img-top" src="img/ProjFlip.jpg" alt="Card image cap">
+ -->              <h5 class="card-title">@FullFlipFlop</h5>
+              <p class="card-text">Find when politicians flip opinions on Twitter. Built using <b>Python</b>, and <b>Twitter API</b>.</p>
+              <a href="https://devpost.com/software/twitter-flipflop" class="btn btn-primary">Check it out!</a>
             </div>
           </div>
         </div>
-        <div class="col-sm-6 col-md-3">
-          <div class="card">
+        <div class="col-sm-6 col-md-4">
+          <div class="card" id="counsel">
+            <small class="text-muted">2016</small>
             <div class="card-body">
-              <img class="card-img-top" src="img/ProjCounsel.png" alt="Card image cap">
-              <h5 class="card-title">Counsel Through Code</h5>
-              <p class="card-text">This Java applet listens to your conversations and adds helpful tips and sentiment analysis</p>
-              <a href="https://devpost.com/software/counsel-through-code-marriage-counselor" class="btn btn-primary">Project</a>
+<!--               <img class="card-img-top" src="img/ProjCounsel.png" alt="Card image cap">
+ -->              <h5 class="card-title">Counsel Through Code</h5>
+              <p class="card-text">This Java applet listens to your conversations and adds helpful tips and sentiment analysis. Built using <b>Java Swing</b>, <b>IBM Watson API</b> and <b>SoundHound API</b>.</p>
+              <a href="https://devpost.com/software/counsel-through-code-marriage-counselor" class="btn btn-primary">Check it out!</a>
             </div>
           </div>
         </div>
-        <div class="col-sm-6 col-md-3">
-          <div class="card">
+        <div class="col-sm-6 col-md-4">
+          <div class="card" id="python">
+            <small class="text-muted">2016 - 2015</small>
             <div class="card-body">
-              <img class="card-img-top" src="img/ProjPython.png" alt="Card image cap">
-              <h5 class="card-title">Python Projects</h5>
+<!--              <img class="card-img-top" src="img/ProjPython.png" alt="Card image cap">
+ -->           <h5 class="card-title">Python Projects</h5>
               <div> <a href="https://github.com/triton11/Traveling-Salesman-Problem"> TS Problem </a> </div>
               <div> <a href="https://github.com/triton11/Game-of-Life"> Game of Life </a> </div>
               <div> <a href="https://github.com/triton11/Sierpinski"> Siepinski Triangle </a> </div>
