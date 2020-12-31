@@ -31,6 +31,29 @@
     }
     //-->
     </script>
+    <script type="text/javascript">
+<!--
+    function selectYear(year) {
+      var i, j, k, x, y, z, tablinks;
+      x = document.getElementsByClassName("col-sm-6 col-md-4");
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";
+      }
+      y = document.getElementsByClassName(year)
+      for (j = 0; j < y.length; j++) {
+        y[j].style.display = "block";
+      }
+      z = document.getElementsByClassName('tablinks')
+      for (k = 0; k < z.length; k++) {
+        z[k].style.fontWeight = "normal";
+        z[k].style.borderColor = "#fff"
+      }
+      var clicked = document.getElementById(year)
+      clicked.style.fontWeight = "bolder"
+      clicked.style.borderColor = "#000"
+    }
+    //-->
+    </script>
     <style type="text/css">
 
       #popupBoxOnePosition{
@@ -131,11 +154,23 @@
       .section {
         text-align: center;
         padding-top: 40px;  
-        padding-bottom: 40px;  
+        padding-bottom: 40px;
       }
 
       .thumbnail:hover {
         opacity: 0.5;
+      }
+
+      .tablinks {
+        border-color: #fff;
+        background-color: #fff;
+      }
+      .tablinks:hover {
+        border-color: #000;
+        background-color: #fff;
+      }
+      .tablinks:focus{
+        outline: 0;
       }
       h2 {
           font: 40px "Lato", sans-serif;
@@ -177,11 +212,11 @@
 
     <div class="section">
       <h2>Tristrum Tuttle</h2>
-      <h4>Hello! My name is Tristrum Tuttle. <br>I recently graduated UPenn with a BSE and MSE in Computer Science.<br>
+      <h4>Hello! My name is Tristrum Tuttle. <br>I work as a full stack software engineer at <a href="https://www.panoramaed.com/">Panorama Education</a>. I'm passionate about education technology, social activism, and social deduction board games. Reach out to chat about projects or anything else! <br>
       </h4>
     </div>
     <div class="section" style="background-color: #EEEEEE;">
-      <h2>Showcase</h2>
+      <h2>Recent Work</h2>
       <hr></hr>
     </div>
     <!-- Slide gallery -->
@@ -189,7 +224,20 @@
       <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
           <div class="item active">
+            <a href="https://tristrumtuttle.medium.com/what-i-learned-from-650-phone-calls-for-joe-biden-da87c136b2d"><div class="fill" style="background-image:url('img/ProjBiden.png');"></div>
+            </a>
+          </div>
+          <div class="item">
+            <a href="https://tristrumtuttle.medium.com/analyzing-400-reports-of-police-brutality-at-the-george-floyd-protests-736df35f02f4"><div class="fill" style="background-image:url('img/ProjPolice.png');"></div>
+            </a>
+          </div>
+          <!-- <div class="item">
             <a href="https://medium.com/@CiboEng/scalastan-and-evilplot-bayesian-statistics-meets-combinator-based-visualization-dce3631b5096"><div class="fill" style="background-image:url('img/ProjEvilFin.png');"></div>
+            </a>
+          </div> -->
+          <div class="item" align="center">
+            <a href="https://github.com/triton11/CropsAndRobbers"><div class="fill" style="background-image:url('img/ProjCrops.png');">
+            </div>
             </a>
           </div>
           <div class="item" align="center">
@@ -202,16 +250,16 @@
             </div>
             </a>
           </div> -->
-          <div class="item">
+          <!-- <div class="item">
             <a href="https://www.youtube.com/watch?v=nIjq4OZl6Qo">
               <div class="fill" style="background-image:url('img/ProjMazaFin.png');"></div>
             </a>
-          </div>
-          <div class="item">
+          </div> -->
+          <!-- <div class="item">
             <a href="https://github.com/triton11/TuttlemonGo">
               <div class="fill" style="background-image:url('img/ProjTuttlemonGOFin.png');"></div>
             </a>
-          </div>
+          </div> -->
         </div>
         <!-- Controls -->
         <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
@@ -224,6 +272,13 @@
     </div><!-- End Slide gallery -->
     <!-- Thumbnails -->
     <div class="container">
+        <div class="col-sm-6 col-md-3">
+          <div class="thumbnail">
+            <a href="https://tristrumtuttle.medium.com/" target="_blank" role="button" alt="">   <img style="max-width: 60%" src="img/medium.png" alt="" class="img-circle">
+                <h3 align="center"> Blog </h3>
+            </a>
+          </div>
+        </div>
         <div class="col-sm-6 col-md-3">
           <div class="thumbnail">
             <a href="Tuttle_Tristrum_resume.pdf" target="_blank" role="button" alt="">   <img style="max-width: 60%" src="img/pennlogo.png" alt="" class="img-circle">
@@ -245,89 +300,129 @@
             </a>
           </div>
         </div>
-        <div class="col-sm-6 col-md-3">
-          <div class="thumbnail">
-            <a href="https://devpost.com/triton11" target="_blank" role="button" alt="">   <img style="max-width: 60%" src="img/devpost.jpg" alt="" class="img-circle">
-                <h3 align="center"> DevPost </h3>
-            </a>
-          </div>
-        </div>
     </div>
     <div class="container thumbs">
       <h1 align="center">Projects</h1>
       <hr></hr>
-        <div class="col-sm-6 col-md-4">
-          <div class="card" id="teach">
-            <small class="text-muted">2019</small>
+      <div class="tab" align="center">
+        <button class="btn btn-primary tablinks" id="2020" onclick="selectYear('2020')">2020</button>
+        <button class="btn btn-primary tablinks" id="2019" onclick="selectYear('2019')">2019</button>
+        <button class="btn btn-primary tablinks" id="2018" onclick="selectYear('2018')">2018</button>
+        <button class="btn btn-primary tablinks" id="2017" onclick="selectYear('2017')">Earlier</button>
+      </div>
+        <div class="col-sm-6 col-md-4 2020">
+          <div class="card" id="lessons">
+            <small class="text-muted">2020</small>
+            <div class="card-body">
+              <h5 class="card-title">Block Lessons</h5>
+              <p class="card-text">Teach coding in non-coding environments. Use Block Lessons to incorporate programming lessons in Spanish, Science and even Art classes! </p>
+              <a href="https://tristrumtuttle.medium.com/teach-coding-in-every-classroom-13884e9bb2a" class="btn btn-primary">Read about it!</a>
+              <a href="https://www.blocklessons.com/" class="btn btn-primary">Try it out!</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-md-4 2020">
+          <div class="card" id="crops">
+            <small class="text-muted">2020</small>
 
             <div class="card-body">
-<!--               <img class="card-img-top" src="img/ProjScala.png" alt="Card image cap">
- -->              <h5 class="card-title">Curriculum</h5>
+              <h5 class="card-title">Crops and Robbers</h5>
+              <p class="card-text"> A fast-paced, mafia-like game that forces players to make quick decisions while determining who their teammates are.</p>
+              <a href="https://tristrumtuttle.medium.com/unsocial-deduction-games-crops-and-robbers-11c96322ec5" class="btn btn-primary">Read about it!</a> <a href="https://dry-wave-13894.herokuapp.com/" class="btn btn-primary">Try it out!</a> 
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-md-4 2020">
+          <div class="card" id="protest">
+            <small class="text-muted">2020</small>
+            <div class="card-body">
+              <h5 class="card-title">Demand Better</h5>
+              <p class="card-text">A website to track and sort reports of police brutality at the 2020 George Floyd protests.</p>
+              <a href="https://tristrumtuttle.medium.com/analyzing-400-reports-of-police-brutality-at-the-george-floyd-protests-736df35f02f4" class="btn btn-primary">Read about it.</a>
+              <a href="https://www.fightforjustice2020.com/" class="btn btn-primary">View the site.</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-md-4 2020">
+          <div class="card" id="sneaky">
+            <small class="text-muted">2020</small>
+
+            <div class="card-body">
+              <h5 class="card-title">Sneaky Theater</h5>
+              <p class="card-text"> Spyfall meets Jackbox's Fakin It: Can you figure out who doesn't know the movie based on their answers to goofy free response questions?</p>
+              <a href="https://github.com/triton11/Sneaky-Theater" class="btn btn-primary">Github</a> 
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-md-4 2019">
+          <div class="card" id="teach">
+            <small class="text-muted">2019</small>
+            <div class="card-body">
+              <h5 class="card-title">Curriculum</h5>
               <p class="card-text">I am a passionate educator and love teaching at all levels.I have worked extensively to design and rework curriculum for teaching <b>Android app dev</b>, <b>Python</b>, and <b>Scratch by MIT</b>. Check it out! </p>
               <a href="https://www.seas.upenn.edu/~cis195/android/index.html" class="btn btn-primary">Android</a> <a href="https://repl.it/@mascs" class="btn btn-primary">Python</a> <a href="scratch_curriculum.docx" class="btn btn-primary">Scratch</a>
             </div>
           </div>
         </div>
 
-        <div class="col-sm-6 col-md-4">
+        <div class="col-sm-6 col-md-4 2019">
           <div class="card" id="truck">
             <small class="text-muted">2019</small>
 
             <div class="card-body">
-<!--               <img class="card-img-top" src="img/ProjScala.png" alt="Card image cap">
- -->              <h5 class="card-title">Platoon Dynamics</h5>
+              <h5 class="card-title">Platoon Dynamics</h5>
               <p class="card-text">My teammates and I built a platform for platooning autonomous vehicles to generate fuel savings and reduce harmful emmisions. Built with <b>Node JS</b>, <b>Java Redis</b>, and <b>PyGame</b>. </p>
               <a href="Senior_Design_Final_Paper.pdf" class="btn btn-primary">Read our report!</a>
             </div>
           </div>
         </div>
 
-        <div class="col-sm-6 col-md-4">
+        <div class="col-sm-6 col-md-4 2019">
           <div class="card" id="char">
             <small class="text-muted">2019</small>
 
             <div class="card-body">
-<!--               <img class="card-img-top" src="img/ProjScala.png" alt="Card image cap">
- -->              <h5 class="card-title">CharacterizeIt</h5>
+              <h5 class="card-title">CharacterizeIt</h5>
               <p class="card-text">We used Mechanical Turk crowdsourcing to examine gender bias in comic book characters. Built with <b>Sci-kit learn</b> and <b>Python</b>.</p>
               <a href="https://vimeo.com/334834145" class="btn btn-primary">Watch our video!</a>
             </div>
           </div>
         </div>
 
-        <div class="col-sm-6 col-md-4">
+        <div class="col-sm-6 col-md-4 2019">
           <div class="card" id="welp">
             <small class="text-muted">2019</small>
 
             <div class="card-body">
-<!--               <img class="card-img-top" src="img/ProjScala.png" alt="Card image cap">
- -->              <h5 class="card-title">¯\_(Welp)_/¯</h5>
+              <h5 class="card-title">¯\_(Welp)_/¯</h5>
               <p class="card-text">This web application helps you make an itinerary for your next vacation! Built using <b>Node JS</b>, <b>Angular JS</b>, and <b>MySQL</b>.</p>
               <a href="https://github.com/triton11/Welp" class="btn btn-primary">Github</a>
             </div>
           </div>
         </div>
 
-        <div class="col-sm-6 col-md-4">
+        <div class="col-sm-6 col-md-4 2019">
           <div class="card" id="mbti">
             <small class="text-muted">2019</small>
 
             <div class="card-body">
-<!--               <img class="card-img-top" src="img/ProjScala.png" alt="Card image cap">
- -->              <h5 class="card-title">ItsPersonal</h5>
+              <h5 class="card-title">ItsPersonal</h5>
               <p class="card-text">We analyze writing samples to predict and analyze Meyers-Briggs Types. Our final model is able to predict MBTI types based on writing samples with about 50% accuracy. Built using <b>Sci-kit learn</b>, <b>nltk toolkit</b>, <b>gensim LDA</b>, and <b>PyTorch</b>.</p>
               <a href="itspersonal.pdf" class="btn btn-primary">Read our report!</a>
             </div>
           </div>
         </div>
 
-        <div class="col-sm-6 col-md-4">
+        <div class="col-sm-6 col-md-4 2019">
           <div class="card" id="tamagome">
             <small class="text-muted">2019</small>
 
             <div class="card-body">
-<!--               <img class="card-img-top" src="img/ProjScala.png" alt="Card image cap">
- -->              <h5 class="card-title">TamagoMe</h5>
+              <h5 class="card-title">TamagoMe</h5>
               <p class="card-text"><b>iOS app</b> written in <b>Swift</b> that uses HealthKit API data to keep a virtual avatar happy. You can even play with your avatar in an Augemented Reality environment!</p>
               <a href="https://github.com/triton11/Tamagome" class="btn btn-primary">Github</a>
             </div>
@@ -335,20 +430,19 @@
         </div>
 
 
-        <div class="col-sm-6 col-md-4">
+        <div class="col-sm-6 col-md-4 2018">
           <div class="card" id="scala">
             <small class="text-muted">2018</small>
 
             <div class="card-body">
-<!--               <img class="card-img-top" src="img/ProjScala.png" alt="Card image cap">
- -->              <h5 class="card-title">ScalaRank</h5>
+              <h5 class="card-title">ScalaRank</h5>
               <p class="card-text">Check out my blog post on ScalaStan and EvilPlot, two of my favorite libraries for data science in <b>Scala</b>.</p>
               <a href="https://medium.com/@CiboEng/scalastan-and-evilplot-bayesian-statistics-meets-combinator-based-visualization-dce3631b5096" class="btn btn-primary">Read the blog!</a>
             </div>
           </div>
         </div>
 
-        <div class="col-sm-6 col-md-4">
+        <div class="col-sm-6 col-md-4 2018">
           <div class="card" id="maza">
             <small class="text-muted">2018</small>
 
@@ -360,7 +454,7 @@
             </div>
           </div>
         </div>
-        <div class="col-sm-6 col-md-4">
+        <div class="col-sm-6 col-md-4 2017">
           <div class="card" id="tuttle">
             <small class="text-muted">2017</small>
             <div class="card-body">
@@ -372,7 +466,7 @@
             </div>
           </div>
         </div>
-        <div class="col-sm-6 col-md-4">
+        <div class="col-sm-6 col-md-4 2017">
           <div class="card" id="classifyed">
             <small class="text-muted">2017</small>
             <div class="card-body">
@@ -384,7 +478,7 @@
             </div>
           </div>
         </div>
-        <div class="col-sm-6 col-md-4">
+        <div class="col-sm-6 col-md-4 2017">
           <div class="card" id="mun">
             <small class="text-muted">2017</small>
 
@@ -396,7 +490,7 @@
             </div>
           </div>
         </div>
-        <div class="col-sm-6 col-md-4">
+        <div class="col-sm-6 col-md-4 2017">
           <div class="card" id="emerge">
             <small class="text-muted">2017</small>
 <!--             <img class="card-img-top" src="img/ProjEmerge.jpg" alt="Card image cap">
@@ -407,7 +501,7 @@
             </div>
           </div>
         </div>
-        <div class="col-sm-6 col-md-4">
+        <div class="col-sm-6 col-md-4 2017">
           <div class="card" id="flip">
             <small class="text-muted">2017</small>
             <div class="card-body">
@@ -418,7 +512,7 @@
             </div>
           </div>
         </div>
-        <div class="col-sm-6 col-md-4">
+        <div class="col-sm-6 col-md-4 2017">
           <div class="card" id="counsel">
             <small class="text-muted">2016</small>
             <div class="card-body">
@@ -429,7 +523,7 @@
             </div>
           </div>
         </div>
-        <div class="col-sm-6 col-md-4">
+        <div class="col-sm-6 col-md-4 2017">
           <div class="card" id="python">
             <small class="text-muted">2016 - 2015</small>
             <div class="card-body">
@@ -446,12 +540,15 @@
 
     <!-- Footer -->
     <div class="footer text-center">
-        <p>&copy; 2018 Tristrum Tuttle. All Rights Reserved. </p>
+        <p>Last Updated: December 2020</p>
     </div><!-- End Footer -->
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <!-- // <script src="https://code.jquery.com/jquery.js"></script> -->
     <script src="js/jquery.js">
+    </script>
+    <script>
+    selectYear('2020')
     </script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>

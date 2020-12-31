@@ -3,8 +3,8 @@
     background-repeat:repeat;
 }
 .jumbotron {
-    background-color: transparent;
-    padding: 0 0 0 0;
+    background-color: #eee;
+    padding: 0 0 20px 0;
 }
 .green {
     color: #FF0000;

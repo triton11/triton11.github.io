@@ -378,3 +378,103 @@ other - grey #eeeeee
   -webkit-background-size: cover;
   background-size: cover;
 }
+
+#lessons {
+  position: relative;
+  background: rgb(255,255,255, 0.3);
+  overflow: hidden;
+}
+#lessons:after {
+  content: " ";
+  background-image: url("../img/lessons.png");
+  background-repeat: no-repeat;
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.2;
+  background-position: 50% 0;
+  -ms-background-size: cover;
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+
+#crops {
+  position: relative;
+  background: rgb(255,255,255, 0.3);
+  overflow: hidden;
+}
+#crops:after {
+  content: " ";
+  background-image: url("../img/crops.png");
+  background-repeat: no-repeat;
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.2;
+  background-position: 50% 0;
+  -ms-background-size: cover;
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+
+#sneaky {
+  position: relative;
+  background: rgb(255,255,255, 0.3);
+  overflow: hidden;
+}
+#sneaky:after {
+  content: " ";
+  background-image: url("../img/sneaky.png");
+  background-repeat: no-repeat;
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.2;
+  background-position: 50% 0;
+  -ms-background-size: cover;
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
+
+#protest {
+  position: relative;
+  background: rgb(255,255,255, 0.3);
+  overflow: hidden;
+}
+#protest:after {
+  content: " ";
+  background-image: url("../img/protest.png");
+  background-repeat: no-repeat;
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.2;
+  background-position: 50% 0;
+  -ms-background-size: cover;
+  -o-background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  background-size: cover;
+}
