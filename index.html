@@ -2,22 +2,14 @@
 <html>
   <head>
     <title>Tristrum Tuttle</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <!-- Bootstrap -->
     <link href="css/bootstrap.css" rel="stylesheet">
     <!--Google Fonts-->
-    <link href='http://fonts.googleapis.com/css?family=Duru+Sans|Actor' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Duru+Sans|Actor' rel='stylesheet' type='text/css'>
     
     <!--Bootshape-->
     <link href="css/bootshape.css" rel="stylesheet">
-
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
   </head>
   <body>
     <script type="text/javascript">
@@ -79,7 +71,7 @@
       }
       .parallax { 
         /* The image used */
-        background-image: url("img/hike3.jpg");
+        background-image: url("img/hike_switzerland.JPG");
 
         /* Set a specific height */
         height: 400px; 
@@ -89,6 +81,19 @@
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
+      }
+      .bioinner {
+        margin-top: 20px;
+      }
+      .biointerests {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+      .bioinner-left {
+        text-align: left;
+        padding-left: 10px;
       }
       .carousel-control.right {
         background-image: none;
@@ -100,7 +105,8 @@
         width: 100%;
         height: 100%;
         background-position: center;
-        background-size: cover;
+        background-size: contain;
+        background-repeat: no-repeat;
       }
       .carousel .item{
         height: 300px;
@@ -151,6 +157,9 @@
         font-weight: bold;
         font-size: 36px;
       }
+      .container {
+        margin-top: 10px;
+      }
       .section {
         text-align: center;
         padding-top: 40px;  
@@ -172,6 +181,9 @@
       .tablinks:focus{
         outline: 0;
       }
+      .slideshow {
+        height: 300px;
+      }
       h2 {
           font: 40px "Lato", sans-serif;
           letter-spacing: 5px;
@@ -191,8 +203,6 @@
       }
       a {
         text-shadow: none;
-        font-style: italic;
-        font-weight: bold;
       }
       hr {
         border:none;
@@ -206,14 +216,40 @@
     <!-- Container element -->
     <div class="parallax">
       <div align="center">
-        <img style="max-width: 250px; margin: 100px 0 0 0; border:1px solid white;" src="img/graduated.JPG" alt="" class="img-circle">
+        <img style="max-width: 250px; margin: 100px 0 0 0; border:1px solid white;" src="img/profile_pic_website.jpg" alt="" class="img-circle">
       </div>
     </div>
 
     <div class="section">
       <h2>Tristrum Tuttle</h2>
-      <h4>Hello! My name is Tristrum Tuttle. <br>I work as a full stack software engineer at <a href="https://www.panoramaed.com/">Panorama Education</a>. I'm passionate about education technology, social activism, and social deduction board games. Reach out to chat about projects or anything else! <br>
-      </h4>
+      <div class="row bio">
+        <div class="col-lg-4 col-lg-push-4 bioinner">
+          <div class="biointerests">
+            <div class="bioinner-left">
+              <h4>
+                Passionate about...
+              </h4>
+              <h4>🍎 EdTech</h4>
+              <h4>🤔 Social Deduction Games</h4>
+              <h4>🗳️ Political Activism</h4>
+              <h4>... and more!</h4>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-lg-pull-4 bioinner">
+          <h4>
+            🖥️ Full Stack Software Engineer 
+            <br>@ <a href="https://www.panoramaed.com/">Panorama Education</a>
+          </h4>
+        </div>
+        <div class="col-lg-4 bioinner">
+          <h4>
+            🎓 UPenn BSE in CS '19
+            <br>
+            🎓 UPenn MSE in CS '19
+          </h4>
+        </div>
+      </div>
     </div>
     <div class="section" style="background-color: #EEEEEE;">
       <h2>Recent Work</h2>
@@ -224,27 +260,35 @@
       <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
           <div class="item active">
-            <a href="https://tristrumtuttle.medium.com/what-i-learned-from-650-phone-calls-for-joe-biden-da87c136b2d"><div class="fill" style="background-image:url('img/ProjBiden.png');"></div>
+            <a href="https://tristrumtuttle.medium.com/chess-tier-a-rank-system-for-chess-com-1f82128e748b"><div class="fill" style="background-image:url('img/BannerChess.png');"></div>
             </a>
           </div>
           <div class="item">
-            <a href="https://tristrumtuttle.medium.com/analyzing-400-reports-of-police-brutality-at-the-george-floyd-protests-736df35f02f4"><div class="fill" style="background-image:url('img/ProjPolice.png');"></div>
+            <a href="http://sneakytheater.com/"><div class="fill" style="background-image:url('img/BannerSneaky.png');"></div>
             </a>
           </div>
+          <div class="item">
+            <a href="https://tristrumtuttle.medium.com/what-i-learned-from-650-phone-calls-for-joe-biden-da87c136b2d"><div class="fill" style="background-image:url('img/BannerBiden.png');"></div>
+            </a>
+          </div>
+          <!-- <div class="item">
+            <a href="https://tristrumtuttle.medium.com/analyzing-400-reports-of-police-brutality-at-the-george-floyd-protests-736df35f02f4"><div class="fill" style="background-image:url('img/ProjPolice.png');"></div>
+            </a>
+          </div> -->
           <!-- <div class="item">
             <a href="https://medium.com/@CiboEng/scalastan-and-evilplot-bayesian-statistics-meets-combinator-based-visualization-dce3631b5096"><div class="fill" style="background-image:url('img/ProjEvilFin.png');"></div>
             </a>
           </div> -->
-          <div class="item" align="center">
+          <!-- <div class="item" align="center">
             <a href="https://github.com/triton11/CropsAndRobbers"><div class="fill" style="background-image:url('img/ProjCrops.png');">
             </div>
             </a>
-          </div>
-          <div class="item" align="center">
+          </div> -->
+          <!-- <div class="item" align="center">
             <a href="Senior_Design_Final_Paper.pdf"><div class="fill" style="background-image:url('img/ProjPlatoonDynamics.png');">
             </div>
             </a>
-          </div>
+          </div> -->
           <!-- <div class="item" align="center">
             <a href="https://www.youtube.com/watch?v=6UXhoFzH8No"><div class="fill" style="background-image:url('img/ProjFreeMed.png');">
             </div>
@@ -261,7 +305,6 @@
             </a>
           </div> -->
         </div>
-        <!-- Controls -->
         <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
           <span class="glyphicon glyphicon-chevron-left" style="color:black"></span>
         </a>
@@ -269,8 +312,7 @@
           <span class="glyphicon glyphicon-chevron-right" style="color:black"></span>
         </a>
       </div>
-    </div><!-- End Slide gallery -->
-    <!-- Thumbnails -->
+    </div>
     <div class="container">
         <div class="col-sm-6 col-md-3">
           <div class="thumbnail">
@@ -302,14 +344,54 @@
         </div>
     </div>
     <div class="container thumbs">
-      <h1 align="center">Projects</h1>
+      <h2 align="center">Projects</h2>
       <hr></hr>
       <div class="tab" align="center">
+        <button class="btn btn-primary tablinks" id="2021" onclick="selectYear('2021')">2021</button>
         <button class="btn btn-primary tablinks" id="2020" onclick="selectYear('2020')">2020</button>
         <button class="btn btn-primary tablinks" id="2019" onclick="selectYear('2019')">2019</button>
         <button class="btn btn-primary tablinks" id="2018" onclick="selectYear('2018')">2018</button>
         <button class="btn btn-primary tablinks" id="2017" onclick="selectYear('2017')">Earlier</button>
       </div>
+        <div class="col-sm-6 col-md-4 2021">
+          <div class="card" id="cardblast">
+            <small class="text-muted">2021</small>
+            <div class="card-body">
+              <h5 class="card-title">CardBlast.io</h5>
+              <p class="card-text">A multiplayer (.io) web game for learning flash cards!</p>
+              <a href="https://tristrumtuttle.medium.com/cardblast-io-a-multiplayer-arena-for-learning-flashcards-edd05e0e7c97" class="btn btn-primary">Read about it!</a>
+              <a href="https://github.com/triton11/CardBlast" class="btn btn-primary">Github</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-md-4 2021">
+          <div class="card" id="chesstier">
+            <small class="text-muted">2021</small>
+            <div class="card-body">
+              <h5 class="card-title">Chess Tier</h5>
+              <p class="card-text">Replace your chess.com rating with a Chess Tier!</p>
+              <a href="https://chrome.google.com/webstore/detail/chess-tier/lgfppmbhddgaaihjmjapjmhdkogkaagg" class="btn btn-primary">Try it out!</a>
+              <a href="https://tristrumtuttle.medium.com/chess-tier-a-rank-system-for-chess-com-1f82128e748b" class="btn btn-primary">Read about it!</a>
+              <a href="https://github.com/triton11/ChessTier" class="btn btn-primary">Github</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-md-4 2021">
+          <div class="card" id="sneaky">
+            <small class="text-muted">2021</small>
+
+            <div class="card-body">
+              <h5 class="card-title">Sneaky Theater</h5>
+              <p class="card-text"> Spyfall meets Jackbox's Fakin It: Can you figure out who doesn't know the movie based on their answers to goofy free response questions?</p>
+              <a href="http://sneakytheater.com/" class="btn btn-primary">Try it out!</a>
+              <a href="" class="btn btn-primary">Read about it!</a> 
+              <a href="https://github.com/triton11/Sneaky-Theater" class="btn btn-primary">Github</a> 
+            </div>
+          </div>
+        </div>
+
         <div class="col-sm-6 col-md-4 2020">
           <div class="card" id="lessons">
             <small class="text-muted">2020</small>
@@ -342,18 +424,6 @@
               <p class="card-text">A website to track and sort reports of police brutality at the 2020 George Floyd protests.</p>
               <a href="https://tristrumtuttle.medium.com/analyzing-400-reports-of-police-brutality-at-the-george-floyd-protests-736df35f02f4" class="btn btn-primary">Read about it.</a>
               <a href="https://www.fightforjustice2020.com/" class="btn btn-primary">View the site.</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-sm-6 col-md-4 2020">
-          <div class="card" id="sneaky">
-            <small class="text-muted">2020</small>
-
-            <div class="card-body">
-              <h5 class="card-title">Sneaky Theater</h5>
-              <p class="card-text"> Spyfall meets Jackbox's Fakin It: Can you figure out who doesn't know the movie based on their answers to goofy free response questions?</p>
-              <a href="https://github.com/triton11/Sneaky-Theater" class="btn btn-primary">Github</a> 
             </div>
           </div>
         </div>
@@ -540,7 +610,7 @@
 
     <!-- Footer -->
     <div class="footer text-center">
-        <p>Last Updated: December 2020</p>
+        <p>Last Updated: December 2021</p>
     </div><!-- End Footer -->
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -548,7 +618,7 @@
     <script src="js/jquery.js">
     </script>
     <script>
-    selectYear('2020')
+      selectYear('2021')
     </script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
