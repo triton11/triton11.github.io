@@ -4,529 +4,111 @@ research - white #ffffff
 hackathon - light blue #C5C5FC
 other - grey #eeeeee
 */
-#classifyed {
-  position: relative;
-  background: rgb(255,255,255, 0.3);
-  overflow: hidden;
-}
+
 #classifyed:after {
-  content: " ";
   background-image: url("../img/ProjClass.png");
-  background-repeat: no-repeat;
-  display: block;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  opacity: 0.3;
-  background-position: 50% 0;
-  -ms-background-size: cover;
-  -o-background-size: cover;
-  -moz-background-size: cover;
-  -webkit-background-size: cover;
-  background-size: cover;
 }
 
-#scala {
-  position: relative;
-  background: rgb(255,255,255, 0.8);
-  overflow: hidden;
-}
 #scala:after {
-  content: " ";
   background-image: url("../img/ProjScala.png");
-  background-repeat: no-repeat;
-  display: block;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  opacity: 0.6;
-  background-position: 50% 0;
-  -ms-background-size: cover;
-  -o-background-size: cover;
-  -moz-background-size: cover;
-  -webkit-background-size: cover;
-  background-size: cover;
 }
 
-#maza {
-  position: relative;
-  background: rgb(255,255,255, 0.3);
-  overflow: hidden;
-}
 #maza:after {
-  content: " ";
   background-image: url("../img/Logo.png");
-  background-repeat: no-repeat;
-  display: block;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  opacity: 0.6;
-  background-position: 50% 0;
-  -ms-background-size: cover;
-  -o-background-size: cover;
-  -moz-background-size: cover;
-  -webkit-background-size: cover;
-  background-size: cover;
 }
 
-#mun {
-  position: relative;
-  background: rgb(255,255,255, 0.3);
-  overflow: hidden;
-}
 #mun:after {
-  content: " ";
   background-image: url("../img/ProjMUN.jpg");
-  background-repeat: no-repeat;
-  display: block;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  opacity: 0.3;
-  background-position: 50% 0;
-  -ms-background-size: cover;
-  -o-background-size: cover;
-  -moz-background-size: cover;
-  -webkit-background-size: cover;
-  background-size: cover;
 }
 
-#emerge {
-  position: relative;
-  background: rgb(255,255,255, 0.3);
-  overflow: hidden;
-}
 #emerge:after {
-  content: " ";
   background-image: url("../img/ProjEmerge.jpg");
-  background-repeat: no-repeat;
-  display: block;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  opacity: 0.3;
-  background-position: 50% 0;
-  -ms-background-size: cover;
-  -o-background-size: cover;
-  -moz-background-size: cover;
-  -webkit-background-size: cover;
-  background-size: cover;
 }
 
-#flip {
-  position: relative;
-  background: rgb(255,255,255, 0.3);
-  overflow: hidden;
-}
 #flip:after {
-  content: " ";
   background-image: url("../img/ProjFlip.jpg");
-  background-repeat: no-repeat;
-  display: block;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  opacity: 0.2;
-  background-position: 50% 0;
-  -ms-background-size: cover;
-  -o-background-size: cover;
-  -moz-background-size: cover;
-  -webkit-background-size: cover;
-  background-size: cover;
 }
 
-#counsel {
-  position: relative;
-  background: rgb(255,255,255, 0.3);
-  overflow: hidden;
-}
 #counsel:after {
-  content: " ";
   background-image: url("../img/ProjCounsel.png");
-  background-repeat: no-repeat;
-  display: block;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  opacity: 0.2;
-  background-position: 50% 0;
-  -ms-background-size: cover;
-  -o-background-size: cover;
-  -moz-background-size: cover;
-  -webkit-background-size: cover;
-  background-size: cover;
 }
 
-#python {
-  position: relative;
-  background: rgb(255,255,255, 0.3);
-  overflow: hidden;
-}
 #python:after {
-  content: " ";
   background-image: url("../img/ProjPython.png");
-  background-repeat: no-repeat;
-  display: block;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  opacity: 0.2;
-  background-position: 50% 0;
-  -ms-background-size: cover;
-  -o-background-size: cover;
-  -moz-background-size: cover;
-  -webkit-background-size: cover;
-  background-size: cover;
 }
 
-#tamagome {
-  position: relative;
-  background: rgb(255,255,255, 0.3);
-  overflow: hidden;
-}
 #tamagome:after {
-  content: " ";
   background-image: url("../img/tamagome.png");
-  background-repeat: no-repeat;
-  display: block;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  opacity: 0.2;
-  background-position: 50% 0;
-  -ms-background-size: cover;
-  -o-background-size: cover;
-  -moz-background-size: cover;
-  -webkit-background-size: cover;
-  background-size: cover;
 }
 
-#mbti {
-  position: relative;
-  background: rgb(255,255,255, 0.3);
-  overflow: hidden;
-}
 #mbti:after {
-  content: " ";
   background-image: url("../img/brain.jpg");
-  background-repeat: no-repeat;
-  display: block;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  opacity: 0.2;
-  background-position: 50% 0;
-  -ms-background-size: cover;
-  -o-background-size: cover;
-  -moz-background-size: cover;
-  -webkit-background-size: cover;
-  background-size: cover;
 }
 
-#welp {
-  position: relative;
-  background: rgb(255,255,255, 0.3);
-  overflow: hidden;
-}
 #welp:after {
-  content: " ";
   background-image: url("../img/welp.png");
-  background-repeat: no-repeat;
-  display: block;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  opacity: 0.2;
-  background-position: 50% 0;
-  -ms-background-size: cover;
-  -o-background-size: cover;
-  -moz-background-size: cover;
-  -webkit-background-size: cover;
-  background-size: cover;
 }
 
-#char {
-  position: relative;
-  background: rgb(255,255,255, 0.3);
-  overflow: hidden;
-}
 #char:after {
-  content: " ";
   background-image: url("../img/comic.jpg");
-  background-repeat: no-repeat;
-  display: block;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  opacity: 0.2;
-  background-position: 50% 0;
-  -ms-background-size: cover;
-  -o-background-size: cover;
-  -moz-background-size: cover;
-  -webkit-background-size: cover;
-  background-size: cover;
 }
 
-#truck {
-  position: relative;
-  background: rgb(255,255,255, 0.3);
-  overflow: hidden;
-}
 #truck:after {
-  content: " ";
   background-image: url("../img/truck.jpg");
-  background-repeat: no-repeat;
-  display: block;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  opacity: 0.2;
-  background-position: 50% 0;
-  -ms-background-size: cover;
-  -o-background-size: cover;
-  -moz-background-size: cover;
-  -webkit-background-size: cover;
-  background-size: cover;
 }
 
-#tuttle {
-  position: relative;
-  background: rgb(255,255,255, 0.3);
-  overflow: hidden;
-}
 #tuttle:after {
-  content: " ";
   background-image: url("../img/ProjTuttlemonGO.png");
-  background-repeat: no-repeat;
-  display: block;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  opacity: 0.2;
-  background-position: 50% 0;
-  -ms-background-size: cover;
-  -o-background-size: cover;
-  -moz-background-size: cover;
-  -webkit-background-size: cover;
-  background-size: cover;
 }
 
-#teach {
-  position: relative;
-  background: rgb(255,255,255, 0.3);
-  overflow: hidden;
-}
 #teach:after {
-  content: " ";
   background-image: url("../img/teach.jpg");
-  background-repeat: no-repeat;
-  display: block;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  opacity: 0.2;
-  background-position: 50% 0;
-  -ms-background-size: cover;
-  -o-background-size: cover;
-  -moz-background-size: cover;
-  -webkit-background-size: cover;
-  background-size: cover;
 }
 
-#lessons {
-  position: relative;
-  background: rgb(255,255,255, 0.3);
-  overflow: hidden;
-}
 #lessons:after {
-  content: " ";
   background-image: url("../img/lessons.png");
-  background-repeat: no-repeat;
-  display: block;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  opacity: 0.2;
-  background-position: 50% 0;
-  -ms-background-size: cover;
-  -o-background-size: cover;
-  -moz-background-size: cover;
-  -webkit-background-size: cover;
-  background-size: cover;
 }
 
-#crops {
-  position: relative;
-  background: rgb(255,255,255, 0.3);
-  overflow: hidden;
-}
 #crops:after {
-  content: " ";
   background-image: url("../img/crops.png");
-  background-repeat: no-repeat;
-  display: block;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  opacity: 0.2;
-  background-position: 50% 0;
-  -ms-background-size: cover;
-  -o-background-size: cover;
-  -moz-background-size: cover;
-  -webkit-background-size: cover;
-  background-size: cover;
 }
 
-#sneaky {
-  position: relative;
-  background: rgb(255,255,255, 0.3);
-  overflow: hidden;
-}
 #sneaky:after {
-  content: " ";
   background-image: url("../img/sneaky.png");
-  background-repeat: no-repeat;
-  display: block;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  opacity: 0.2;
-  background-position: 50% 0;
-  -ms-background-size: cover;
-  -o-background-size: cover;
-  -moz-background-size: cover;
-  -webkit-background-size: cover;
-  background-size: cover;
 }
 
-#protest {
-  position: relative;
-  background: rgb(255,255,255, 0.3);
-  overflow: hidden;
-}
 #protest:after {
-  content: " ";
   background-image: url("../img/protest.png");
-  background-repeat: no-repeat;
-  display: block;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  opacity: 0.2;
-  background-position: 50% 0;
-  -ms-background-size: cover;
-  -o-background-size: cover;
-  -moz-background-size: cover;
-  -webkit-background-size: cover;
-  background-size: cover;
 }
 
-
-#chesstier {
-  position: relative;
-  background: rgb(255,255,255, 0.3);
-  overflow: hidden;
-}
 #chesstier:after {
-  content: " ";
   background-image: url("../img/chesstier.jpg");
-  background-repeat: no-repeat;
-  display: block;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  opacity: 0.2;
-  background-position: 50% 0;
-  -ms-background-size: cover;
-  -o-background-size: cover;
-  -moz-background-size: cover;
-  -webkit-background-size: cover;
-  background-size: cover;
 }
 
-
-#cardblast {
-  position: relative;
-  background: rgb(255,255,255, 0.3);
-  overflow: hidden;
-}
 #cardblast:after {
-  content: " ";
   background-image: url("../img/cardblast.png");
-  background-repeat: no-repeat;
-  display: block;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  opacity: 0.2;
-  background-position: 50% 0;
-  -ms-background-size: cover;
-  -o-background-size: cover;
-  -moz-background-size: cover;
-  -webkit-background-size: cover;
-  background-size: cover;
+}
+
+#theday:after {
+  background-image: url("../img/ProjDayIMet.png");
+}
+
+#aiexp:after {
+  background-image: url("../img/ProjAiExp.png");
+}
+
+#mighty:after {
+  background-image: url("../img/ProjMighty.png");
+}
+
+#poem:after {
+  background-image: url("../img/ProjPoem.png");
+}
+
+#jokebot:after {
+  background-image: url("../img/ProjJoke.jpeg");
+}
+
+#teacherbot:after {
+  background-image: url("../img/ProjTeacher.png");
 }

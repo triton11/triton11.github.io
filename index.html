@@ -115,8 +115,30 @@
         margin: 15px 0px 15px 0px;
         background-color: #eee;
         border-radius: 0.8rem;
+        position: relative;
+        background: rgb(255,255,255, 0.3);
+        overflow: hidden;
         color: #000!important;
         box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2) !important;
+      }
+
+      .card:after {
+        content: " ";
+        background-repeat: no-repeat;
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        opacity: 0.2;
+        background-position: 50% 0;
+        -ms-background-size: cover;
+        -o-background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        background-size: cover;
       }
 
 
@@ -124,7 +146,6 @@
         height: 350px;
         padding: 15px;
         margin: 15px 0px 15px 0px;
-        background-color: #eee;
         border-radius: 0.8rem;
         color: #000!important;
         box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2) !important;
@@ -135,11 +156,8 @@
         font-family: "Lato", sans-serif;
         font-size: 16px;
       }
-      .card-body a .btn {
-        position: absolute;
-        bottom: 0;
-
-        margin: 0px 0px 20px 0px;
+      .card-body a.btn {
+        border-color: #000;
       }
       .card-img-top {
         margin: 0 auto;
@@ -258,17 +276,25 @@
       <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
           <div class="item active">
+            <a href="https://medium.com/@tristrumtuttle/modern-society-2023-a-collection-of-poems-written-and-illustrated-by-ai-9b602d83145d"><div class="fill" style="background-image:url('img/BannerPoem.png');"></div>
+            </a>
+          </div>
+          <div class="item">
+            <a href="https://medium.com/@tristrumtuttle/building-a-daily-joke-website-with-aws-lambda-and-gpt-4-8867146b11ba"><div class="fill" style="background-image:url('img/BannerJoke.png');"></div>
+            </a>
+          </div>
+          <div class="item">
             <a href="https://tristrumtuttle.medium.com/chess-tier-a-rank-system-for-chess-com-1f82128e748b"><div class="fill" style="background-image:url('img/BannerChess.png');"></div>
             </a>
           </div>
-          <div class="item">
+          <!-- <div class="item">
             <a href="http://sneakytheater.com/"><div class="fill" style="background-image:url('img/BannerSneaky.png');"></div>
             </a>
-          </div>
-          <div class="item">
+          </div> -->
+          <!-- <div class="item">
             <a href="https://tristrumtuttle.medium.com/what-i-learned-from-650-phone-calls-for-joe-biden-da87c136b2d"><div class="fill" style="background-image:url('img/BannerBiden.png');"></div>
             </a>
-          </div>
+          </div> -->
           <!-- <div class="item">
             <a href="https://tristrumtuttle.medium.com/analyzing-400-reports-of-police-brutality-at-the-george-floyd-protests-736df35f02f4"><div class="fill" style="background-image:url('img/ProjPolice.png');"></div>
             </a>
@@ -345,270 +371,344 @@
       <h2 align="center">Projects</h2>
       <hr></hr>
       <div class="tab" align="center">
+        <button class="btn btn-primary tablinks" id="2023" onclick="selectYear('2023')">2023</button>
+        <button class="btn btn-primary tablinks" id="2022" onclick="selectYear('2022')">2022</button>
         <button class="btn btn-primary tablinks" id="2021" onclick="selectYear('2021')">2021</button>
         <button class="btn btn-primary tablinks" id="2020" onclick="selectYear('2020')">2020</button>
         <button class="btn btn-primary tablinks" id="2019" onclick="selectYear('2019')">2019</button>
         <button class="btn btn-primary tablinks" id="2018" onclick="selectYear('2018')">2018</button>
         <button class="btn btn-primary tablinks" id="2017" onclick="selectYear('2017')">Earlier</button>
       </div>
-        <div class="col-sm-6 col-md-4 2021">
-          <div class="card" id="cardblast">
-            <small class="text-muted">2021</small>
-            <div class="card-body">
-              <h5 class="card-title">CardBlast.io</h5>
-              <p class="card-text">A multiplayer (.io) web game for learning flash cards!</p>
-              <a href="https://tristrumtuttle.medium.com/cardblast-io-a-multiplayer-arena-for-learning-flashcards-edd05e0e7c97" class="btn btn-primary">Read about it!</a>
-              <a href="https://github.com/triton11/CardBlast" class="btn btn-primary">Github</a>
-            </div>
+
+      <div class="col-sm-6 col-md-4 2023">
+        <div class="card" id="mighty">
+          <small class="text-muted">2023</small>
+          <div class="card-body">
+            <h5 class="card-title">Mighty News</h5>
+            <p class="card-text">Search kid-friendly news sites using this Google CSE wrapper site</p>
+            <a href="https://medium.com/@tristrumtuttle/how-to-not-build-a-search-engine-9e65707d4294" class="btn btn-primary">Read about it!</a>
+            <a href="https://mightynews.org" class="btn btn-primary">Try it out!</a>
           </div>
         </div>
+      </div>
 
-        <div class="col-sm-6 col-md-4 2021">
-          <div class="card" id="chesstier">
-            <small class="text-muted">2021</small>
-            <div class="card-body">
-              <h5 class="card-title">Chess Tier</h5>
-              <p class="card-text">Replace your chess.com rating with a Chess Tier!</p>
-              <a href="https://chrome.google.com/webstore/detail/chess-tier/lgfppmbhddgaaihjmjapjmhdkogkaagg" class="btn btn-primary">Try it out!</a>
-              <a href="https://tristrumtuttle.medium.com/chess-tier-a-rank-system-for-chess-com-1f82128e748b" class="btn btn-primary">Read about it!</a>
-              <a href="https://github.com/triton11/ChessTier" class="btn btn-primary">Github</a>
-            </div>
+      <div class="col-sm-6 col-md-4 2023">
+        <div class="card" id="poem">
+          <small class="text-muted">2023</small>
+          <div class="card-body">
+            <h5 class="card-title">Modern Society</h5>
+            <p class="card-text">A collection of poems written and illustrated by AI</p>
+            <a href="https://medium.com/@tristrumtuttle/modern-society-2023-a-collection-of-poems-written-and-illustrated-by-ai-9b602d83145d" class="btn btn-primary">GPT-4 and DALL-E 3 (2023)</a>
+            <br><br>
+            <a href="https://medium.com/mlearning-ai/modern-society-a-collection-of-poems-written-and-illustrated-by-ai-c0880c2d335e" class="btn btn-primary">GPT-3 and DALL-E 2 (2022)</a>
           </div>
         </div>
+      </div>
 
-        <div class="col-sm-6 col-md-4 2021">
-          <div class="card" id="sneaky">
-            <small class="text-muted">2021</small>
-
-            <div class="card-body">
-              <h5 class="card-title">Sneaky Theater</h5>
-              <p class="card-text"> Spyfall meets Jackbox's Fakin It: Can you figure out who doesn't know the movie based on their answers to goofy free response questions?</p>
-              <a href="http://sneakytheater.com/" class="btn btn-primary">Try it out!</a>
-              <a href="" class="btn btn-primary">Read about it!</a> 
-              <a href="https://github.com/triton11/Sneaky-Theater" class="btn btn-primary">Github</a> 
-            </div>
+      <div class="col-sm-6 col-md-4 2023">
+        <div class="card" id="jokebot">
+          <small class="text-muted">2023</small>
+          <div class="card-body">
+            <h5 class="card-title">News Joke Bot</h5>
+            <p class="card-text">A GPT-4 powered joke generator built on AWS Lambda and S3</p>
+            <a href="https://medium.com/@tristrumtuttle/building-a-daily-joke-website-with-aws-lambda-and-gpt-4-8867146b11ba" class="btn btn-primary">Read about it!</a>
+            <a href="https://github.com/triton11/news-jokes-ai" class="btn btn-primary">Github</a>
           </div>
         </div>
+      </div>
 
-        <div class="col-sm-6 col-md-4 2020">
-          <div class="card" id="lessons">
-            <small class="text-muted">2020</small>
-            <div class="card-body">
-              <h5 class="card-title">Block Lessons</h5>
-              <p class="card-text">Teach coding in non-coding environments. Use Block Lessons to incorporate programming lessons in Spanish, Science and even Art classes! </p>
-              <a href="https://tristrumtuttle.medium.com/teach-coding-in-every-classroom-13884e9bb2a" class="btn btn-primary">Read about it!</a>
-              <a href="https://www.blocklessons.com/" class="btn btn-primary">Try it out!</a>
-            </div>
+      <div class="col-sm-6 col-md-4 2022">
+        <div class="card" id="theday">
+          <small class="text-muted">2022</small>
+          <div class="card-body">
+            <h5 class="card-title">The Day I Became Friends with a Robot</h5>
+            <p class="card-text">A short story written with GPT-3 and DALL-E 2 (front page of Hacker News)</p>
+            <a href="https://medium.com/@tristrumtuttle/the-day-i-became-friends-with-a-robot-86433f707fad" class="btn btn-primary">Story!</a>
+            <a href="https://news.ycombinator.com/item?id=31486590" class="btn btn-primary">HN Discussion</a>
           </div>
         </div>
+      </div>
 
-        <div class="col-sm-6 col-md-4 2020">
-          <div class="card" id="crops">
-            <small class="text-muted">2020</small>
-
-            <div class="card-body">
-              <h5 class="card-title">Crops and Robbers</h5>
-              <p class="card-text"> A fast-paced, mafia-like game that forces players to make quick decisions while determining who their teammates are.</p>
-              <a href="https://tristrumtuttle.medium.com/unsocial-deduction-games-crops-and-robbers-11c96322ec5" class="btn btn-primary">Read about it!</a> <a href="https://dry-wave-13894.herokuapp.com/" class="btn btn-primary">Try it out!</a> 
-            </div>
+      <div class="col-sm-6 col-md-4 2022">
+        <div class="card" id="teacherbot">
+          <small class="text-muted">2022</small>
+          <div class="card-body">
+            <h5 class="card-title">Can GPT-3 Teach Me?</h5>
+            <p class="card-text">An exploration of GPT-3's possible applications to education technology</p>
+            <a href="https://medium.com/@tristrumtuttle/can-gpt-3-teach-me-216c343291fd" class="btn btn-primary">Read about it!</a>
           </div>
         </div>
+      </div>
 
-        <div class="col-sm-6 col-md-4 2020">
-          <div class="card" id="protest">
-            <small class="text-muted">2020</small>
-            <div class="card-body">
-              <h5 class="card-title">Demand Better</h5>
-              <p class="card-text">A website to track and sort reports of police brutality at the 2020 George Floyd protests.</p>
-              <a href="https://tristrumtuttle.medium.com/analyzing-400-reports-of-police-brutality-at-the-george-floyd-protests-736df35f02f4" class="btn btn-primary">Read about it.</a>
-              <a href="https://www.fightforjustice2020.com/" class="btn btn-primary">View the site.</a>
-            </div>
+      <div class="col-sm-6 col-md-4 2022">
+        <div class="card" id="lessons">
+          <small class="text-muted">2022</small>
+          <div class="card-body">
+            <h5 class="card-title">Programming with Pointillism</h5>
+            <p class="card-text">A quick Block Lesson for art classes</p>
+            <a href="https://medium.com/@tristrumtuttle/programming-with-pointillism-fb69bbd76eff" class="btn btn-primary">Read about it!</a>
+            <a href=" " class="btn btn-primary">Try it out!</a>
           </div>
         </div>
+      </div>
 
-        <div class="col-sm-6 col-md-4 2019">
-          <div class="card" id="teach">
-            <small class="text-muted">2019</small>
-            <div class="card-body">
-              <h5 class="card-title">Curriculum</h5>
-              <p class="card-text">I am a passionate educator and love teaching at all levels.I have worked extensively to design and rework curriculum for teaching <b>Android app dev</b>, <b>Python</b>, and <b>Scratch by MIT</b>. Check it out! </p>
-              <a href="https://www.seas.upenn.edu/~cis195/android/index.html" class="btn btn-primary">Android</a> <a href="https://repl.it/@mascs" class="btn btn-primary">Python</a> <a href="scratch_curriculum.docx" class="btn btn-primary">Scratch</a>
-            </div>
+      <div class="col-sm-6 col-md-4 2021">
+        <div class="card" id="cardblast">
+          <small class="text-muted">2021</small>
+          <div class="card-body">
+            <h5 class="card-title">CardBlast.io</h5>
+            <p class="card-text">A multiplayer (.io) web game for learning flash cards!</p>
+            <a href="https://tristrumtuttle.medium.com/cardblast-io-a-multiplayer-arena-for-learning-flashcards-edd05e0e7c97" class="btn btn-primary">Read about it!</a>
+            <a href="https://github.com/triton11/CardBlast" class="btn btn-primary">Github</a>
           </div>
         </div>
+      </div>
 
-        <div class="col-sm-6 col-md-4 2019">
-          <div class="card" id="truck">
-            <small class="text-muted">2019</small>
-
-            <div class="card-body">
-              <h5 class="card-title">Platoon Dynamics</h5>
-              <p class="card-text">My teammates and I built a platform for platooning autonomous vehicles to generate fuel savings and reduce harmful emmisions. Built with <b>Node JS</b>, <b>Java Redis</b>, and <b>PyGame</b>. </p>
-              <a href="Senior_Design_Final_Paper.pdf" class="btn btn-primary">Read our report!</a>
-            </div>
+      <div class="col-sm-6 col-md-4 2021">
+        <div class="card" id="chesstier">
+          <small class="text-muted">2021</small>
+          <div class="card-body">
+            <h5 class="card-title">Chess Tier</h5>
+            <p class="card-text">Replace your chess.com rating with a Chess Tier!</p>
+            <a href="https://chrome.google.com/webstore/detail/chess-tier/lgfppmbhddgaaihjmjapjmhdkogkaagg" class="btn btn-primary">Try it out!</a>
+            <a href="https://tristrumtuttle.medium.com/chess-tier-a-rank-system-for-chess-com-1f82128e748b" class="btn btn-primary">Read about it!</a>
+            <a href="https://github.com/triton11/ChessTier" class="btn btn-primary">Github</a>
           </div>
         </div>
+      </div>
 
-        <div class="col-sm-6 col-md-4 2019">
-          <div class="card" id="char">
-            <small class="text-muted">2019</small>
+      <div class="col-sm-6 col-md-4 2021">
+        <div class="card" id="sneaky">
+          <small class="text-muted">2021</small>
 
-            <div class="card-body">
-              <h5 class="card-title">CharacterizeIt</h5>
-              <p class="card-text">We used Mechanical Turk crowdsourcing to examine gender bias in comic book characters. Built with <b>Sci-kit learn</b> and <b>Python</b>.</p>
-              <a href="https://vimeo.com/334834145" class="btn btn-primary">Watch our video!</a>
-            </div>
+          <div class="card-body">
+            <h5 class="card-title">Sneaky Theater</h5>
+            <p class="card-text"> Spyfall meets Jackbox's Fakin It: Can you figure out who doesn't know the movie based on their answers to goofy free response questions?</p>
+            <a href="http://sneakytheater.com/" class="btn btn-primary">Try it out!</a>
+            <a href="" class="btn btn-primary">Read about it!</a> 
+            <a href="https://github.com/triton11/Sneaky-Theater" class="btn btn-primary">Github</a> 
           </div>
         </div>
+      </div>
 
-        <div class="col-sm-6 col-md-4 2019">
-          <div class="card" id="welp">
-            <small class="text-muted">2019</small>
-
-            <div class="card-body">
-              <h5 class="card-title">¯\_(Welp)_/¯</h5>
-              <p class="card-text">This web application helps you make an itinerary for your next vacation! Built using <b>Node JS</b>, <b>Angular JS</b>, and <b>MySQL</b>.</p>
-              <a href="https://github.com/triton11/Welp" class="btn btn-primary">Github</a>
-            </div>
+      <div class="col-sm-6 col-md-4 2020">
+        <div class="card" id="lessons">
+          <small class="text-muted">2020</small>
+          <div class="card-body">
+            <h5 class="card-title">Block Lessons</h5>
+            <p class="card-text">Teach coding in non-coding environments. Use Block Lessons to incorporate programming lessons in Spanish, Science and even Art classes! </p>
+            <a href="https://tristrumtuttle.medium.com/teach-coding-in-every-classroom-13884e9bb2a" class="btn btn-primary">Read about it!</a>
+            <a href="https://www.blocklessons.com/" class="btn btn-primary">Try it out!</a>
           </div>
         </div>
+      </div>
 
-        <div class="col-sm-6 col-md-4 2019">
-          <div class="card" id="mbti">
-            <small class="text-muted">2019</small>
+      <div class="col-sm-6 col-md-4 2020">
+        <div class="card" id="crops">
+          <small class="text-muted">2020</small>
 
-            <div class="card-body">
-              <h5 class="card-title">ItsPersonal</h5>
-              <p class="card-text">We analyze writing samples to predict and analyze Meyers-Briggs Types. Our final model is able to predict MBTI types based on writing samples with about 50% accuracy. Built using <b>Sci-kit learn</b>, <b>nltk toolkit</b>, <b>gensim LDA</b>, and <b>PyTorch</b>.</p>
-              <a href="itspersonal.pdf" class="btn btn-primary">Read our report!</a>
-            </div>
+          <div class="card-body">
+            <h5 class="card-title">Crops and Robbers</h5>
+            <p class="card-text"> A fast-paced, mafia-like game that forces players to make quick decisions while determining who their teammates are.</p>
+            <a href="https://tristrumtuttle.medium.com/unsocial-deduction-games-crops-and-robbers-11c96322ec5" class="btn btn-primary">Read about it!</a> <a href="https://dry-wave-13894.herokuapp.com/" class="btn btn-primary">Try it out!</a> 
           </div>
         </div>
+      </div>
 
-        <div class="col-sm-6 col-md-4 2019">
-          <div class="card" id="tamagome">
-            <small class="text-muted">2019</small>
-
-            <div class="card-body">
-              <h5 class="card-title">TamagoMe</h5>
-              <p class="card-text"><b>iOS app</b> written in <b>Swift</b> that uses HealthKit API data to keep a virtual avatar happy. You can even play with your avatar in an Augemented Reality environment!</p>
-              <a href="https://github.com/triton11/Tamagome" class="btn btn-primary">Github</a>
-            </div>
+      <div class="col-sm-6 col-md-4 2020">
+        <div class="card" id="protest">
+          <small class="text-muted">2020</small>
+          <div class="card-body">
+            <h5 class="card-title">Demand Better</h5>
+            <p class="card-text">A website to track and sort reports of police brutality at the 2020 George Floyd protests.</p>
+            <a href="https://tristrumtuttle.medium.com/analyzing-400-reports-of-police-brutality-at-the-george-floyd-protests-736df35f02f4" class="btn btn-primary">Read about it.</a>
+            <a href="https://www.fightforjustice2020.com/" class="btn btn-primary">View the site.</a>
           </div>
         </div>
+      </div>
 
-
-        <div class="col-sm-6 col-md-4 2018">
-          <div class="card" id="scala">
-            <small class="text-muted">2018</small>
-
-            <div class="card-body">
-              <h5 class="card-title">ScalaRank</h5>
-              <p class="card-text">Check out my blog post on ScalaStan and EvilPlot, two of my favorite libraries for data science in <b>Scala</b>.</p>
-              <a href="https://medium.com/@CiboEng/scalastan-and-evilplot-bayesian-statistics-meets-combinator-based-visualization-dce3631b5096" class="btn btn-primary">Read the blog!</a>
-            </div>
+      <div class="col-sm-6 col-md-4 2019">
+        <div class="card" id="teach">
+          <small class="text-muted">2019</small>
+          <div class="card-body">
+            <h5 class="card-title">Curriculum</h5>
+            <p class="card-text">I am a passionate educator and love teaching at all levels.I have worked extensively to design and rework curriculum for teaching <b>Android app dev</b>, <b>Python</b>, and <b>Scratch by MIT</b>. Check it out! </p>
+            <a href="https://www.seas.upenn.edu/~cis195/android/index.html" class="btn btn-primary">Android</a> <a href="https://repl.it/@mascs" class="btn btn-primary">Python</a> <a href="scratch_curriculum.docx" class="btn btn-primary">Scratch</a>
           </div>
         </div>
+      </div>
 
-        <div class="col-sm-6 col-md-4 2018">
-          <div class="card" id="maza">
-            <small class="text-muted">2018</small>
+      <div class="col-sm-6 col-md-4 2019">
+        <div class="card" id="truck">
+          <small class="text-muted">2019</small>
 
-            <div class="card-body">
+          <div class="card-body">
+            <h5 class="card-title">Platoon Dynamics</h5>
+            <p class="card-text">My teammates and I built a platform for platooning autonomous vehicles to generate fuel savings and reduce harmful emmisions. Built with <b>Node JS</b>, <b>Java Redis</b>, and <b>PyGame</b>. </p>
+            <a href="Senior_Design_Final_Paper.pdf" class="btn btn-primary">Read our report!</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4 2019">
+        <div class="card" id="char">
+          <small class="text-muted">2019</small>
+
+          <div class="card-body">
+            <h5 class="card-title">CharacterizeIt</h5>
+            <p class="card-text">We used Mechanical Turk crowdsourcing to examine gender bias in comic book characters. Built with <b>Sci-kit learn</b> and <b>Python</b>.</p>
+            <a href="https://vimeo.com/334834145" class="btn btn-primary">Watch our video!</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4 2019">
+        <div class="card" id="welp">
+          <small class="text-muted">2019</small>
+
+          <div class="card-body">
+            <h5 class="card-title">¯\_(Welp)_/¯</h5>
+            <p class="card-text">This web application helps you make an itinerary for your next vacation! Built using <b>Node JS</b>, <b>Angular JS</b>, and <b>MySQL</b>.</p>
+            <a href="https://github.com/triton11/Welp" class="btn btn-primary">Github</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4 2019">
+        <div class="card" id="mbti">
+          <small class="text-muted">2019</small>
+
+          <div class="card-body">
+            <h5 class="card-title">ItsPersonal</h5>
+            <p class="card-text">We analyze writing samples to predict and analyze Meyers-Briggs Types. Our final model is able to predict MBTI types based on writing samples with about 50% accuracy. Built using <b>Sci-kit learn</b>, <b>nltk toolkit</b>, <b>gensim LDA</b>, and <b>PyTorch</b>.</p>
+            <a href="itspersonal.pdf" class="btn btn-primary">Read our report!</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4 2019">
+        <div class="card" id="tamagome">
+          <small class="text-muted">2019</small>
+
+          <div class="card-body">
+            <h5 class="card-title">TamagoMe</h5>
+            <p class="card-text"><b>iOS app</b> written in <b>Swift</b> that uses HealthKit API data to keep a virtual avatar happy. You can even play with your avatar in an Augemented Reality environment!</p>
+            <a href="https://github.com/triton11/Tamagome" class="btn btn-primary">Github</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4 2018">
+        <div class="card" id="scala">
+          <small class="text-muted">2018</small>
+
+          <div class="card-body">
+            <h5 class="card-title">ScalaRank</h5>
+            <p class="card-text">Check out my blog post on ScalaStan and EvilPlot, two of my favorite libraries for data science in <b>Scala</b>.</p>
+            <a href="https://medium.com/@CiboEng/scalastan-and-evilplot-bayesian-statistics-meets-combinator-based-visualization-dce3631b5096" class="btn btn-primary">Read the blog!</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-6 col-md-4 2018">
+        <div class="card" id="maza">
+          <small class="text-muted">2018</small>
+
+          <div class="card-body">
 <!--               <img class="card-img-top" src="img/Logo.png" alt="Card image cap">
- -->              <h5 class="card-title">Maza</h5>
-              <p class="card-text">Use our motion-sensing bracelet to play mobile games while you exercise! Built using <b>Android</b> libraries.</p>
-              <a href="https://www.youtube.com/watch?v=nIjq4OZl6Qo" class="btn btn-primary">Watch our pitch!</a>
-            </div>
+-->              <h5 class="card-title">Maza</h5>
+            <p class="card-text">Use our motion-sensing bracelet to play mobile games while you exercise! Built using <b>Android</b> libraries.</p>
+            <a href="https://www.youtube.com/watch?v=nIjq4OZl6Qo" class="btn btn-primary">Watch our pitch!</a>
           </div>
         </div>
-        <div class="col-sm-6 col-md-4 2017">
-          <div class="card" id="tuttle">
-            <small class="text-muted">2017</small>
-            <div class="card-body">
-              <!-- <img class="card-img-top" src="img/ProjClass.png" alt="Card image cap"> -->
-              <h5 class="card-title">TuttlemonGo</h5>
-              <p class="card-text">This <b>Android</b> parody of PokemonGo improves on the original by adding trading, millions of unique Tuttlemon, and can be played anywhere!</p>
-              <a href="https://classifyed.herokuapp.com/" class="btn btn-primary">Github</a>
+      </div>
+      <div class="col-sm-6 col-md-4 2017">
+        <div class="card" id="tuttle">
+          <small class="text-muted">2017</small>
+          <div class="card-body">
+            <!-- <img class="card-img-top" src="img/ProjClass.png" alt="Card image cap"> -->
+            <h5 class="card-title">TuttlemonGo</h5>
+            <p class="card-text">This <b>Android</b> parody of PokemonGo improves on the original by adding trading, millions of unique Tuttlemon, and can be played anywhere!</p>
+            <a href="https://classifyed.herokuapp.com/" class="btn btn-primary">Github</a>
 
-            </div>
           </div>
         </div>
-        <div class="col-sm-6 col-md-4 2017">
-          <div class="card" id="classifyed">
-            <small class="text-muted">2017</small>
-            <div class="card-body">
-              <!-- <img class="card-img-top" src="img/ProjClass.png" alt="Card image cap"> -->
-              <h5 class="card-title">Classifyed</h5>
-              <p class="card-text">Let this Machine Learning model predict the difficulty of hypothetical Penn Courses! </p><p> Built using <b>Ruby on Rails</b>, and <b>Octave</b>.</p>
-              <a href="https://classifyed.herokuapp.com/" class="btn btn-primary">Try it!</a>
+      </div>
+      <div class="col-sm-6 col-md-4 2017">
+        <div class="card" id="classifyed">
+          <small class="text-muted">2017</small>
+          <div class="card-body">
+            <!-- <img class="card-img-top" src="img/ProjClass.png" alt="Card image cap"> -->
+            <h5 class="card-title">Classifyed</h5>
+            <p class="card-text">Let this Machine Learning model predict the difficulty of hypothetical Penn Courses! </p><p> Built using <b>Ruby on Rails</b>, and <b>Octave</b>.</p>
+            <a href="https://classifyed.herokuapp.com/" class="btn btn-primary">Try it!</a>
 
-            </div>
           </div>
         </div>
-        <div class="col-sm-6 col-md-4 2017">
-          <div class="card" id="mun">
-            <small class="text-muted">2017</small>
+      </div>
+      <div class="col-sm-6 col-md-4 2017">
+        <div class="card" id="mun">
+          <small class="text-muted">2017</small>
 
-            <div class="card-body">
+          <div class="card-body">
 <!--               <img class="card-img-top" src="img/ProjMUN.jpg" alt="Card image cap">
- -->              <h5 class="card-title">MUNtopia</h5>
-              <p class="card-text">This model UN app lets you select a country, draft resolutions, send notes and more! Built using <b>Ruby on Rails</b>, and features Slack webhooks, OAuth account verification, and other libraries.</p>
-              <a href="https://muntopia.herokuapp.com/" class="btn btn-primary">Try it!</a>
-            </div>
+-->              <h5 class="card-title">MUNtopia</h5>
+            <p class="card-text">This model UN app lets you select a country, draft resolutions, send notes and more! Built using <b>Ruby on Rails</b>, and features Slack webhooks, OAuth account verification, and other libraries.</p>
+            <a href="https://muntopia.herokuapp.com/" class="btn btn-primary">Try it!</a>
           </div>
         </div>
-        <div class="col-sm-6 col-md-4 2017">
-          <div class="card" id="emerge">
-            <small class="text-muted">2017</small>
+      </div>
+      <div class="col-sm-6 col-md-4 2017">
+        <div class="card" id="emerge">
+          <small class="text-muted">2017</small>
 <!--             <img class="card-img-top" src="img/ProjEmerge.jpg" alt="Card image cap">
- -->            <div class="card-body">
-              <h5 class="card-title">EmergeAlert</h5>
-              <p class="card-text">Automating disaster response with NLU. Built using <b>Smooch API</b>, <b>Mix.NLU</b> and <b>FHIR database</b>.</p>
-              <a href="https://devpost.com/software/emergalert" class="btn btn-primary">Check it out!</a>
-            </div>
+-->            <div class="card-body">
+            <h5 class="card-title">EmergeAlert</h5>
+            <p class="card-text">Automating disaster response with NLU. Built using <b>Smooch API</b>, <b>Mix.NLU</b> and <b>FHIR database</b>.</p>
+            <a href="https://devpost.com/software/emergalert" class="btn btn-primary">Check it out!</a>
           </div>
         </div>
-        <div class="col-sm-6 col-md-4 2017">
-          <div class="card" id="flip">
-            <small class="text-muted">2017</small>
-            <div class="card-body">
+      </div>
+      <div class="col-sm-6 col-md-4 2017">
+        <div class="card" id="flip">
+          <small class="text-muted">2017</small>
+          <div class="card-body">
 <!--               <img class="card-img-top" src="img/ProjFlip.jpg" alt="Card image cap">
- -->              <h5 class="card-title">@FullFlipFlop</h5>
-              <p class="card-text">Find when politicians flip opinions on Twitter. Built using <b>Python</b>, and <b>Twitter API</b>.</p>
-              <a href="https://devpost.com/software/twitter-flipflop" class="btn btn-primary">Check it out!</a>
-            </div>
+-->              <h5 class="card-title">@FullFlipFlop</h5>
+            <p class="card-text">Find when politicians flip opinions on Twitter. Built using <b>Python</b>, and <b>Twitter API</b>.</p>
+            <a href="https://devpost.com/software/twitter-flipflop" class="btn btn-primary">Check it out!</a>
           </div>
         </div>
-        <div class="col-sm-6 col-md-4 2017">
-          <div class="card" id="counsel">
-            <small class="text-muted">2016</small>
-            <div class="card-body">
+      </div>
+      <div class="col-sm-6 col-md-4 2017">
+        <div class="card" id="counsel">
+          <small class="text-muted">2016</small>
+          <div class="card-body">
 <!--               <img class="card-img-top" src="img/ProjCounsel.png" alt="Card image cap">
- -->              <h5 class="card-title">Counsel Through Code</h5>
-              <p class="card-text">This Java applet listens to your conversations and adds helpful tips and sentiment analysis. Built using <b>Java Swing</b>, <b>IBM Watson API</b> and <b>SoundHound API</b>.</p>
-              <a href="https://devpost.com/software/counsel-through-code-marriage-counselor" class="btn btn-primary">Check it out!</a>
-            </div>
+-->              <h5 class="card-title">Counsel Through Code</h5>
+            <p class="card-text">This Java applet listens to your conversations and adds helpful tips and sentiment analysis. Built using <b>Java Swing</b>, <b>IBM Watson API</b> and <b>SoundHound API</b>.</p>
+            <a href="https://devpost.com/software/counsel-through-code-marriage-counselor" class="btn btn-primary">Check it out!</a>
           </div>
         </div>
-        <div class="col-sm-6 col-md-4 2017">
-          <div class="card" id="python">
-            <small class="text-muted">2016 - 2015</small>
-            <div class="card-body">
+      </div>
+      <div class="col-sm-6 col-md-4 2017">
+        <div class="card" id="python">
+          <small class="text-muted">2016 - 2015</small>
+          <div class="card-body">
 <!--              <img class="card-img-top" src="img/ProjPython.png" alt="Card image cap">
- -->           <h5 class="card-title">Python Projects</h5>
-              <div> <a href="https://github.com/triton11/Traveling-Salesman-Problem"> TS Problem </a> </div>
-              <div> <a href="https://github.com/triton11/Game-of-Life"> Game of Life </a> </div>
-              <div> <a href="https://github.com/triton11/Sierpinski"> Siepinski Triangle </a> </div>
-              <div> <a href="https://github.com/triton11/Twitter-Bot"> Twitter Bots </a> </div>
-            </div>
+-->           <h5 class="card-title">Python Projects</h5>
+            <div> <a href="https://github.com/triton11/Traveling-Salesman-Problem"> TS Problem </a> </div>
+            <div> <a href="https://github.com/triton11/Game-of-Life"> Game of Life </a> </div>
+            <div> <a href="https://github.com/triton11/Sierpinski"> Siepinski Triangle </a> </div>
+            <div> <a href="https://github.com/triton11/Twitter-Bot"> Twitter Bots </a> </div>
           </div>
         </div>
+      </div>
     </div>
 
     <!-- Footer -->
     <div class="footer text-center">
-        <p>Last Updated: December 2021</p>
+        <p>Last Updated: December 2023</p>
     </div><!-- End Footer -->
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -616,7 +716,7 @@
     <script src="js/jquery.js">
     </script>
     <script>
-      selectYear('2021')
+      selectYear('2023')
     </script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
