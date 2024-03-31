@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Easter Oracle</title>
 </head>
-<body>
+<body align="center">
     <h1>Easter Oracle</h1>
-    <input type="text" id="searchPhrase" placeholder="What do you wish to ask the oracle?">
-    <button onclick="makeRequest()">Search</button>
+    <textarea type="text" id="searchPhrase" placeholder="What do you wish to ask the oracle?" rows="4" cols="50"></textarea>
+    <div>
+      <button onclick="makeRequest()">Ask!</button>
+    </div>
     <div id="response"></div>
 
     <script>
