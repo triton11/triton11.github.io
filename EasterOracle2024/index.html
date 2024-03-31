@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Easter Oracle</title>
+</head>
+<body>
+    <h1>Easter Oracle</h1>
+    <input type="text" id="searchPhrase" placeholder="What do you wish to ask the oracle?">
+    <button onclick="makeRequest()">Search</button>
+    <div id="response"></div>
+
+    <script>
+        function makeRequest() {
+            // Get the search phrase from the input field
+            var searchPhrase = document.getElementById('searchPhrase').value;
+
+            // Make sure the search phrase is not empty
+            if (!searchPhrase) {
+                alert("Please enter a search phrase");
+                return;
+            }
+
+            // Construct the API URL with the search phrase
+            var apiUrl = 'https://924uec14a0.execute-api.us-east-1.amazonaws.com/default/easter-oracle?year=2024&prompt=' + encodeURIComponent(searchPhrase);
+
+            // Create a new XMLHttpRequest object
+            var xhr = new XMLHttpRequest();
+
+            // Configure the GET request
+            xhr.open("GET", apiUrl, true);
+
+            // Set up a function to handle the response
+            xhr.onload = function () {
+                // Check if the request was successful
+                if (xhr.status >= 200 && xhr.status < 300) {
+                    // Display the response in the 'response' div
+                    document.getElementById("response").innerHTML = xhr.responseText;
+                } else {
+                    // Display an error message
+                    document.getElementById("response").innerHTML = "Error: " + xhr.status;
+                }
+            };
+
+            // Set up a function to handle network errors
+            xhr.onerror = function () {
+                // Display an error message
+                document.getElementById("response").innerHTML = "Network Error";
+            };
+
+            // Send the request
+            xhr.send();
+        }
+    </script>
+</body>
+</html>
