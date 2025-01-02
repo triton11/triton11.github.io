@@ -112,3 +112,15 @@ other - grey #eeeeee
 #teacherbot:after {
   background-image: url("../img/ProjTeacher.png");
 }
+
+#magical:after {
+  background-image: url("../img/ProjMagical.png");
+}
+
+#coteach:after {
+  background-image: url("../img/ProjCoteach.png");
+}
+
+#anki:after {
+  background-image: url("../img/ProjAnki.png");
+}
