@@ -121,6 +121,10 @@ other - grey #eeeeee
   background-image: url("../img/ProjCoteach.png");
 }
 
-#anki:after {
-  background-image: url("../img/ProjAnki.png");
+#nyt:after {
+  background-image: url("../img/ProjNYT.png");
+}
+
+#vibe:after {
+  background-image: url("../img/ProjVibe.png");
 }
