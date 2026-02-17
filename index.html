@@ -10,6 +10,8 @@
     
     <!--Bootshape-->
     <link href="css/bootshape.css" rel="stylesheet">
+    <!-- Preload critical images -->
+    <link rel="preload" as="image" href="img/hike_switzerland_optim2.png">
   </head>
   <body>
     <script type="text/javascript">
@@ -280,15 +282,11 @@
     <div class="jumbotron">
       <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
+          <div class="item">
+            <a href="https://github.com/triton11/MovieDate"><div class="fill" style="background-image:url('img/BannerMovie.png');"></div>
+            </a>
+          </div>
           <div class="item active">
-            <a href="https://medium.com/@tristrumtuttle/building-a-web-app-with-cursor-and-good-vibes-be15110a74cd"><div class="fill" style="background-image:url('img/ProjVibe.png');"></div>
-            </a>
-          </div>
-          <div class="item">
-            <a href="https://medium.com/@tristrumtuttle/analyzing-100-games-of-nyt-connections-550848fee76d"><div class="fill" style="background-image:url('img/ProjNYT.png');"></div>
-            </a>
-          </div>
-          <div class="item">
             <a href="https://medium.com/@tristrumtuttle/coteach-ai-from-research-project-to-edtech-startup-b8cfd5f89d23"><div class="fill" style="background-image:url('img/BannerCoteach.png');"></div>
             </a>
           </div>
@@ -361,28 +359,28 @@
     <div class="container">
         <div class="col-sm-6 col-md-3">
           <div class="thumbnail">
-            <a href="https://tristrumtuttle.medium.com/" target="_blank" role="button" alt="">   <img style="max-width: 60%" src="img/medium.png" alt="" class="img-circle">
+            <a href="https://tristrumtuttle.medium.com/" target="_blank" role="button" alt="">   <img loading="lazy" style="max-width: 60%" src="img/medium.png" alt="Medium" class="img-circle">
                 <h3 align="center"> Blog </h3>
             </a>
           </div>
         </div>
         <div class="col-sm-6 col-md-3">
           <div class="thumbnail">
-            <a href="Tristrum_Tuttle_resume.pdf" target="_blank" role="button" alt="">   <img style="max-width: 60%" src="img/pennlogo.png" alt="" class="img-circle">
+            <a href="Tristrum_Tuttle_resume.pdf" target="_blank" role="button" alt="">   <img loading="lazy" style="max-width: 60%" src="img/pennlogo.png" alt="Resume" class="img-circle">
                 <h3 align="center"> Resume </h3>
             </a>
           </div>
         </div>
         <div class="col-sm-6 col-md-3">
           <div class="thumbnail">
-            <a href="https://github.com/triton11" target="_blank" role="button" alt="">   <img style="max-width: 60%" src="img/github.png" alt="" class="img-circle">
+            <a href="https://github.com/triton11" target="_blank" role="button" alt="">   <img loading="lazy" style="max-width: 60%" src="img/github.png" alt="GitHub" class="img-circle">
               <h3 align="center"> Github </h3>
             </a>
           </div>
         </div>
         <div class="col-sm-6 col-md-3">
           <div class="thumbnail">
-            <a href="https://www.linkedin.com/in/tristrum/" target="_blank" role="button" alt="">   <img style="max-width: 60%" src="img/linkedin.png" alt="" class="img-circle">
+            <a href="https://www.linkedin.com/in/tristrum/" target="_blank" role="button" alt="">   <img loading="lazy" style="max-width: 60%" src="img/linkedin.png" alt="LinkedIn" class="img-circle">
                 <h3 align="center"> LinkedIn </h3>
             </a>
           </div>
@@ -401,6 +399,17 @@
         <button class="btn btn-primary tablinks" id="2019" onclick="selectYear('2019')">2019</button>
         <button class="btn btn-primary tablinks" id="2018" onclick="selectYear('2018')">2018</button>
         <button class="btn btn-primary tablinks" id="2017" onclick="selectYear('2017')">Earlier</button>
+      </div>
+
+      <div class="col-sm-6 col-md-4 2025">
+        <div class="card" id="moviedate">
+          <small class="text-muted">2025</small>
+          <div class="card-body">
+            <h5 class="card-title">Movie Date</h5>
+            <p class="card-text">A Social Deduction Game with an AI Twist</p>
+            <a href="https://github.com/triton11/MovieDate" class="btn btn-primary">GitHub</a>
+          </div>
+        </div>
       </div>
 
       <div class="col-sm-6 col-md-4 2025">
@@ -794,14 +803,12 @@
     </div><!-- End Footer -->
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <!-- // <script src="https://code.jquery.com/jquery.js"></script> -->
-    <script src="js/jquery.js">
-    </script>
-    <script>
-      selectYear('2025')
-    </script>
+    <script src="js/jquery.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
     <script src="js/bootshape.js"></script>
+    <script>
+      selectYear('2025')
+    </script>
   </body>
 </html>

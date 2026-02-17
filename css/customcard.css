@@ -128,3 +128,7 @@ other - grey #eeeeee
 #vibe:after {
   background-image: url("../img/ProjVibe.png");
 }
+
+#moviedate:after {
+  background-image: url("../img/ProjMoviedate.png");
+}
