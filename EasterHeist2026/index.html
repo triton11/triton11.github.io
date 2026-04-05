@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Grand Easter Heist</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:linear-gradient(135deg,#f3e5f5 0%,#e8f5e9 50%,#fff8e1 100%);color:#3e2723;min-height:100vh;overflow-x:hidden;}
+h1,h2,h3{font-weight:700;}
+:root{--pink:#f48fb1;--purple:#ce93d8;--yellow:#fff176;--green:#a5d6a7;--blue:#90caf9;--dark:#3e2723;--card:#ffffff;--shadow:0 4px 15px rgba(0,0,0,0.1);--cork:#d7a86e;--cork-dark:#b8864e;}
+.screen{display:none;max-width:900px;margin:0 auto;padding:30px 20px 80px;}
+.screen.active{display:block;animation:fadeIn .4s ease;}
+.top-bar-spacer .screen{padding-top:65px;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+#top-bar{display:none;position:fixed;top:0;left:0;right:0;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);padding:10px 24px;z-index:100;border-bottom:2px solid var(--purple);justify-content:space-between;align-items:center;font-size:.95rem;}
+#top-bar.visible{display:flex;}
+#top-bar .team-label{font-weight:700;color:var(--dark);}
+#top-bar .timer{font-family:'Courier New',monospace;font-size:1.1rem;font-weight:700;color:#7b1fa2;min-width:70px;}
+#top-bar .clue-count{color:#2e7d32;font-weight:600;}
+.clue-book-btn{background:var(--yellow);border:2px solid #f9a825;border-radius:20px;padding:6px 16px;cursor:pointer;font-weight:700;font-size:.9rem;transition:.2s;}
+.clue-book-btn:hover{transform:scale(1.05);box-shadow:0 2px 8px rgba(0,0,0,.15);}
+.card{background:var(--card);border-radius:16px;padding:28px;box-shadow:var(--shadow);margin:20px 0;}
+.btn{display:inline-block;padding:12px 28px;border:none;border-radius:25px;font-size:1rem;font-weight:700;cursor:pointer;transition:all .2s;text-align:center;}
+.btn:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.2);}
+.btn-primary{background:linear-gradient(135deg,#ab47bc,#7b1fa2);color:#fff;}
+.btn-secondary{background:linear-gradient(135deg,var(--green),#66bb6a);color:#fff;}
+.btn-warning{background:linear-gradient(135deg,#ffb74d,#ff9800);color:#fff;}
+.btn-pink{background:linear-gradient(135deg,var(--pink),#e91e63);color:#fff;}
+.btn-back{background:#78909c;color:#fff;margin-top:20px;}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none!important;}
+input[type="text"]{padding:10px 16px;border:2px solid #e0e0e0;border-radius:10px;font-size:1rem;width:100%;max-width:500px;transition:.2s;}
+input[type="text"]:focus{outline:none;border-color:var(--purple);box-shadow:0 0 0 3px rgba(206,147,216,.3);}
+.emoji-big{font-size:3rem;}
+.section-title{font-size:1.5rem;margin-bottom:16px;color:#4a148c;}
+.back-nav{margin-bottom:12px;}
+.back-nav a{color:#7b1fa2;cursor:pointer;font-weight:600;font-size:.9rem;text-decoration:none;}
+.back-nav a:hover{text-decoration:underline;}
+.dialogue{display:flex;gap:16px;align-items:flex-start;margin:20px 0;}
+.dialogue .avatar{font-size:2.5rem;min-width:50px;text-align:center;}
+.speech-bubble{background:#f3e5f5;border-radius:16px;padding:16px 20px;position:relative;flex:1;}
+.speech-bubble::before{content:'';position:absolute;left:-10px;top:18px;border:8px solid transparent;border-right-color:#f3e5f5;}
+.speech-bubble .name{font-weight:700;color:#7b1fa2;margin-bottom:6px;font-size:.9rem;}
+.speech-bubble p{line-height:1.5;}
+.speech-bubble.green{background:#e8f5e9;}.speech-bubble.green::before{border-right-color:#e8f5e9;}
+.speech-bubble.amber{background:#fff8e1;}.speech-bubble.amber::before{border-right-color:#fff8e1;}
+.speech-bubble.pink{background:#fce4ec;}.speech-bubble.pink::before{border-right-color:#fce4ec;}
+.speech-bubble.blue{background:#e3f2fd;}.speech-bubble.blue::before{border-right-color:#e3f2fd;}
+#title-screen{text-align:center;padding-top:80px;}
+#title-screen h1{font-size:3rem;background:linear-gradient(135deg,#7b1fa2,#e91e63,#ff9800);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+#title-screen .subtitle{font-size:1.3rem;color:#666;margin:12px 0 30px;}
+.egg-row{font-size:2.5rem;letter-spacing:12px;margin:20px 0;animation:bounce 2s infinite;}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+#team-screen{text-align:center;padding-top:60px;}
+#hub-screen .corkboard{background:linear-gradient(145deg,var(--cork),var(--cork-dark));border-radius:16px;padding:30px;box-shadow:inset 0 2px 10px rgba(0,0,0,.2),var(--shadow);border:8px solid #8d6e63;}
+#hub-screen .corkboard h2{text-align:center;color:#fff;text-shadow:1px 1px 3px rgba(0,0,0,.4);margin-bottom:24px;font-size:1.6rem;}
+.case-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;}
+.case-card{background:#fffde7;border-radius:8px;padding:18px;text-align:center;cursor:pointer;transition:all .25s;box-shadow:2px 2px 8px rgba(0,0,0,.15);position:relative;transform:rotate(var(--rot,0deg));}
+.case-card:hover{transform:rotate(0deg) scale(1.05);box-shadow:4px 4px 16px rgba(0,0,0,.25);}
+.case-card .pin{position:absolute;top:-8px;left:50%;transform:translateX(-50%);font-size:1.3rem;}
+.case-card .card-emoji{font-size:2rem;margin:8px 0;}
+.case-card .card-title{font-weight:700;font-size:.95rem;color:var(--dark);}
+.case-card.solved{background:#e8f5e9;border:2px solid var(--green);}
+.case-card.solved::after{content:'✅';position:absolute;top:8px;right:8px;font-size:1rem;}
+.suspects-row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:24px;padding-top:20px;border-top:2px dashed rgba(255,255,255,.3);}
+.suspect-badge{background:rgba(255,255,255,.85);border-radius:10px;padding:8px 14px;font-size:.85rem;font-weight:600;text-align:center;min-width:100px;}
+.suspect-badge .badge-emoji{font-size:1.4rem;}
+.vault-scene{position:relative;width:100%;height:440px;background:linear-gradient(180deg,#37474f 0%,#263238 100%);border-radius:12px;overflow:hidden;border:3px solid #455a64;margin:20px 0;}
+.vault-obj{position:absolute;cursor:pointer;transition:all .25s;border-radius:8px;padding:8px;text-align:center;user-select:none;}
+.vault-obj:hover{filter:brightness(1.2);box-shadow:0 0 15px rgba(255,235,59,.4);}
+.vault-obj.found{box-shadow:0 0 20px rgba(76,175,80,.8);border:2px solid var(--green);}
+.vault-obj .obj-label{font-size:.7rem;color:#78909c;margin-top:2px;}
+.vault-floor{position:absolute;bottom:0;left:0;right:0;height:60px;background:#455a64;border-top:2px solid #546e7a;}
+.evidence-popup{display:none;background:#fff;border:2px solid var(--green);border-radius:12px;padding:16px;margin:10px 0;animation:fadeIn .3s;}
+.evidence-popup.show{display:block;}
+.evidence-list{list-style:none;padding:0;}
+.evidence-list li{padding:6px 0;border-bottom:1px solid #eee;display:flex;align-items:center;gap:8px;}
+.evidence-list li::before{content:'🔍';}
+.ingredient-bank{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0;}
+.ingredient{padding:10px 18px;border-radius:20px;font-weight:600;cursor:pointer;transition:.2s;border:2px solid #e0e0e0;background:#fff;user-select:none;}
+.ingredient:hover{border-color:var(--purple);background:#f3e5f5;}
+.ingredient.placed{opacity:.3;cursor:not-allowed;}
+.sequence-slots{display:flex;gap:10px;margin:16px 0;flex-wrap:wrap;}
+.slot{width:150px;height:50px;border:2px dashed #bdbdbd;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:.85rem;color:#999;transition:.2s;background:#fafafa;gap:4px;}
+.slot.filled{border:2px solid var(--purple);background:#f3e5f5;color:var(--dark);}
+.slot .slot-num{background:var(--purple);color:#fff;border-radius:50%;width:20px;height:20px;font-size:.7rem;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;}
+.constraint-card{background:#fff3e0;border-left:4px solid #ff9800;padding:10px 14px;margin:6px 0;border-radius:0 8px 8px 0;font-size:.9rem;}
+.explosion{display:none;text-align:center;font-size:1.5rem;color:#e91e63;animation:shake .4s;margin:10px 0;}
+.explosion.show{display:block;}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}
+.cipher-display{background:#1a1a2e;color:#e0e0e0;padding:24px;border-radius:12px;font-family:'Courier New',monospace;font-size:1.3rem;line-height:2;letter-spacing:2px;overflow-wrap:break-word;margin:16px 0;}
+.cipher-key{display:grid;grid-template-columns:repeat(auto-fill,minmax(80px,1fr));gap:8px;margin:16px 0;}
+.key-pair{background:#fff;border:2px solid #e0e0e0;border-radius:8px;padding:8px;text-align:center;font-family:'Courier New',monospace;}
+.key-pair .symbol{font-size:1.2rem;}
+.key-pair .letter{font-weight:700;color:#7b1fa2;}
+.key-pair.given{border-color:var(--purple);background:#f3e5f5;}
+.statement{padding:14px 18px;margin:8px 0;border-radius:10px;cursor:pointer;transition:.2s;border:2px solid transparent;background:#fff;line-height:1.5;position:relative;user-select:none;}
+.statement:hover{border-color:#e0e0e0;background:#fafafa;}
+.statement.flagged{border-color:#e91e63;background:#fce4ec;}
+.statement .stmt-num{font-weight:700;color:#999;margin-right:8px;}
+.quilt-grid{display:inline-grid;grid-template-columns:repeat(5,60px);gap:4px;margin:20px 0;}
+.quilt-cell{width:60px;height:60px;border-radius:6px;border:2px solid rgba(0,0,0,.1);transition:.2s;}
+.quilt-cell.missing{border:3px dashed #999;cursor:pointer;position:relative;display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:#999;background:#f5f5f5!important;}
+.quilt-cell.missing:hover{border-color:var(--purple);transform:scale(1.1);}
+.quilt-cell.correct{border:3px solid var(--green)!important;}
+.riddle-door{background:linear-gradient(180deg,#5d4037,#3e2723);border-radius:16px;padding:30px;margin:20px 0;text-align:center;border:4px solid #8d6e63;}
+.riddle-door .door-num{background:#ff9800;color:#fff;border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.2rem;margin:0 auto 16px;}
+.riddle-door .riddle-text{color:#fff;font-size:1.15rem;line-height:1.6;font-style:italic;margin-bottom:20px;}
+.riddle-door input{background:rgba(255,255,255,.9);border:none;text-align:center;font-size:1.1rem;padding:12px;border-radius:10px;width:250px;}
+.riddle-result{margin-top:12px;font-weight:700;font-size:1rem;}
+.riddle-result.correct{color:var(--green);}
+.riddle-result.wrong{color:#ef5350;}
+.factory-room{background:linear-gradient(180deg,#4a148c,#311b92);border-radius:16px;padding:30px;margin:20px 0;text-align:center;}
+.factory-room h3{color:#fff;margin-bottom:16px;}
+.factory-room .room-clue{color:#e1bee7;font-size:1.15rem;line-height:1.5;font-style:italic;margin-bottom:24px;}
+.door-options{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+.door-btn{background:linear-gradient(180deg,#7c4dff,#651fff);color:#fff;border:3px solid #b388ff;border-radius:16px;padding:20px 30px;font-size:1.1rem;font-weight:700;cursor:pointer;transition:.2s;min-width:120px;}
+.door-btn:hover{transform:scale(1.08);box-shadow:0 4px 20px rgba(101,31,255,.4);}
+.factory-status{color:#ffab40;font-weight:600;margin-top:16px;min-height:24px;}
+.suspect-profile{background:#fff;border-radius:12px;padding:18px;margin:10px 0;border-left:4px solid var(--purple);display:flex;gap:16px;align-items:flex-start;}
+.suspect-profile .profile-emoji{font-size:2.2rem;min-width:45px;text-align:center;}
+.suspect-profile .profile-name{font-weight:700;color:#4a148c;font-size:1.05rem;margin-bottom:4px;}
+.suspect-profile .profile-desc{font-size:.9rem;color:#555;line-height:1.5;}
+.deduction-form{background:#fff;border-radius:12px;padding:24px;margin:20px 0;box-shadow:var(--shadow);}
+.deduction-form label{display:block;font-weight:700;margin:16px 0 8px;color:var(--dark);}
+.deduction-form select{padding:10px;border:2px solid #e0e0e0;border-radius:10px;font-size:1rem;width:100%;max-width:400px;}
+.deduction-form select:focus{outline:none;border-color:var(--purple);}
+#ending-screen{text-align:center;}
+#ending-screen .final-time{font-size:2rem;font-weight:700;color:#7b1fa2;margin:10px 0;}
+.confetti{position:fixed;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:999;overflow:hidden;}
+.confetti-piece{position:absolute;width:10px;height:10px;top:-20px;animation:confettiFall linear forwards;}
+@keyframes confettiFall{to{top:110vh;transform:rotateZ(720deg)}}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;justify-content:center;align-items:center;padding:20px;}
+.modal-overlay.show{display:flex;}
+.modal{background:#fff;border-radius:20px;padding:30px;max-width:700px;width:100%;max-height:80vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.3);}
+.modal h2{margin-bottom:16px;color:#4a148c;}
+.clue-card{background:linear-gradient(135deg,#fff8e1,#fff3e0);border:2px solid #ffcc02;border-radius:12px;padding:16px;margin:12px 0;position:relative;}
+.clue-card .clue-source{font-weight:700;color:#e65100;font-size:.85rem;margin-bottom:6px;}
+.clue-card .clue-text{font-size:.95rem;line-height:1.5;}
+.modal-close{position:absolute;top:16px;right:20px;font-size:1.5rem;cursor:pointer;color:#999;background:none;border:none;}
+.modal-close:hover{color:var(--dark);}
+.no-clues{color:#999;font-style:italic;text-align:center;padding:30px;}
+.hint-section{margin-top:24px;border-top:2px dashed #e0e0e0;padding-top:16px;}
+.hint-btn{background:none;border:2px solid #ff9800;color:#ff9800;border-radius:20px;padding:8px 20px;cursor:pointer;font-weight:600;transition:.2s;}
+.hint-btn:hover{background:#fff3e0;}
+.hint-btn:disabled{opacity:.4;cursor:not-allowed;}
+.hint-text{background:#fff3e0;border-radius:10px;padding:12px 16px;margin:8px 0;font-size:.9rem;animation:fadeIn .3s;border-left:3px solid #ff9800;}
+.puzzle-complete{display:none;text-align:center;animation:fadeIn .5s;}
+.puzzle-complete.show{display:block;}
+.puzzle-complete h3{color:#2e7d32;font-size:1.4rem;margin-bottom:12px;}
+@media(max-width:600px){
+  #title-screen h1{font-size:2rem;}
+  .case-grid{grid-template-columns:1fr 1fr;}
+  .vault-scene{height:380px;}
+  .quilt-grid{grid-template-columns:repeat(5,48px);}
+  .quilt-cell{width:48px;height:48px;}
+  .cipher-display{font-size:1rem;}
+  .door-options{flex-direction:column;align-items:center;}
+  .sequence-slots{flex-direction:column;align-items:stretch;}
+  .slot{width:100%;}
+}
+</style>
+</head>
+<body>
+
+<div id="top-bar">
+  <span class="team-label" id="team-display"></span>
+  <span class="timer" id="timer-display">00:00</span>
+  <span class="clue-count" id="clue-display">Clues: 0/7</span>
+  <button class="clue-book-btn" onclick="toggleClueBook()">📖 Clue Book</button>
+</div>
+
+<!-- TITLE -->
+<div id="title-screen" class="screen active">
+  <div class="egg-row">🥚🐣🥚🐣🥚</div>
+  <h1>The Grand Easter Heist</h1>
+  <p class="subtitle">An Easter Escape Room Mystery</p>
+  <div class="card" style="max-width:650px;margin:30px auto;">
+    <div class="dialogue">
+      <div class="avatar">🐰</div>
+      <div class="speech-bubble green">
+        <div class="name">The Easter Bunny</div>
+        <p>Hey y'all! It's me, the Easter Bunny. Before we get started, I just want to say that this year is going to be super chill. No tricks, no traps, no dungeons. I have learned from my past mistakes and I am a changed bunny. I've actually been doing really well — got a nice apartment, started a podcast, learned to make sourdough.</p>
+      </div>
+    </div>
+    <div class="dialogue">
+      <div class="avatar">🐔</div>
+      <div class="speech-bubble">
+        <div class="name">Detective Clucksworth</div>
+        <p>Attention. This is not a drill. At approximately 3:00 AM this morning, every single Easter egg on the planet vanished from the World Egg Vault. Every. Single. One.</p>
+        <p style="margin-top:10px;">I need a team I can trust. Are you in?</p>
+      </div>
+    </div>
+    <div class="dialogue">
+      <div class="avatar">🐰</div>
+      <div class="speech-bubble green">
+        <div class="name">The Easter Bunny</div>
+        <p>Oh no. No no no. I <em>just</em> said it was going to be chill. I literally just said that. This is exactly what happened last time. And the time before that. Can I just go back to my podcast?</p>
+      </div>
+    </div>
+    <div class="dialogue">
+      <div class="avatar">🐔</div>
+      <div class="speech-bubble">
+        <div class="name">Detective Clucksworth</div>
+        <p>No. You're my deputy now. Let's move.</p>
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-primary" onclick="showScreen('team-screen')" style="font-size:1.1rem;padding:14px 40px;">🔍 Begin Investigation</button>
+</div>
+
+<!-- TEAM -->
+<div id="team-screen" class="screen">
+  <div class="card" style="max-width:500px;margin:60px auto;text-align:center;">
+    <div style="font-size:3rem;">🐔🐰</div>
+    <h2 style="margin:16px 0;">Before we start...</h2>
+    <div class="dialogue" style="text-align:left;">
+      <div class="avatar">🐔</div>
+      <div class="speech-bubble">
+        <div class="name">Detective Clucksworth</div>
+        <p>Every team needs a name. Something intimidating. Something that strikes fear into the hearts of egg thieves.</p>
+      </div>
+    </div>
+    <div class="dialogue" style="text-align:left;">
+      <div class="avatar">🐰</div>
+      <div class="speech-bubble green">
+        <div class="name">The Easter Bunny</div>
+        <p>Just pick whatever. Last year someone named their team "The Avocado Toasters" and they didn't even bring me any avocado toast. Still bitter about it.</p>
+      </div>
+    </div>
+    <div style="margin:20px 0;">
+      <input type="text" id="team-name-input" placeholder="Enter your team name..." maxlength="40" onkeydown="if(event.key==='Enter')startGame()">
+    </div>
+    <button class="btn btn-primary" onclick="startGame()">Let's crack this case 🥚</button>
+  </div>
+</div>
+
+<!-- HUB -->
+<div id="hub-screen" class="screen">
+  <div class="dialogue">
+    <div class="avatar">🐔</div>
+    <div class="speech-bubble">
+      <div class="name">Detective Clucksworth</div>
+      <p id="hub-dialogue">Here's what we know: five suspects, seven leads. Investigate in any order. Every solved lead gets us a clue card. Get all seven and we crack the case.</p>
+    </div>
+  </div>
+  <div class="dialogue">
+    <div class="avatar">🐰</div>
+    <div class="speech-bubble green">
+      <div class="name">The Easter Bunny</div>
+      <p id="bunny-hub-dialogue">I know some of these suspects personally and I just want to say they are all perfectly lovely people and none of them would ever steal anything. Except maybe the Oracle. The Oracle is suspicious on a good day.</p>
+    </div>
+  </div>
+  <div class="corkboard">
+    <h2>📌 CASE BOARD 📌</h2>
+    <div class="case-grid">
+      <div class="case-card" style="--rot:-2deg" onclick="goToPuzzle('crime-scene')">
+        <span class="pin">📌</span>
+        <div class="card-emoji">🏛️</div>
+        <div class="card-title">The Egg Vault</div>
+      </div>
+      <div class="case-card" style="--rot:1deg" onclick="goToPuzzle('lab')">
+        <span class="pin">📌</span>
+        <div class="card-emoji">🧪</div>
+        <div class="card-title">Peep's Lab</div>
+      </div>
+      <div class="case-card" style="--rot:-1deg" onclick="goToPuzzle('cipher')">
+        <span class="pin">📌</span>
+        <div class="card-emoji">🧛</div>
+        <div class="card-title">Chocola's Study</div>
+      </div>
+      <div class="case-card" style="--rot:2deg" onclick="goToPuzzle('testimony')">
+        <span class="pin">📌</span>
+        <div class="card-emoji">🍳</div>
+        <div class="card-title">Sunny's Place</div>
+      </div>
+      <div class="case-card" style="--rot:-1.5deg" onclick="goToPuzzle('quilt')">
+        <span class="pin">📌</span>
+        <div class="card-emoji">🧶</div>
+        <div class="card-title">Grandma's Cottage</div>
+      </div>
+      <div class="case-card" style="--rot:1.5deg" onclick="goToPuzzle('riddles')">
+        <span class="pin">📌</span>
+        <div class="card-emoji">🔮</div>
+        <div class="card-title">Oracle's Chamber</div>
+      </div>
+      <div class="case-card" style="--rot:-0.5deg" onclick="goToPuzzle('factory')">
+        <span class="pin">📌</span>
+        <div class="card-emoji">🍫</div>
+        <div class="card-title">Chocolate Factory</div>
+      </div>
+      <div class="case-card" id="deduction-card" style="--rot:0deg;border:2px solid #e91e63;" onclick="goToPuzzle('deduction')">
+        <span class="pin">📌</span>
+        <div class="card-emoji">🎯</div>
+        <div class="card-title">Grand Deduction</div>
+        <div style="font-size:.8rem;color:#e91e63;margin-top:4px;font-weight:600;">All 7 clues needed</div>
+      </div>
+    </div>
+    <div class="suspects-row">
+      <div style="color:#fff;font-weight:700;width:100%;text-align:center;margin-bottom:4px;">SUSPECTS</div>
+      <div class="suspect-badge"><div class="badge-emoji">🧪</div>Prof. Peep</div>
+      <div class="suspect-badge"><div class="badge-emoji">🧛</div>Count Chocola</div>
+      <div class="suspect-badge"><div class="badge-emoji">🍳</div>Sunny Side Up</div>
+      <div class="suspect-badge"><div class="badge-emoji">🧶</div>Grandma Basket</div>
+      <div class="suspect-badge"><div class="badge-emoji">🔮</div>The Oracle</div>
+    </div>
+  </div>
+</div>
+
+<!-- PUZZLE 1: CRIME SCENE -->
+<div id="crime-scene-screen" class="screen">
+  <div class="back-nav"><a onclick="returnToHub()">← Case Board</a></div>
+  <h2 class="section-title">🏛️ The Egg Vault</h2>
+  <div class="dialogue">
+    <div class="avatar">🐔</div>
+    <div class="speech-bubble">
+      <div class="name">Detective Clucksworth</div>
+      <p>The vault. Scene of the crime. Look around — anything could be important.</p>
+    </div>
+  </div>
+  <div class="dialogue">
+    <div class="avatar">🐰</div>
+    <div class="speech-bubble green">
+      <div class="name">The Easter Bunny</div>
+      <p>Oh wow, a dark underground vault. This doesn't remind me of anything traumatic at all. I am fine. I am completely fine. This is fine.</p>
+    </div>
+  </div>
+  <div class="vault-scene" id="vault-scene">
+    <div class="vault-floor"></div>
+    <!-- Evidence items -->
+    <div class="vault-obj" id="ev-thread" onclick="findEvidence('thread')" style="left:30px;top:100px;width:100px;height:155px;background:linear-gradient(180deg,#546e7a,#455a64);border:3px solid #78909c;border-radius:4px;">
+      <div style="font-size:.65rem;color:#90a4ae;margin-bottom:4px;">VAULT DOOR</div>
+      <div style="font-size:2.5rem;">🚪</div>
+      <div class="obj-label">🔒 Sealed</div>
+    </div>
+    <div class="vault-obj" id="ev-key" onclick="findEvidence('key')" style="left:175px;top:40px;width:130px;height:100px;background:#5d4037;border:2px solid #795548;border-radius:4px;">
+      <div style="font-size:.65rem;color:#bcaaa4;">SHELF UNIT</div>
+      <div style="font-size:1.4rem;">📦📦📦</div>
+      <div style="font-size:1.4rem;">📦📦📦</div>
+      <div class="obj-label">dusty shelves</div>
+    </div>
+    <div class="vault-obj" id="ev-candle" onclick="findEvidence('candle')" style="left:380px;top:115px;width:110px;height:85px;background:#6d4c41;border:2px solid #8d6e63;border-radius:4px;">
+      <div style="font-size:.65rem;color:#bcaaa4;">TABLE</div>
+      <div style="font-size:2rem;">🕯️</div>
+      <div class="obj-label">side table</div>
+    </div>
+    <div class="vault-obj" id="ev-note" onclick="findEvidence('note')" style="right:30px;top:60px;width:115px;height:115px;background:#4e342e;border:2px solid #6d4c41;border-radius:4px;">
+      <div style="font-size:.65rem;color:#bcaaa4;">DESK</div>
+      <div style="font-size:1.4rem;margin-top:6px;">📋🖊️</div>
+      <div style="font-size:1rem;margin-top:4px;">📄</div>
+      <div class="obj-label">papers scattered</div>
+    </div>
+    <div class="vault-obj" id="ev-footprints" onclick="findEvidence('footprints')" style="left:160px;bottom:12px;width:180px;height:42px;z-index:2;">
+      <div style="font-size:1.1rem;letter-spacing:8px;opacity:.7;">👣👣👣</div>
+      <div class="obj-label">marks?</div>
+    </div>
+    <!-- Red herrings -->
+    <div class="vault-obj" onclick="showRedHerring()" style="left:520px;top:25px;width:75px;height:65px;background:#3e2723;border:3px solid #ffcc00;">
+      <div style="font-size:1.8rem;">🖼️</div>
+      <div class="obj-label">painting</div>
+    </div>
+    <div class="vault-obj" onclick="showRedHerring()" style="right:12px;top:8px;width:48px;height:38px;">
+      <div style="font-size:1.4rem;">📹</div>
+      <div class="obj-label">camera</div>
+    </div>
+    <div class="vault-obj" onclick="showRedHerring()" style="right:40px;bottom:12px;width:55px;height:42px;z-index:2;">
+      <div style="font-size:1.6rem;">🪑</div>
+      <div class="obj-label">chair</div>
+    </div>
+    <div class="vault-obj" onclick="showRedHerring()" style="left:155px;top:170px;width:55px;height:70px;">
+      <div style="font-size:1.8rem;">🧥</div>
+      <div class="obj-label">coat rack</div>
+    </div>
+    <div class="vault-obj" onclick="showRedHerring()" style="left:330px;top:30px;width:48px;height:48px;">
+      <div style="font-size:1.8rem;">🕐</div>
+      <div class="obj-label">clock</div>
+    </div>
+    <div class="vault-obj" onclick="showRedHerring()" style="left:520px;top:130px;width:60px;height:55px;background:#4e342e;border:1px solid #6d4c41;border-radius:4px;">
+      <div style="font-size:1.5rem;">🧯</div>
+      <div class="obj-label">extinguisher</div>
+    </div>
+    <div class="vault-obj" onclick="showRedHerring()" style="left:350px;bottom:12px;width:60px;height:42px;z-index:2;">
+      <div style="font-size:1.3rem;">🫗</div>
+      <div class="obj-label">broken glass</div>
+    </div>
+    <div class="vault-obj" onclick="showRedHerring()" style="right:130px;top:130px;width:55px;height:50px;">
+      <div style="font-size:1.4rem;">☕</div>
+      <div class="obj-label">mug</div>
+    </div>
+  </div>
+  <div id="crime-red-herring" style="color:#999;font-style:italic;margin:8px 0;min-height:24px;"></div>
+  <div id="crime-evidence-popup" class="evidence-popup">
+    <h3 style="color:var(--green);margin-bottom:10px;">🔍 Evidence Collected</h3>
+    <ul class="evidence-list" id="evidence-list"></ul>
+  </div>
+  <div id="crime-scene-complete" class="puzzle-complete">
+    <h3>✅ Evidence Catalogued</h3>
+    <div class="clue-card">
+      <div class="clue-source">📋 Clue Card — Crime Scene</div>
+      <div class="clue-text">Evidence recovered: a <strong>purple thread</strong> on the vault door, small <strong>floury footprints (size 5)</strong>, a <strong>vanilla-scented candle</strong> still burning, a master key engraved <strong>"G.B."</strong> found under the shelf, and a handwritten note reading: <em>"Sorry dears! Will return them after the sunrise ceremony ♥"</em></div>
+    </div>
+    <button class="btn btn-secondary" onclick="returnToHub()">Return to Case Board</button>
+  </div>
+  <div class="hint-section" id="crime-hints">
+    <button class="hint-btn" onclick="showHint('crime-scene')">💡 Need a hint?</button>
+    <div id="crime-scene-hint-area"></div>
+  </div>
+</div>
+
+<!-- PUZZLE 2: LAB -->
+<div id="lab-screen" class="screen">
+  <div class="back-nav"><a onclick="returnToHub()">← Case Board</a></div>
+  <h2 class="section-title">🧪 Professor Peep's Lab</h2>
+  <div class="dialogue">
+    <div class="avatar">🧪</div>
+    <div class="speech-bubble green">
+      <div class="name">Professor Peep</div>
+      <p>VISITORS! I was working on my Revealing Elixir — shows hidden truths! But the recipe got scrambled. The ingredients and my constraint notes are on the table. Help me sort it out and I'll tell you what I saw last night!</p>
+    </div>
+  </div>
+  <div class="dialogue">
+    <div class="avatar">🐰</div>
+    <div class="speech-bubble green">
+      <div class="name">The Easter Bunny</div>
+      <p>Last time Peep made a potion it turned my fur temporarily invisible. I was just bones for two weeks. Two weeks! Do you know how hard it is to host a podcast as a skeleton?</p>
+    </div>
+  </div>
+  <div class="card">
+    <h3 style="margin-bottom:12px;">📜 Recipe Constraints:</h3>
+    <div class="constraint-card">1. "Frozen Spark must go <strong>immediately before</strong> Liquid Moonlight."</div>
+    <div class="constraint-card">2. "Shimmer Dust must come <strong>before</strong> Crystal Bloom."</div>
+    <div class="constraint-card">3. "Exactly <strong>two</strong> ingredients separate Shimmer Dust and Bubbling Nectar."</div>
+    <div class="constraint-card">4. "Ember Ash must be <strong>directly adjacent</strong> to both Crystal Bloom and Bubbling Nectar."</div>
+    <div class="constraint-card">5. "Crystal Bloom is <strong>NOT</strong> in position 1."</div>
+    <div class="constraint-card">6. "Liquid Moonlight is in the <strong>last three</strong> positions."</div>
+  </div>
+  <div class="card">
+    <h3>Ingredients:</h3>
+    <div class="ingredient-bank" id="ingredient-bank">
+      <div class="ingredient" onclick="placeIngredient(this,'Shimmer Dust')">✨ Shimmer Dust</div>
+      <div class="ingredient" onclick="placeIngredient(this,'Crystal Bloom')">💎 Crystal Bloom</div>
+      <div class="ingredient" onclick="placeIngredient(this,'Ember Ash')">🔥 Ember Ash</div>
+      <div class="ingredient" onclick="placeIngredient(this,'Bubbling Nectar')">🫧 Bubbling Nectar</div>
+      <div class="ingredient" onclick="placeIngredient(this,'Frozen Spark')">❄️ Frozen Spark</div>
+      <div class="ingredient" onclick="placeIngredient(this,'Liquid Moonlight')">🌙 Liquid Moonlight</div>
+    </div>
+    <h3>Sequence:</h3>
+    <div class="sequence-slots" id="sequence-slots">
+      <div class="slot" id="slot-0"><span class="slot-num">1</span></div>
+      <div class="slot" id="slot-1"><span class="slot-num">2</span></div>
+      <div class="slot" id="slot-2"><span class="slot-num">3</span></div>
+      <div class="slot" id="slot-3"><span class="slot-num">4</span></div>
+      <div class="slot" id="slot-4"><span class="slot-num">5</span></div>
+      <div class="slot" id="slot-5"><span class="slot-num">6</span></div>
+    </div>
+    <div id="lab-explosion" class="explosion"></div>
+    <div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap;">
+      <button class="btn btn-primary" onclick="checkPotion()">🧪 Brew</button>
+      <button class="btn btn-back" onclick="resetPotion()">↩ Reset</button>
+    </div>
+  </div>
+  <div id="lab-complete" class="puzzle-complete">
+    <h3>✅ The Revealing Elixir Glows!</h3>
+    <div class="dialogue" style="text-align:left;">
+      <div class="avatar">🧪</div>
+      <div class="speech-bubble green">
+        <div class="name">Professor Peep</div>
+        <p>MAGNIFICENT! Oh, you wanted information. Right. I was in my lab at about 2am and I heard footsteps outside. Someone was <strong>humming</strong>. A folk tune, definitely not opera. They were heading toward the Vault from the <strong>east side</strong> of campus.</p>
+      </div>
+    </div>
+    <div class="clue-card">
+      <div class="clue-source">📋 Clue Card — Peep's Lab</div>
+      <div class="clue-text">At 2am, Professor Peep heard <strong>folk-tune humming</strong> heading toward the Vault from the <strong>east side</strong> of campus.</div>
+    </div>
+    <button class="btn btn-secondary" onclick="returnToHub()">Return to Case Board</button>
+  </div>
+  <div class="hint-section">
+    <button class="hint-btn" onclick="showHint('lab')">💡 Need a hint?</button>
+    <div id="lab-hint-area"></div>
+  </div>
+</div>
+
+<!-- PUZZLE 3: CIPHER -->
+<div id="cipher-screen" class="screen">
+  <div class="back-nav"><a onclick="returnToHub()">← Case Board</a></div>
+  <h2 class="section-title">🧛 Count Chocola's Study</h2>
+  <div class="dialogue">
+    <div class="avatar">🧛</div>
+    <div class="speech-bubble pink">
+      <div class="name">Count Chocola</div>
+      <p>I keep a diary, encoded in my personal notation — a vampire must have his secrets. My assistant dropped a fragment of the cipher key on the way out. The rest, you'll have to work out yourself. Last night's entry may prove... <em>illuminating</em>.</p>
+    </div>
+  </div>
+  <div class="dialogue">
+    <div class="avatar">🐰</div>
+    <div class="speech-bubble green">
+      <div class="name">The Easter Bunny</div>
+      <p>Chocola is the most dramatic person I have ever met, and I once watched a goose have a meltdown at a farmer's market. He encodes his <em>grocery lists</em>.</p>
+    </div>
+  </div>
+  <div class="card">
+    <h3 style="margin-bottom:12px;">🔑 Cipher Key Fragment:</h3>
+    <div class="cipher-key">
+      <div class="key-pair given"><div class="symbol">♣</div><div class="letter">= A</div></div>
+      <div class="key-pair given"><div class="symbol">★</div><div class="letter">= E</div></div>
+      <div class="key-pair given"><div class="symbol">○</div><div class="letter">= H</div></div>
+      <div class="key-pair given"><div class="symbol">◆</div><div class="letter">= O</div></div>
+      <div class="key-pair given"><div class="symbol">♧</div><div class="letter">= T</div></div>
+    </div>
+    <h3 style="margin:20px 0 12px;">📜 Last Night's Entry:</h3>
+    <div class="cipher-display">♢◆▼★◆▽★ ♢▼♣△△ ★▽♧★♡★♠ ♧○★ ⊗♣⊕△♧ ♣♧ ▼■♠▽■●○♧ ♢▼★△△■▽● ◆☆ ⊗♣▽■△△♣</div>
+    <h3 style="margin-top:16px;">Your translation:</h3>
+    <input type="text" id="cipher-answer" placeholder="Type the decoded message..." style="margin:10px 0;max-width:100%;" onkeydown="if(event.key==='Enter')checkCipher()">
+    <div id="cipher-feedback" style="min-height:24px;margin:8px 0;font-weight:600;"></div>
+    <button class="btn btn-primary" onclick="checkCipher()">🔓 Decode</button>
+  </div>
+  <div id="cipher-complete" class="puzzle-complete">
+    <h3>✅ Message Decoded!</h3>
+    <div class="dialogue" style="text-align:left;">
+      <div class="avatar">🧛</div>
+      <div class="speech-bubble pink">
+        <div class="name">Count Chocola</div>
+        <p>You cracked it! Yes, I saw someone near the vault. Small in stature. And the <strong>vanilla</strong> — ugh! I'm <em>deathly</em> allergic to vanilla. I could smell it from my window. The smell of <strong>baking flour</strong> was unmistakable too. I was so nauseated I went straight to bed. I always sleep by 1am — beauty rest is non-negotiable.</p>
+      </div>
+    </div>
+    <div class="clue-card">
+      <div class="clue-source">📋 Clue Card — Chocola's Study</div>
+      <div class="clue-text">Chocola's diary confirms: someone <strong>small</strong> entered the Vault at <strong>midnight</strong>, smelling of <strong>vanilla and baking flour</strong>. Chocola is <strong>deathly allergic to vanilla</strong>.</div>
+    </div>
+    <button class="btn btn-secondary" onclick="returnToHub()">Return to Case Board</button>
+  </div>
+  <div class="hint-section">
+    <button class="hint-btn" onclick="showHint('cipher')">💡 Need a hint?</button>
+    <div id="cipher-hint-area"></div>
+  </div>
+</div>
+
+<!-- PUZZLE 4: TESTIMONY -->
+<div id="testimony-screen" class="screen">
+  <div class="back-nav"><a onclick="returnToHub()">← Case Board</a></div>
+  <h2 class="section-title">🍳 Sunny Side Up's Place</h2>
+  <div class="dialogue">
+    <div class="avatar">🍳</div>
+    <div class="speech-bubble amber">
+      <div class="name">Sunny Side Up</div>
+      <p>Oh my GOODNESS, detectives! How EXCITING! I mean — how TERRIBLE about the eggs! I'll tell you EVERYTHING I know! I have NOTHING to hide! 😊</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="dialogue" style="margin-bottom:16px;">
+      <div class="avatar">🐔</div>
+      <div class="speech-bubble">
+        <div class="name">Detective Clucksworth</div>
+        <p>Sunny's statement is on record. Something doesn't add up. Find what's wrong.</p>
+      </div>
+    </div>
+    <div class="dialogue" style="margin-bottom:16px;">
+      <div class="avatar">🐰</div>
+      <div class="speech-bubble green">
+        <div class="name">The Easter Bunny</div>
+        <p>Sunny is the nicest person I know. Extremely trustworthy. Has never lied about anything ever. I am being sarcastic, by the way. Sunny once told me they invented the color yellow.</p>
+      </div>
+    </div>
+    <div id="testimony-statements">
+      <div class="statement" data-stmt="1" onclick="toggleStatement(this)"><span class="stmt-num">#1</span> "Good morning! Up at 4am as always — I just love catching the sunrise!"</div>
+      <div class="statement" data-stmt="2" onclick="toggleStatement(this)"><span class="stmt-num">#2</span> "I baked a big batch of cookies yesterday — quite the baker, if I say so myself!"</div>
+      <div class="statement" data-stmt="3" onclick="toggleStatement(this)"><span class="stmt-num">#3</span> "Professor Peep waved at me from his lab window around 7am. Poor thing works all night!"</div>
+      <div class="statement" data-stmt="4" onclick="toggleStatement(this)"><span class="stmt-num">#4</span> "The east garden was absolutely lovely this morning. I walk through it every single day!"</div>
+      <div class="statement" data-stmt="5" onclick="toggleStatement(this)"><span class="stmt-num">#5</span> "I would NEVER go near the Egg Vault — it's underground and terribly dark. I'm scared of the dark!"</div>
+      <div class="statement" data-stmt="6" onclick="toggleStatement(this)"><span class="stmt-num">#6</span> "As always, I was sound asleep by 8pm. I never stay up late. Not ever!"</div>
+      <div class="statement" data-stmt="7" onclick="toggleStatement(this)"><span class="stmt-num">#7</span> "Oh! But I did pop out for midnight tea with Count Chocola — he just adores my vanilla biscuits!"</div>
+      <div class="statement" data-stmt="8" onclick="toggleStatement(this)"><span class="stmt-num">#8</span> "Grandma Basket and I are practically twins — same height, same shoe size, size 5! We even share shoes sometimes!"</div>
+      <div class="statement" data-stmt="9" onclick="toggleStatement(this)"><span class="stmt-num">#9</span> "I can't bake to save my life, honestly. Grandma makes all my treats for me!"</div>
+      <div class="statement" data-stmt="10" onclick="toggleStatement(this)"><span class="stmt-num">#10</span> "Anyway, I slept wonderfully and didn't notice anything unusual last night. Not a peep!"</div>
+      <div class="statement" data-stmt="11" onclick="toggleStatement(this)"><span class="stmt-num">#11</span> "Oh, Count Chocola and I go way back — we have tea together all the time! He always brings his own chocolate snacks."</div>
+      <div class="statement" data-stmt="12" onclick="toggleStatement(this)"><span class="stmt-num">#12</span> "Grandma always smells like vanilla and flour — I think it's her signature scent! So sweet."</div>
+    </div>
+    <div id="testimony-feedback" style="min-height:24px;margin:12px 0;font-weight:600;"></div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;">
+      <button class="btn btn-primary" onclick="checkTestimony()">🔍 Submit Findings</button>
+      <button class="btn btn-back" onclick="resetTestimony()">↩ Clear</button>
+    </div>
+  </div>
+  <div id="testimony-complete" class="puzzle-complete">
+    <h3>✅ Contradictions Identified!</h3>
+    <div class="dialogue" style="text-align:left;">
+      <div class="avatar">🐔</div>
+      <div class="speech-bubble">
+        <div class="name">Detective Clucksworth</div>
+        <p>Nice catch. She says she's a great baker AND can't bake. She says she's asleep by 8pm but had midnight tea. And she claims Chocola adores her <em>vanilla</em> biscuits — but he's deathly allergic to vanilla. Sunny's all over the place.</p>
+        <p style="margin-top:8px;">But one thing checks out — she and Grandma Basket are the same size. <strong>Shoe size 5.</strong> Same as the footprints in the vault.</p>
+      </div>
+    </div>
+    <div class="clue-card">
+      <div class="clue-source">📋 Clue Card — Sunny's Testimony</div>
+      <div class="clue-text">Sunny and Grandma Basket are the <strong>same size — shoe size 5</strong>. The vault footprints were <strong>size 5</strong>. Sunny's alibi is unreliable, but she's confirmed to be scared of the dark.</div>
+    </div>
+    <button class="btn btn-secondary" onclick="returnToHub()">Return to Case Board</button>
+  </div>
+  <div class="hint-section">
+    <button class="hint-btn" onclick="showHint('testimony')">💡 Need a hint?</button>
+    <div id="testimony-hint-area"></div>
+  </div>
+</div>
+
+<!-- PUZZLE 5: QUILT -->
+<div id="quilt-screen" class="screen">
+  <div class="back-nav"><a onclick="returnToHub()">← Case Board</a></div>
+  <h2 class="section-title">🧶 Grandma Basket's Cottage</h2>
+  <div class="dialogue">
+    <div class="avatar">🧶</div>
+    <div class="speech-bubble pink">
+      <div class="name">Grandma Basket</div>
+      <p>Oh hello, dears! Come in, come in. I was just working on my quilt — it's almost done! But my old eyes aren't what they used to be. Could you fill in the missing patches for me?</p>
+    </div>
+  </div>
+  <div class="dialogue">
+    <div class="avatar">🐰</div>
+    <div class="speech-bubble green">
+      <div class="name">The Easter Bunny</div>
+      <p>Grandma Basket is the sweetest person alive and I will not hear otherwise. She makes the best scones on campus. She once knitted me a sweater that said "World's OK-est Bunny" and honestly? Fair.</p>
+    </div>
+  </div>
+  <div class="card" style="text-align:center;">
+    <div style="display:flex;gap:16px;margin-bottom:16px;justify-content:center;flex-wrap:wrap;">
+      <span><span style="display:inline-block;width:16px;height:16px;background:#ce93d8;border-radius:3px;vertical-align:middle;"></span> Purple</span>
+      <span><span style="display:inline-block;width:16px;height:16px;background:#a5d6a7;border-radius:3px;vertical-align:middle;"></span> Green</span>
+      <span><span style="display:inline-block;width:16px;height:16px;background:#fff176;border-radius:3px;vertical-align:middle;"></span> Yellow</span>
+      <span><span style="display:inline-block;width:16px;height:16px;background:#f48fb1;border-radius:3px;vertical-align:middle;"></span> Pink</span>
+      <span><span style="display:inline-block;width:16px;height:16px;background:#90caf9;border-radius:3px;vertical-align:middle;"></span> Blue</span>
+    </div>
+    <div class="quilt-grid" id="quilt-grid"></div>
+    <p style="color:#999;font-size:.8rem;margin-top:8px;">Click blank patches to cycle colors.</p>
+    <div id="quilt-feedback" style="min-height:24px;margin:12px 0;font-weight:600;"></div>
+    <button class="btn btn-primary" onclick="checkQuilt()">🧵 Check</button>
+  </div>
+  <div id="quilt-complete" class="puzzle-complete">
+    <h3>✅ The Quilt is Complete!</h3>
+    <div class="dialogue" style="text-align:left;">
+      <div class="avatar">🧶</div>
+      <div class="speech-bubble pink">
+        <div class="name">Grandma Basket</div>
+        <p>Oh, it's beautiful! You know, I haven't slept a wink in weeks — insomnia, you see. Up all night, every night, knitting and wandering the halls.</p>
+        <p style="margin-top:8px;">I have the <strong>master key to every building on campus</strong>, you know. For emergencies.</p>
+        <p style="margin-top:8px;">Oh, and don't worry about those eggs, dearie. I'm sure they'll turn up. Probably after the <strong>sunrise ceremony</strong>, if I had to guess. Just a feeling! 😊</p>
+      </div>
+    </div>
+    <div class="clue-card">
+      <div class="clue-source">📋 Clue Card — Grandma's Cottage</div>
+      <div class="clue-text">Grandma <strong>hasn't slept in weeks</strong>, has <strong>master keys to every building</strong> on campus, and casually predicted the eggs would return <strong>"after the sunrise ceremony."</strong></div>
+    </div>
+    <button class="btn btn-secondary" onclick="returnToHub()">Return to Case Board</button>
+  </div>
+  <div class="hint-section">
+    <button class="hint-btn" onclick="showHint('quilt')">💡 Need a hint?</button>
+    <div id="quilt-hint-area"></div>
+  </div>
+</div>
+
+<!-- PUZZLE 6: RIDDLES -->
+<div id="riddles-screen" class="screen">
+  <div class="back-nav"><a onclick="returnToHub()">← Case Board</a></div>
+  <h2 class="section-title">🔮 The Oracle's Chamber</h2>
+  <div class="dialogue">
+    <div class="avatar">🔮</div>
+    <div class="speech-bubble blue">
+      <div class="name">The Oracle</div>
+      <p>Ah, seekers of truth. I know why you've come. I know <em>everything</em>, actually. I knew you were coming before you did. I knew what you had for breakfast. It was cereal. Don't ask me how I know that.</p>
+      <p style="margin-top:8px;">Anyway. Knowledge is not given freely — it must be earned. Three doors. You know the drill. Or you don't. I do. Because I know everything.</p>
+    </div>
+  </div>
+  <div class="dialogue">
+    <div class="avatar">🐰</div>
+    <div class="speech-bubble green">
+      <div class="name">The Easter Bunny</div>
+      <p>The Oracle has been like this for literally thousands of years. They once made me solve a riddle just to borrow a cup of sugar. The answer was "friendship." It's always "friendship" with them, except when it's not.</p>
+    </div>
+  </div>
+  <div id="riddle-1" class="riddle-door">
+    <div class="door-num">1</div>
+    <div class="riddle-text">"I have cities, but no houses. I have mountains, but no trees. I have water, but no fish. I have roads, but no cars. What am I?"</div>
+    <input type="text" id="riddle-1-input" placeholder="Your answer..." onkeydown="if(event.key==='Enter')checkRiddle(1)">
+    <div id="riddle-1-result" class="riddle-result"></div>
+    <button class="btn btn-warning" onclick="checkRiddle(1)" style="margin-top:12px;">Open Door</button>
+  </div>
+  <div id="riddle-2" class="riddle-door" style="display:none;">
+    <div class="door-num">2</div>
+    <div class="riddle-text">"Forward I am heavy, but backward I am not. What am I?"</div>
+    <input type="text" id="riddle-2-input" placeholder="Your answer..." onkeydown="if(event.key==='Enter')checkRiddle(2)">
+    <div id="riddle-2-result" class="riddle-result"></div>
+    <button class="btn btn-warning" onclick="checkRiddle(2)" style="margin-top:12px;">Open Door</button>
+  </div>
+  <div id="riddle-3" class="riddle-door" style="display:none;">
+    <div class="door-num">3</div>
+    <div class="riddle-text">"I can fly without wings. I can cry without eyes. Wherever I go, darkness follows me. What am I?"</div>
+    <input type="text" id="riddle-3-input" placeholder="Your answer..." onkeydown="if(event.key==='Enter')checkRiddle(3)">
+    <div id="riddle-3-result" class="riddle-result"></div>
+    <button class="btn btn-warning" onclick="checkRiddle(3)" style="margin-top:12px;">Open Door</button>
+  </div>
+  <div id="riddles-complete" class="puzzle-complete">
+    <h3>✅ All Three Doors Opened!</h3>
+    <div class="dialogue" style="text-align:left;">
+      <div class="avatar">🔮</div>
+      <div class="speech-bubble blue">
+        <div class="name">The Oracle</div>
+        <p>Impressive. Very well.</p>
+        <p style="margin-top:8px;">The eggs are <strong>safe</strong>. They are hidden in the <strong>garden, beneath the old sundial</strong>.</p>
+        <p style="margin-top:8px;">The one who took them meant no harm. They walk among you daily, <strong>bringing warmth and sweets</strong>. They wished to teach this campus a lesson — about <strong>taking things for granted</strong>.</p>
+      </div>
+    </div>
+    <div class="clue-card">
+      <div class="clue-source">📋 Clue Card — The Oracle</div>
+      <div class="clue-text">The Oracle reveals: eggs are hidden <strong>under the sundial in the garden</strong>. The thief <strong>"brings warmth and sweets daily"</strong> and wanted to <strong>teach everyone a lesson about taking things for granted</strong>.</div>
+    </div>
+    <button class="btn btn-secondary" onclick="returnToHub()">Return to Case Board</button>
+  </div>
+  <div class="hint-section">
+    <button class="hint-btn" onclick="showHint('riddles')">💡 Need a hint?</button>
+    <div id="riddles-hint-area"></div>
+  </div>
+</div>
+
+<!-- PUZZLE 7: FACTORY -->
+<div id="factory-screen" class="screen">
+  <div class="back-nav"><a onclick="returnToHub()">← Case Board</a></div>
+  <h2 class="section-title">🍫 The Chocolate Factory</h2>
+  <div class="dialogue">
+    <div class="avatar">🧛</div>
+    <div class="speech-bubble pink">
+      <div class="name">Count Chocola</div>
+      <p>The security footage is in the back office — but you'll have to get through my four puzzle rooms first. Choose the wrong door and you start over.</p>
+    </div>
+  </div>
+  <div class="dialogue">
+    <div class="avatar">🐰</div>
+    <div class="speech-bubble green">
+      <div class="name">The Easter Bunny</div>
+      <p>Four puzzle rooms just to watch a security tape. This is why I stopped going to Chocola's dinner parties. Last time I had to solve a crossword to use the bathroom.</p>
+    </div>
+  </div>
+  <div id="factory-progress" style="text-align:center;margin:10px 0;font-weight:700;color:#7b1fa2;">Room <span id="factory-room-num">1</span> of 4</div>
+  <div id="factory-room-1" class="factory-room">
+    <h3>🚪 Room 1</h3>
+    <div class="room-clue">"What comes next in the sequence? 1, 1, 2, 3, 5, 8, ___"</div>
+    <div class="door-options">
+      <button class="door-btn" onclick="tryDoor(1,'11')">11</button>
+      <button class="door-btn" onclick="tryDoor(1,'13')">13</button>
+      <button class="door-btn" onclick="tryDoor(1,'15')">15</button>
+    </div>
+  </div>
+  <div id="factory-room-2" class="factory-room" style="display:none;">
+    <h3>🚪 Room 2</h3>
+    <div class="room-clue">"A bat and a ball together cost $1.10. The bat costs $1.00 more than the ball. How much does the ball cost?"</div>
+    <div class="door-options">
+      <button class="door-btn" onclick="tryDoor(2,'0.05')">$0.05</button>
+      <button class="door-btn" onclick="tryDoor(2,'0.10')">$0.10</button>
+      <button class="door-btn" onclick="tryDoor(2,'0.15')">$0.15</button>
+    </div>
+  </div>
+  <div id="factory-room-3" class="factory-room" style="display:none;">
+    <h3>🚪 Room 3</h3>
+    <div class="room-clue">"What word becomes shorter when you add two letters to it?"</div>
+    <div class="door-options">
+      <button class="door-btn" onclick="tryDoor(3,'long')">LONG</button>
+      <button class="door-btn" onclick="tryDoor(3,'short')">SHORT</button>
+      <button class="door-btn" onclick="tryDoor(3,'brief')">BRIEF</button>
+    </div>
+  </div>
+  <div id="factory-room-4" class="factory-room" style="display:none;">
+    <h3>🚪 Room 4</h3>
+    <div class="room-clue">"I appear once in every minute, twice in every moment, but never in a thousand years. What am I?"</div>
+    <div class="door-options">
+      <button class="door-btn" onclick="tryDoor(4,'time')">Time</button>
+      <button class="door-btn" onclick="tryDoor(4,'m')">The Letter M</button>
+      <button class="door-btn" onclick="tryDoor(4,'heartbeat')">A Heartbeat</button>
+    </div>
+  </div>
+  <div id="factory-status" class="factory-status"></div>
+  <div id="factory-complete" class="puzzle-complete">
+    <h3>✅ You Reached the Security Office!</h3>
+    <div class="dialogue" style="text-align:left;">
+      <div class="avatar">🧛</div>
+      <div class="speech-bubble pink">
+        <div class="name">Count Chocola</div>
+        <p>Bravo! BRAVO! Now, the footage... Camera 7, east wing, 12:05 AM. A <strong>small figure</strong> in a <strong>purple shawl</strong>, heading away from the Vault carrying an <strong>enormous basket</strong>, toward the <strong>garden</strong>.</p>
+      </div>
+    </div>
+    <div class="clue-card">
+      <div class="clue-source">📋 Clue Card — Chocolate Factory</div>
+      <div class="clue-text">Security footage: a <strong>small figure in a purple shawl</strong> at <strong>12:05 AM</strong>, east side of campus, carrying an <strong>enormous basket</strong> toward the garden.</div>
+    </div>
+    <button class="btn btn-secondary" onclick="returnToHub()">Return to Case Board</button>
+  </div>
+  <div class="hint-section">
+    <button class="hint-btn" onclick="showHint('factory')">💡 Need a hint?</button>
+    <div id="factory-hint-area"></div>
+  </div>
+</div>
+
+<!-- PUZZLE 8: DEDUCTION -->
+<div id="deduction-screen" class="screen">
+  <div class="back-nav"><a onclick="returnToHub()">← Case Board</a></div>
+  <h2 class="section-title">🎯 The Grand Deduction</h2>
+  <div class="dialogue">
+    <div class="avatar">🐔</div>
+    <div class="speech-bubble">
+      <div class="name">Detective Clucksworth</div>
+      <p>All seven clues. Time to put them together. <strong>WHO</strong>, <strong>WHERE</strong>, and <strong>WHY</strong>.</p>
+    </div>
+  </div>
+  <div class="dialogue">
+    <div class="avatar">🐰</div>
+    <div class="speech-bubble green">
+      <div class="name">The Easter Bunny</div>
+      <p>OK I just want to go on record saying that whoever did this probably had a very good reason and we should approach this with empathy and compassion. Also, it definitely wasn't me. I have an alibi. I was recording a podcast. About sourdough. You can check.</p>
+    </div>
+  </div>
+  <div class="card">
+    <h3 style="margin-bottom:16px;">📋 Your Clue Cards</h3>
+    <div id="deduction-clue-display"></div>
+  </div>
+  <div class="card">
+    <h3 style="margin-bottom:16px;">🔍 Suspect Profiles</h3>
+    <div class="suspect-profile">
+      <div class="profile-emoji">🧪</div>
+      <div><div class="profile-name">Professor Peep</div>
+      <div class="profile-desc">Lives in the Lab Tower (<strong>west side</strong>). Night owl — works midnight to 8am. White lab coat. Loves baking experiments (always covered in flour). <strong>Large and puffy</strong> build. <strong>Completely tone-deaf</strong> — cannot hum or sing.</div></div>
+    </div>
+    <div class="suspect-profile">
+      <div class="profile-emoji">🧛</div>
+      <div><div class="profile-name">Count Chocola</div>
+      <div class="profile-desc">Lives in the Dark Cellar (<strong>east side</strong>). Always sleeps by <strong>1am</strong>. Purple velvet cape. Never bakes — only eats chocolate. <strong>Deathly allergic to vanilla</strong>. Trained opera singer.</div></div>
+    </div>
+    <div class="suspect-profile">
+      <div class="profile-emoji">🍳</div>
+      <div><div class="profile-name">Sunny Side Up</div>
+      <div class="profile-desc">Lives in the Sunrise Suite (<strong>east side</strong>). <strong>Asleep by 8pm</strong>, up at 4am. Yellow bonnet. Shoe size 5. <strong>Afraid of the dark</strong>. Always humming cheerfully. Unreliable memory.</div></div>
+    </div>
+    <div class="suspect-profile">
+      <div class="profile-emoji">🧶</div>
+      <div><div class="profile-name">Grandma Basket</div>
+      <div class="profile-desc">Lives in the Cozy Cottage (<strong>east side, next to the garden</strong>). Severe <strong>insomnia — never sleeps</strong>. <strong>Purple knitted shawl</strong>. Master baker (always smells of vanilla and flour). <strong>Small build, shoe size 5</strong>. Hums <strong>folk tunes</strong>. Has <strong>master keys</strong> to every building.</div></div>
+    </div>
+    <div class="suspect-profile">
+      <div class="profile-emoji">🔮</div>
+      <div><div class="profile-name">The Oracle</div>
+      <div class="profile-desc">Lives in the Crystal Spire (<strong>center of campus</strong>). <strong>Incorporeal</strong> — cannot physically touch or carry objects. Purple robes. Speaks in riddles.</div></div>
+    </div>
+  </div>
+  <div class="deduction-form">
+    <h3>🎯 Your Final Answer</h3>
+    <label>WHO stole the eggs?</label>
+    <select id="who-answer">
+      <option value="">— Select —</option>
+      <option value="peep">Professor Peep</option>
+      <option value="chocola">Count Chocola</option>
+      <option value="sunny">Sunny Side Up</option>
+      <option value="grandma">Grandma Basket</option>
+      <option value="oracle">The Oracle</option>
+    </select>
+    <label>WHERE are the eggs hidden?</label>
+    <input type="text" id="where-answer" placeholder="Describe the location...">
+    <label>WHY did they do it?</label>
+    <select id="why-answer">
+      <option value="">— Select —</option>
+      <option value="ransom">To hold them for ransom</option>
+      <option value="appreciate">To teach everyone to appreciate Easter</option>
+      <option value="business">To start a rival egg business</option>
+      <option value="accident">It was all an accident</option>
+      <option value="fun">Just for fun</option>
+    </select>
+    <div id="deduction-feedback" style="min-height:24px;margin:16px 0;font-weight:600;"></div>
+    <button class="btn btn-pink" onclick="checkDeduction()" style="font-size:1.1rem;margin-top:8px;">🔓 Crack the Case</button>
+  </div>
+  <div class="hint-section">
+    <button class="hint-btn" onclick="showHint('deduction')">💡 Need a hint?</button>
+    <div id="deduction-hint-area"></div>
+  </div>
+</div>
+
+<!-- ENDING -->
+<div id="ending-screen" class="screen">
+  <div class="card" style="text-align:center;">
+    <h2 style="color:#2e7d32;">🎉 Case Closed! 🎉</h2>
+    <div class="final-time" id="final-time">00:00</div>
+    <p style="color:#777;">Team <strong><span id="final-team-name"></span></strong></p>
+  </div>
+  <div class="dialogue">
+    <div class="avatar">🐔</div>
+    <div class="speech-bubble"><div class="name">Detective Clucksworth</div><p>We found her in the garden. Sitting peacefully next to the sundial. Knitting.</p></div>
+  </div>
+  <div class="dialogue">
+    <div class="avatar">🧶</div>
+    <div class="speech-bubble pink">
+      <div class="name">Grandma Basket</div>
+      <p>Oh, you figured it out! Well done, dears.</p>
+      <p style="margin-top:10px;">Every year, everyone rushes to grab eggs without stopping to think about where they come from. Who painted them. Who hid them with love in the wee hours of the morning. Who's been baking scones for this campus since before any of you were born.</p>
+      <p style="margin-top:10px;">I just wanted <strong>one sunrise</strong> where everyone stopped and thought about what Easter really means: <strong>coming together, being grateful, and noticing the little things people do for each other</strong>.</p>
+    </div>
+  </div>
+  <div style="text-align:center;margin:20px 0;"><p style="font-style:italic;color:#666;">She lifts the sundial to reveal hundreds of eggs, beautifully painted and arranged in a spiral.</p></div>
+  <div class="dialogue">
+    <div class="avatar">🧶</div>
+    <div class="speech-bubble pink"><div class="name">Grandma Basket</div><p>Now go on, take them. But maybe this year... <strong>appreciate them first</strong>.</p></div>
+  </div>
+  <div class="dialogue">
+    <div class="avatar">🐔</div>
+    <div class="speech-bubble"><div class="name">Detective Clucksworth</div><p style="font-style:italic;">*removes detective hat*</p><p>Case closed. And... she has a point.</p></div>
+  </div>
+  <div class="dialogue">
+    <div class="avatar">🐰</div>
+    <div class="speech-bubble green">
+      <div class="name">The Easter Bunny</div>
+      <p>I told you it was going to be chill this year. I <em>told</em> you. But nooo, someone had to go and steal all the eggs and make it a whole thing. Every single year, something happens. Every. Single. Year.</p>
+      <p style="margin-top:10px;">...</p>
+      <p style="margin-top:10px;">But I guess that's kind of the point, isn't it? Easter wouldn't be Easter without a little adventure. Without all of you showing up and solving things and being together. Even when it's chaotic. <em>Especially</em> when it's chaotic.</p>
+      <p style="margin-top:10px;">Grandma's right. The eggs were never really the point.</p>
+      <p style="margin-top:10px;">Anyway, I should get back to my podcast. This week's episode is about sourdough. Happy Easter, everyone. For real this time. 🐰</p>
+    </div>
+  </div>
+  <div class="card" style="text-align:center;background:linear-gradient(135deg,#f3e5f5,#e8f5e9,#fff8e1);border:2px solid var(--purple);">
+    <div style="font-size:3rem;margin-bottom:10px;">🐣🌷🥚🌸🐰</div>
+    <h2 style="color:#7b1fa2;">Happy Easter!</h2>
+    <p style="margin-top:12px;color:#555;">From The Easter Bunny, Detective Clucksworth, Professor Peep,<br>Count Chocola, Sunny Side Up, Grandma Basket, and The Oracle.</p>
+    <p style="margin-top:16px;font-style:italic;color:#999;">Appreciate the people who make your life a little sweeter. 💛</p>
+  </div>
+</div>
+
+<!-- CLUE BOOK MODAL -->
+<div class="modal-overlay" id="clue-book-modal">
+  <div class="modal" style="position:relative;">
+    <button class="modal-close" onclick="toggleClueBook()">✕</button>
+    <h2>📖 Clue Book</h2>
+    <div id="clue-book-content"><div class="no-clues">No clues collected yet.</div></div>
+  </div>
+</div>
+<div class="confetti" id="confetti-container"></div>
+
+<script>
+// ===== STATE =====
+const state = {
+  teamName:'',timerStart:null,timerInterval:null,
+  puzzlesSolved:new Set(),clueCards:[],hintsUsed:{},
+  evidenceFound:new Set(),
+  potionSequence:[],
+  flaggedStatements:new Set(),
+  quiltState:{},
+  riddlesSolved:0,
+  factoryRoom:1,
+};
+
+// ===== HINTS =====
+const hints = {
+  'crime-scene': [
+    "Not everything here is evidence. Look for things that seem unusual or out of place for a vault.",
+    "Focus on the door, the floor, the shelf, the table, and the desk. Each has something worth examining.",
+    "Click: the vault door (thread), the footprints (floor), the candle (table), the shelf unit (key), and the desk papers (note)."
+  ],
+  'lab': [
+    "Start with the most restrictive constraints. Constraint 4 is key — which ingredient must sit between two others?",
+    "Constraint 4 means Ember Ash has Crystal Bloom on one side and Bubbling Nectar on the other. Constraint 1 forces Frozen Spark immediately before Liquid Moonlight. Constraint 6 pins Liquid Moonlight to positions 4, 5, or 6.",
+    "The order: Shimmer Dust, Crystal Bloom, Ember Ash, Bubbling Nectar, Frozen Spark, Liquid Moonlight."
+  ],
+  'cipher': [
+    "You have 5 letters: A, E, H, O, T. Replace every known symbol, then look for recognizable word shapes. 'THE' and 'AT' should appear fully decoded.",
+    "The first word has the pattern _O_EO_E (7 letters). The last word is _A____A (7 letters). Think common English words.",
+    "SOMEONE SMALL ENTERED THE VAULT AT MIDNIGHT SMELLING OF VANILLA"
+  ],
+  'testimony': [
+    "Compare each statement to every other statement. Also consider what you know about the other suspects from other puzzles.",
+    "Look for: a pair of statements that directly contradict each other about a skill, a statement that contradicts her own schedule, and a claim about another suspect that can't be true.",
+    "Statements #2 and #9 contradict each other. #7 contradicts #6. And #7 claims Chocola adores vanilla — he's deathly allergic."
+  ],
+  'quilt': [
+    "Study the colors already placed. Is there a pattern governing which colors appear where?",
+    "Each row contains all five colors exactly once. Each column does too.",
+    "Use elimination: for each blank, list which colors are already in its row AND its column. The one missing from both is your answer."
+  ],
+  'riddles': [
+    "Think about abstract or everyday objects, not just literal interpretations. Some answers play on words.",
+    "Riddle 1: something you'd find in a classroom, flat and covered in detail. Riddle 2: think about the word itself spelled backward. Riddle 3: look up at the sky on a grey day.",
+    "The answers: MAP, TON (backward = NOT), CLOUD."
+  ],
+  'factory': [
+    "Room 1: it's a famous number sequence. Room 2: do the algebra — don't trust your gut.",
+    "Room 2: ball = X, bat = X + $1.00, total = X + (X + $1.00) = $1.10. Solve for X. Room 3: think about the word, not the meaning.",
+    "Answers: 13 (Fibonacci), $0.05, SHORT (add ER = SHORTER), The Letter M."
+  ],
+  'deduction': [
+    "Review every clue. Match physical descriptions (size, clothing, smell) and abilities (humming, baking, access) to suspect profiles.",
+    "Focus on: the key engraved 'G.B.', the purple shawl on camera, the folk-tune humming at 2am, size 5 floury footprints, and who never sleeps.",
+    "Purple thread + shawl, small build, size 5 shoes, vanilla + flour smell, folk humming, master keys (G.B.), insomnia, lives near garden. Eggs are under the sundial."
+  ],
+};
+
+// ===== EVIDENCE =====
+const evidenceData = {
+  thread:{text:'A strand of <strong>purple thread</strong> caught on the vault door handle'},
+  footprints:{text:'Small <strong>floury footprints</strong> on the floor — <strong>size 5</strong> shoes'},
+  candle:{text:'A <strong>vanilla-scented candle</strong>, still warm'},
+  key:{text:'A master key engraved <strong>"G.B."</strong> tucked under the bottom shelf'},
+  note:{text:'A handwritten note: <em>"Sorry dears! Will return them after the sunrise ceremony ♥"</em>'},
+};
+const redHerrings = [
+  "Nothing unusual here.",
+  "Clucksworth shakes his head. \"Not relevant.\"",
+  "Just a regular item. Move on.",
+  "You examine it thoroughly. Nothing out of the ordinary.",
+  "Nope. Keep looking.",
+];
+
+// ===== NAVIGATION =====
+function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo(0,0);}
+function startGame(){const name=document.getElementById('team-name-input').value.trim();if(!name){document.getElementById('team-name-input').focus();return;}state.teamName=name;document.getElementById('team-display').textContent='🐔 Team: '+name;document.getElementById('top-bar').classList.add('visible');document.body.classList.add('top-bar-spacer');startTimer();showScreen('hub-screen');}
+function goToPuzzle(puzzle){if(puzzle==='deduction'){if(state.clueCards.length<7){alert('You need all 7 clue cards! You have '+state.clueCards.length+'/7.');return;}populateDeductionClues();}if(state.puzzlesSolved.has(puzzle)&&puzzle!=='deduction')return;showScreen(puzzle+'-screen');}
+function returnToHub(){updateHub();showScreen('hub-screen');}
+function updateHub(){document.querySelectorAll('.case-card').forEach(card=>{const oc=card.getAttribute('onclick');if(!oc)return;const m=oc.match(/goToPuzzle\('(.+?)'\)/);if(m&&state.puzzlesSolved.has(m[1]))card.classList.add('solved');});const d=document.getElementById('deduction-card');if(state.clueCards.length>=7){d.querySelector('div:last-child').textContent='READY';d.querySelector('div:last-child').style.color='#2e7d32';}const h=document.getElementById('hub-dialogue');if(state.clueCards.length===0)h.textContent="Here's what we know: five suspects, seven leads. Investigate in any order. Every solved lead gets us a clue card. Get all seven and we crack the case.";else if(state.clueCards.length<7)h.textContent=`${state.clueCards.length} clue card${state.clueCards.length>1?'s':''}. ${7-state.clueCards.length} to go.`;else h.textContent="All seven clues. Time for the Grand Deduction.";const bh=document.getElementById('bunny-hub-dialogue');const bunnyQuips=["I know some of these suspects personally and I just want to say they are all perfectly lovely people and none of them would ever steal anything. Except maybe the Oracle. The Oracle is suspicious on a good day.","You know what, I'm actually starting to get into this detective thing. Maybe this can be my new career. \"The Easter Bunny: Private Eye.\" I'd watch that show.","I just want to point out that I have not been trapped in a single dungeon today and I think that's real growth.","Can we hurry this up? My sourdough starter needs feeding in 45 minutes and I refuse to let Sergio die. Yes, I named my starter. Don't judge me.","I've been thinking and I'm pretty sure the real criminal here is whoever designed a vault with no security cameras that actually work.","Almost there. I can feel it. Also I can feel that my left foot is asleep because I've been standing here for like an hour.","You know, every year I say 'this year will be different' and every year I end up solving crimes with a chicken. Life is a beautiful mystery."];if(bh)bh.textContent=bunnyQuips[Math.min(state.clueCards.length,bunnyQuips.length-1)];}
+
+// ===== TIMER =====
+function startTimer(){state.timerStart=Date.now();state.timerInterval=setInterval(()=>{const e=Math.floor((Date.now()-state.timerStart)/1000);document.getElementById('timer-display').textContent=String(Math.floor(e/60)).padStart(2,'0')+':'+String(e%60).padStart(2,'0');},1000);}
+function stopTimer(){clearInterval(state.timerInterval);return document.getElementById('timer-display').textContent;}
+
+// ===== CLUES =====
+function addClue(source,text){state.clueCards.push({source,text});document.getElementById('clue-display').textContent='Clues: '+state.clueCards.length+'/7';}
+function toggleClueBook(){const m=document.getElementById('clue-book-modal');m.classList.toggle('show');if(m.classList.contains('show')){const c=document.getElementById('clue-book-content');c.innerHTML=state.clueCards.length===0?'<div class="no-clues">No clues yet.</div>':state.clueCards.map(c=>`<div class="clue-card"><div class="clue-source">📋 ${c.source}</div><div class="clue-text">${c.text}</div></div>`).join('');}}
+function completePuzzle(id,src,txt){state.puzzlesSolved.add(id);addClue(src,txt);document.getElementById(id+'-complete').classList.add('show');const hs=document.querySelector('#'+id+'-screen .hint-section');if(hs)hs.style.display='none';}
+
+// ===== HINTS =====
+function showHint(id){if(!state.hintsUsed[id])state.hintsUsed[id]=0;const n=state.hintsUsed[id],list=hints[id];if(n>=list.length)return;const area=document.getElementById(id+'-hint-area'),div=document.createElement('div');div.className='hint-text';div.innerHTML=`<strong>Hint ${n+1}/${list.length}:</strong> ${list[n]}`;area.appendChild(div);state.hintsUsed[id]++;if(state.hintsUsed[id]>=list.length){const btn=area.parentElement.querySelector('.hint-btn');btn.disabled=true;btn.textContent='All hints revealed';}}
+
+// ===== P1: CRIME SCENE =====
+function findEvidence(id){if(state.evidenceFound.has(id)||state.puzzlesSolved.has('crime-scene'))return;state.evidenceFound.add(id);document.getElementById('ev-'+id).classList.add('found');document.getElementById('crime-red-herring').textContent='';const p=document.getElementById('crime-evidence-popup');p.classList.add('show');const li=document.createElement('li');li.innerHTML=evidenceData[id].text;document.getElementById('evidence-list').appendChild(li);if(state.evidenceFound.size>=5)completePuzzle('crime-scene','Crime Scene','Evidence: a <strong>purple thread</strong> on the vault door, small <strong>floury footprints (size 5)</strong>, a <strong>vanilla-scented candle</strong>, a key engraved <strong>"G.B."</strong>, and a note: <em>"Sorry dears! Will return them after the sunrise ceremony ♥"</em>');}
+function showRedHerring(){if(state.puzzlesSolved.has('crime-scene'))return;document.getElementById('crime-red-herring').textContent=redHerrings[Math.floor(Math.random()*redHerrings.length)];}
+
+// ===== P2: LAB =====
+function placeIngredient(el,name){if(el.classList.contains('placed')||state.puzzlesSolved.has('lab'))return;if(state.potionSequence.length>=6)return;el.classList.add('placed');const idx=state.potionSequence.length;state.potionSequence.push(name);const slot=document.getElementById('slot-'+idx);slot.textContent=name;slot.classList.add('filled');document.getElementById('lab-explosion').classList.remove('show');}
+function resetPotion(){if(state.puzzlesSolved.has('lab'))return;state.potionSequence=[];document.querySelectorAll('.ingredient').forEach(el=>el.classList.remove('placed'));for(let i=0;i<6;i++){const s=document.getElementById('slot-'+i);s.innerHTML='<span class="slot-num">'+(i+1)+'</span>';s.classList.remove('filled');}document.getElementById('lab-explosion').classList.remove('show');}
+function checkPotion(){if(state.puzzlesSolved.has('lab'))return;if(state.potionSequence.length<6){document.getElementById('lab-explosion').innerHTML='⚠️ Place all 6 ingredients first!';document.getElementById('lab-explosion').classList.add('show');return;}const correct=['Shimmer Dust','Crystal Bloom','Ember Ash','Bubbling Nectar','Frozen Spark','Liquid Moonlight'];if(state.potionSequence.every((v,i)=>v===correct[i])){completePuzzle('lab',"Peep's Lab",'At 2am, Professor Peep heard <strong>folk-tune humming</strong> heading toward the Vault from the <strong>east side</strong> of campus.');}else{const msgs=["💥 BOOM! Sparkly smoke everywhere! \"Oopsie!\" says Peep.","💥 KABOOM! Purple goo! \"Fascinating failure!\" Peep exclaims.","💥 POOF! The mixture turns into a very angry butterfly.","💥 SPLAT! The potion becomes sentient and leaves the room."];document.getElementById('lab-explosion').innerHTML=msgs[Math.floor(Math.random()*msgs.length)];document.getElementById('lab-explosion').classList.add('show');resetPotion();}}
+
+// ===== P3: CIPHER =====
+function checkCipher(){if(state.puzzlesSolved.has('cipher'))return;const a=document.getElementById('cipher-answer').value.trim().toUpperCase().replace(/[^A-Z ]/g,'').replace(/\s+/g,' ');const correct='SOMEONE SMALL ENTERED THE VAULT AT MIDNIGHT SMELLING OF VANILLA';const fb=document.getElementById('cipher-feedback');if(a===correct){completePuzzle('cipher',"Chocola's Study","Chocola's diary confirms: someone <strong>small</strong> entered the Vault at <strong>midnight</strong>, smelling of <strong>vanilla and baking flour</strong>. Chocola is <strong>deathly allergic to vanilla</strong>.");}else{const cw=correct.split(' '),aw=a.split(' ');let m=0;cw.forEach((w,i)=>{if(aw[i]===w)m++;});if(m===0)fb.innerHTML='<span style="color:#e91e63;">That doesn\'t look right.</span>';else fb.innerHTML=`<span style="color:#ff9800;">Getting closer — ${m}/${cw.length} words correct.</span>`;}}
+
+// ===== P4: TESTIMONY =====
+function toggleStatement(el){if(state.puzzlesSolved.has('testimony'))return;const n=el.dataset.stmt;if(state.flaggedStatements.has(n)){state.flaggedStatements.delete(n);el.classList.remove('flagged');}else{state.flaggedStatements.add(n);el.classList.add('flagged');}document.getElementById('testimony-feedback').textContent='';}
+function resetTestimony(){if(state.puzzlesSolved.has('testimony'))return;state.flaggedStatements.clear();document.querySelectorAll('.statement').forEach(s=>s.classList.remove('flagged'));document.getElementById('testimony-feedback').textContent='';}
+function checkTestimony(){if(state.puzzlesSolved.has('testimony'))return;const correct=new Set(['2','7','9']);const flagged=state.flaggedStatements;const fb=document.getElementById('testimony-feedback');if(flagged.size===0){fb.innerHTML='<span style="color:#ff9800;">You haven\'t flagged anything.</span>';return;}const allFound=[...correct].every(s=>flagged.has(s));const noExtras=[...flagged].every(s=>correct.has(s));if(allFound&&noExtras){completePuzzle('testimony',"Sunny's Testimony","Sunny and Grandma Basket are the <strong>same size — shoe size 5</strong>. The vault footprints were <strong>size 5</strong>. Sunny's alibi is unreliable, but she's confirmed to be scared of the dark.");}else if(allFound&&!noExtras){fb.innerHTML='<span style="color:#ff9800;">You\'ve found the real problems, but some flagged statements are actually fine. Remove the extras.</span>';}else if(!allFound&&noExtras){fb.innerHTML='<span style="color:#ff9800;">Good instincts — everything flagged so far is a real issue. But you\'re still missing something.</span>';}else{fb.innerHTML='<span style="color:#e91e63;">Some flags are right, some aren\'t. Re-read carefully.</span>';}}
+
+// ===== P5: QUILT (5x5 Latin Square) =====
+const quiltColors=['purple','green','yellow','pink','blue'];
+const quiltColorHex={purple:'#ce93d8',green:'#a5d6a7',yellow:'#fff176',pink:'#f48fb1',blue:'#90caf9'};
+const fullGrid=[['purple','green','yellow','pink','blue'],['blue','yellow','pink','purple','green'],['pink','blue','purple','green','yellow'],['green','purple','blue','yellow','pink'],['yellow','pink','green','blue','purple']];
+const missingCells=[[0,3],[1,0],[1,4],[2,1],[3,2],[3,3],[4,1],[4,3]];
+const missingSet=new Set(missingCells.map(c=>c[0]+','+c[1]));
+
+function initQuilt(){const grid=document.getElementById('quilt-grid');grid.innerHTML='';for(let r=0;r<5;r++){for(let c=0;c<5;c++){const cell=document.createElement('div');cell.className='quilt-cell';if(missingSet.has(r+','+c)){cell.classList.add('missing');cell.textContent='?';state.quiltState[r+','+c]=null;cell.addEventListener('click',()=>cycleQuiltColor(cell,r,c));}else{cell.style.background=quiltColorHex[fullGrid[r][c]];}grid.appendChild(cell);}}}
+function cycleQuiltColor(cell,r,c){if(state.puzzlesSolved.has('quilt'))return;const cur=state.quiltState[r+','+c];let idx=cur===null?0:(quiltColors.indexOf(cur)+1)%quiltColors.length;const nc=quiltColors[idx];state.quiltState[r+','+c]=nc;cell.style.background=quiltColorHex[nc];cell.textContent='';cell.classList.remove('missing');document.getElementById('quilt-feedback').textContent='';}
+function checkQuilt(){if(state.puzzlesSolved.has('quilt'))return;let filled=true,correct=true;for(const[r,c]of missingCells){const exp=fullGrid[r][c],act=state.quiltState[r+','+c];if(act===null){filled=false;correct=false;}else if(act!==exp)correct=false;}if(!filled){document.getElementById('quilt-feedback').innerHTML='<span style="color:#ff9800;">Fill in all blank patches first.</span>';return;}if(correct){for(const[r,c]of missingCells)document.querySelectorAll('.quilt-cell')[r*5+c].classList.add('correct');completePuzzle('quilt',"Grandma's Cottage","Grandma <strong>hasn't slept in weeks</strong>, has <strong>master keys to every building</strong>, and predicted eggs would return <strong>\"after the sunrise ceremony.\"</strong>");}else{document.getElementById('quilt-feedback').innerHTML='<span style="color:#e91e63;">Something\'s off. Study the pattern more carefully.</span>';for(const[r,c]of missingCells){if(state.quiltState[r+','+c]!==fullGrid[r][c]){const cell=document.querySelectorAll('.quilt-cell')[r*5+c];cell.style.background='#f5f5f5';cell.textContent='?';cell.classList.add('missing');state.quiltState[r+','+c]=null;}}}}
+
+// ===== P6: RIDDLES =====
+function checkRiddle(num){if(num<=state.riddlesSolved)return;const answers={1:['map','a map'],2:['ton','a ton'],3:['cloud','a cloud','clouds']};const input=document.getElementById('riddle-'+num+'-input').value.trim().toLowerCase();const result=document.getElementById('riddle-'+num+'-result');if(answers[num].includes(input)){result.className='riddle-result correct';result.textContent='✅ The door swings open!';state.riddlesSolved=num;if(num<3){setTimeout(()=>{document.getElementById('riddle-'+(num+1)).style.display='block';document.getElementById('riddle-'+(num+1)).scrollIntoView({behavior:'smooth',block:'center'});},600);}else{completePuzzle('riddles','The Oracle',"The Oracle reveals: eggs hidden <strong>under the sundial in the garden</strong>. The thief <strong>\"brings warmth and sweets daily\"</strong> and wanted to <strong>teach a lesson about taking things for granted</strong>.");}}else{result.className='riddle-result wrong';result.textContent=input?'❌ The door remains sealed.':'Type your answer first!';}}
+
+// ===== P7: FACTORY =====
+const factoryAnswers={1:'13',2:'0.05',3:'short',4:'m'};
+const wrongDoorMsgs=["🚫 A trapdoor slides you back to Room 1! \"HOW DRAMATIC!\" cackles Chocola.","🚫 The floor tilts — back to the start! \"Magnificent failure!\"","🚫 A giant chocolate hand pushes you back. \"Try again, darling!\"","🚫 Fog fills the room. When it clears, you're back at Room 1."];
+function tryDoor(room,choice){if(state.puzzlesSolved.has('factory'))return;const s=document.getElementById('factory-status');if(choice===factoryAnswers[room]){if(room===4){s.textContent='';completePuzzle('factory','Chocolate Factory',"Security footage: a <strong>small figure in a purple shawl</strong> at <strong>12:05 AM</strong>, east side, carrying an <strong>enormous basket</strong> toward the garden.");}else{state.factoryRoom=room+1;document.getElementById('factory-room-num').textContent=state.factoryRoom;document.getElementById('factory-room-'+room).style.display='none';document.getElementById('factory-room-'+(room+1)).style.display='block';s.innerHTML='<span style="color:#69f0ae;">✅ Correct!</span>';setTimeout(()=>{s.textContent='';},1500);}}else{state.factoryRoom=1;document.getElementById('factory-room-num').textContent=1;for(let i=1;i<=4;i++)document.getElementById('factory-room-'+i).style.display=i===1?'block':'none';s.innerHTML=wrongDoorMsgs[Math.floor(Math.random()*wrongDoorMsgs.length)];}}
+
+// ===== P8: DEDUCTION =====
+function populateDeductionClues(){document.getElementById('deduction-clue-display').innerHTML=state.clueCards.map(c=>`<div class="clue-card"><div class="clue-source">📋 ${c.source}</div><div class="clue-text">${c.text}</div></div>`).join('');}
+function checkDeduction(){const who=document.getElementById('who-answer').value;const where=document.getElementById('where-answer').value.trim().toLowerCase();const why=document.getElementById('why-answer').value;const fb=document.getElementById('deduction-feedback');if(!who||!where||!why){fb.innerHTML='<span style="color:#ff9800;">Answer all three questions.</span>';return;}const wC=who==='grandma',lC=where.includes('sundial')||(where.includes('garden')&&(where.includes('under')||where.includes('beneath')||where.includes('below'))),mC=why==='appreciate';if(wC&&lC&&mC){const t=stopTimer();document.getElementById('final-time').textContent=t;document.getElementById('final-team-name').textContent=state.teamName;document.getElementById('top-bar').classList.remove('visible');document.body.classList.remove('top-bar-spacer');showScreen('ending-screen');launchConfetti();}else{let f=[];f.push(wC?'✅ Suspect: Correct!':'❌ Suspect: Wrong. Re-examine the physical evidence.');f.push(lC?'✅ Location: Correct!':'❌ Location: Wrong. What did the Oracle say?');f.push(mC?'✅ Motive: Correct!':'❌ Motive: Wrong. Think about the note and the Oracle\'s words.');fb.innerHTML='<span style="color:#e91e63;">'+f.join('<br>')+'</span>';}}
+
+// ===== CONFETTI =====
+function launchConfetti(){const c=document.getElementById('confetti-container');const colors=['#f48fb1','#ce93d8','#fff176','#a5d6a7','#90caf9','#ffcc02','#ff9800','#e91e63'];for(let i=0;i<120;i++){const p=document.createElement('div');p.className='confetti-piece';p.style.left=Math.random()*100+'%';p.style.background=colors[Math.floor(Math.random()*colors.length)];p.style.animationDuration=(2+Math.random()*3)+'s';p.style.animationDelay=Math.random()*2+'s';p.style.borderRadius=Math.random()>.5?'50%':'2px';p.style.width=(6+Math.random()*8)+'px';p.style.height=(6+Math.random()*8)+'px';c.appendChild(p);}setTimeout(()=>{c.innerHTML='';},8000);}
+
+window.addEventListener('DOMContentLoaded',()=>{initQuilt();});
+</script>
+</body>
+</html>
