@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if page.title %}{{ page.title }} · {% endif %}Tristrum Tuttle</title>
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap" rel="stylesheet">
+  <link href="/blog/blog.css" rel="stylesheet">
+</head>
+<body>
+  <div class="banner{% if page.date %} slim{% endif %}">
+    <a href="/"><img src="/img/profile_pic_website.jpg" alt="Tristrum Tuttle"></a>
+  </div>
+  <header><a href="/">Tristrum Tuttle</a> <span>/</span> <a href="/blog/">30 Minute Blog</a></header>
+  <main>
+    {% if page.date %}<h1>{{ page.title }}</h1><hr><p class="date">{{ page.date | date: "%B %-d, %Y" }}</p>{% endif %}
+    {{ content }}
+  </main>
+</body>
+</html>

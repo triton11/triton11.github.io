@@ -1,0 +1,4 @@
+title: Tristrum Tuttle
+permalink: /blog/:title/
+markdown: kramdown
+exclude: [indexOld.html, indexExperimental.html, testjson.txt, "*.pptx", "*.ppt", "*.docx"]

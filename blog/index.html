@@ -1,0 +1,10 @@
+---
+layout: blog
+title: 30 Minute Blog
+---
+<ul class="posts">
+{% for post in site.posts %}
+  <li><a href="{{ post.url }}"><span>{{ post.title }}</span><time>{{ post.date | date: "%b %-d, %Y" }}</time></a></li>
+{% endfor %}
+</ul>
+<p class="more"><a class="btn" href="https://tristrumtuttle.medium.com/" target="_blank" rel="noopener">Longer posts on Medium →</a></p>
